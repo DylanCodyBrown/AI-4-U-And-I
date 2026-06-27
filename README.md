@@ -34,6 +34,20 @@ index (also handy for agents crawling the site).
 - **Learning**: self-contained interactive HTML docs. Metadata comes from the
   `<head>` (`<title>`, `<meta name="intro|category1|category2">`).
 
+### Popular skills (ingested content)
+
+The Skills page's right column isn't links — it's popular skills whose **content
+is stored in this repo** under `skills/popular/`, openable in the local viewer.
+Refresh them (one-time, re-runnable):
+
+```bash
+node scripts/ingest-popular.mjs   # fetch popular skills' content into skills/popular/
+node scripts/build-index.mjs      # rebuild manifests (incl. skills/popular.json)
+```
+
+Each ingested file keeps `source` / `author` / `license` frontmatter pointing back
+to the original. Only openly-licensed (Apache-2.0) skills are copied.
+
 ### Rebuilding the manifests
 
 Manifests regenerate automatically via the **Build indexes** GitHub Action on

@@ -91,4 +91,37 @@ for (const [section, type] of Object.entries(SECTIONS)) {
   const out = { section, type, generated: true, count: items.length, items };
   await writeFile(join(dir, "index.json"), JSON.stringify(out, null, 2) + "\n");
   console.log(`Wrote ${section}/index.json with ${items.length} item(s).`);
+
+  // Ingested "popular" content: locally-stored files under <section>/popular/.
+  // These render in the right column and open in the local viewer (not links).
+  let popNames;
+  try {
+    popNames = await readdir(join(dir, "popular"));
+  } catch {
+    popNames = null;
+  }
+  if (popNames) {
+    const popFiles = popNames
+      .filter((f) => f.endsWith(".md"))
+      .filter((f) => !f.startsWith("_") && f.toLowerCase() !== "readme.md")
+      .sort();
+    const popItems = [];
+    for (const f of popFiles) {
+      const fm = parseFrontmatter(await readFile(join(dir, "popular", f), "utf8"));
+      popItems.push({
+        file: `${section}/popular/${f}`,
+        title: fm.title || titleFromFile(f),
+        category1: fm.category1 || "",
+        category2: fm.category2 || "",
+        description: fm.description || "",
+        source: fm.source || "",
+      });
+    }
+    popItems.sort((a, b) =>
+      (a.category1 + a.category2 + a.title).localeCompare(b.category1 + b.category2 + b.title)
+    );
+    const popOut = { section, stored: true, count: popItems.length, items: popItems };
+    await writeFile(join(dir, "popular.json"), JSON.stringify(popOut, null, 2) + "\n");
+    console.log(`Wrote ${section}/popular.json with ${popItems.length} item(s).`);
+  }
 }

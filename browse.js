@@ -76,29 +76,31 @@
       });
   }
 
-  // ---------- right column: popular ----------
+  // ---------- right column: popular (locally-stored content) ----------
   function renderPopular(data) {
     var items = (data && data.items) || [];
-    if (!items.length) return '<p class="muted">No data yet.</p>';
-    var updated = data.updated
-      ? '<p class="muted updated">Updated ' + esc(data.updated) + "</p>"
-      : "";
-    var list = items
+    if (!items.length) return '<p class="muted">No stored skills yet.</p>';
+    return items
       .map(function (it, i) {
+        var view = "view.html?file=" + encodeURIComponent(it.file);
+        var cat = esc(it.category1 || "") + (it.category2 ? " · " + esc(it.category2) : "");
         return (
-          '<a class="pop-item" href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
-          '<span class="pop-rank">' + (i + 1) + "</span>" +
-          '<span class="pop-main">' +
-            '<span class="pop-name">' + esc(it.name) + "</span>" +
-            (it.source ? '<span class="pop-src">' + esc(it.source) + "</span>" : "") +
-            (it.note ? '<span class="pop-note">' + esc(it.note) + "</span>" : "") +
-          "</span>" +
-          (it.metric ? '<span class="pop-metric">' + esc(it.metric) + "</span>" : "") +
-          "</a>"
+          '<div class="pop-item">' +
+            '<span class="pop-rank">' + (i + 1) + "</span>" +
+            '<span class="pop-main">' +
+              '<a class="pop-name" href="' + view + '" target="_blank" rel="noopener">' +
+                esc(it.title) + "</a>" +
+              (cat ? '<span class="pop-src">' + cat + "</span>" : "") +
+              (it.description ? '<span class="pop-note">' + esc(it.description) + "</span>" : "") +
+              (it.source
+                ? '<a class="pop-link" href="' + esc(it.source) +
+                  '" target="_blank" rel="noopener">source &#8599;</a>'
+                : "") +
+            "</span>" +
+          "</div>"
         );
       })
       .join("");
-    return list + updated;
   }
 
   if (popEl) {

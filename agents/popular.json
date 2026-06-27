@@ -1,8 +1,0 @@
-{
-  "updated": "seed data — pending live scrape",
-  "items": [
-    { "name": "Claude Code subagents", "source": "docs.claude.com", "url": "https://docs.claude.com/en/docs/claude-code/sub-agents", "note": "Built-in agent patterns", "metric": "" },
-    { "name": "OpenAI Agents SDK", "source": "GitHub", "url": "https://github.com/openai/openai-agents-python", "note": "Agent framework", "metric": "★" },
-    { "name": "Awesome AI Agents", "source": "GitHub", "url": "https://github.com/e2b-dev/awesome-ai-agents", "note": "Curated agent list", "metric": "★" }
-  ]
-}

@@ -17,7 +17,7 @@
   // only allow curated same-origin files: <section>/<name>.md, no traversal
   function safePath(p) {
     if (!p) return null;
-    if (!/^(blog|skills|mcp|agents)\/[A-Za-z0-9._-]+\.md$/.test(p)) return null;
+    if (!/^(blog|skills|mcp|agents)\/(?:[A-Za-z0-9._-]+\/)?[A-Za-z0-9._-]+\.md$/.test(p)) return null;
     if (p.indexOf("..") !== -1) return null;
     return p;
   }
