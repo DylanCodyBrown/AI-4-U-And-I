@@ -401,6 +401,14 @@ fieldset.box > legend {
 .status .seg { margin: 0 .15rem; opacity: .5; }
 
 @media (max-width: 480px) {
-  body { font-size: 14px; }
+  body { font-size: 14px; padding-bottom: 7.5rem; }
   fieldset.box { padding: 1.2rem 1.1rem 1.3rem; }
+
+  /* slimmer command bar on mobile */
+  .cmdbar-fixed { padding: 1rem .8rem calc(.4rem + env(safe-area-inset-bottom, 0px)); }
+  .cmdbar-fixed .term.box { padding: .7rem .9rem .8rem; }
+  .term-line { font-size: .95rem; min-height: 1.5em; }
+  .status { margin-top: .55rem; font-size: .7rem; gap: .3rem; }
+  .status kbd { padding: 0 .25rem; }
+  .status .seg { margin: 0; }
 }
