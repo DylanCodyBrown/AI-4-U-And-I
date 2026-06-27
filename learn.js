@@ -16,13 +16,19 @@
   function card(it) {
     var tag =
       esc(it.category1 || "Learning") + (it.category2 ? " · " + esc(it.category2) : "");
+    var f = esc(it.file);
     return (
-      '<a class="learn-card" href="' + esc(it.file) + '" target="_blank" rel="noopener">' +
+      '<article class="learn-card">' +
         '<div class="learn-tag">' + tag + "</div>" +
-        '<h3 class="learn-title">' + esc(it.title) + "</h3>" +
+        '<h3 class="learn-title">' +
+          '<a class="learn-stretch" href="' + f + '" target="_blank" rel="noopener">' +
+            esc(it.title) + "</a></h3>" +
         (it.description ? '<p class="learn-intro">' + esc(it.description) + "</p>" : "") +
-        '<span class="learn-open">open in new tab &#8599;</span>' +
-      "</a>"
+        '<div class="learn-actions">' +
+          '<span class="learn-open">open in new tab &#8599;</span>' +
+          '<a class="learn-dl" href="' + f + '" download>&#8595; download</a>' +
+        "</div>" +
+      "</article>"
     );
   }
 

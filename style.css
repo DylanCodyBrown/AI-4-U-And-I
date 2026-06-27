@@ -124,6 +124,7 @@ a:hover { color: var(--accent-2); }
   margin: .5rem auto 0;
 }
 .learn-card {
+  position: relative;
   display: block;
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -144,10 +145,36 @@ a:hover { color: var(--accent-2); }
   color: var(--accent);
   margin-bottom: .5rem;
 }
-.learn-title { font-size: 1.2rem; color: #efe9e0; margin: 0 0 .45rem; }
-.learn-intro { color: var(--fg); font-size: .92rem; margin: 0 0 .8rem; }
+.learn-title { font-size: 1.2rem; margin: 0 0 .45rem; }
+/* stretched link — clicking anywhere on the card opens the doc in a new tab */
+.learn-title .learn-stretch { color: #efe9e0; text-decoration: none; }
+.learn-title .learn-stretch::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.learn-intro { color: var(--fg); font-size: .92rem; margin: 0 0 .9rem; }
+.learn-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+}
 .learn-open { font-size: .78rem; color: var(--fg-dim); }
 .learn-card:hover .learn-open { color: var(--accent); }
+/* download sits above the stretched link so it stays separately clickable */
+.learn-dl {
+  position: relative;
+  z-index: 1;
+  font-size: .78rem;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: .25rem .6rem;
+  white-space: nowrap;
+}
+.learn-dl:hover { border-color: var(--accent); background: var(--bg); }
 
 /* ---- markdown viewer ---- */
 .viewer-bar {
