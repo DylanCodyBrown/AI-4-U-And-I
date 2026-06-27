@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Agents: start at https://dylancodybrown.github.io/AI-4-U-And-I/llms.txt or https://dylancodybrown.github.io/AI-4-U-And-I/site.json
+Sitemap: https://dylancodybrown.github.io/AI-4-U-And-I/sitemap.xml

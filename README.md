@@ -48,6 +48,24 @@ node scripts/build-index.mjs      # rebuild manifests (incl. skills/popular.json
 Each ingested file keeps `source` / `author` / `license` frontmatter pointing back
 to the original. Only openly-licensed (Apache-2.0) skills are copied.
 
+### For AI agents (the breadcrumb trail)
+
+The site is built to be crawled by agents, not just people. `node scripts/build-index.mjs`
+also emits, at the site root:
+
+- **`llms.txt`** — the conventional LLM-facing map ([llmstxt.org](https://llmstxt.org)):
+  a markdown list of every resource with absolute, directly-downloadable URLs.
+- **`site.json`** — one aggregate manifest: every section + item with both an
+  `open` URL (rendered viewer) and a `download` URL (the raw, directly-fetchable file).
+- **`sitemap.xml`** + **`robots.txt`** — crawl discovery; robots points agents at
+  `llms.txt` / `site.json`.
+- Each page also carries `<link rel="alternate" type="application/json" href="site.json">`
+  so an agent reading HTML is pointed straight at the JSON.
+
+An agent can fetch `site.json` once and download anything directly — no scraping,
+no JS. The deployed base URL is set via `BASE_URL` at the top of
+`scripts/build-index.mjs` (change it for a custom domain).
+
 ### Rebuilding the manifests
 
 Manifests regenerate automatically via the **Build indexes** GitHub Action on

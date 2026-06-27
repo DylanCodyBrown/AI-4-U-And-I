@@ -1,0 +1,49 @@
+# AI-4-U&I
+
+> A browsable knowledge base of AI skills, MCP servers, agents, and interactive learning docs. Everything is stored in this site and directly downloadable.
+
+For a complete machine-readable index with absolute download URLs, fetch [site.json](https://dylancodybrown.github.io/AI-4-U-And-I/site.json). Each section also exposes `<section>/index.json`. Markdown files open rendered via `view.html?file=<path>` but the raw file is always directly fetchable at its path.
+
+## Blog — weekly stories
+
+- [Why a command bar?](https://dylancodybrown.github.io/AI-4-U-And-I/blog/2026-06-27-why-a-command-bar.md) — A terminal-style prompt is the fastest way to navigate — and the most agent-friendly.
+- [Hello, world](https://dylancodybrown.github.io/AI-4-U-And-I/blog/2026-06-27-hello-world.md) — The first entry — what this site is and where it's going.
+- [Kicking things off](https://dylancodybrown.github.io/AI-4-U-And-I/blog/2026-06-20-kickoff.md) — Why I'm building a personal, browsable home for everything AI.
+
+## Skills — browsable library + popular (stored locally)
+
+- [Clean Architecture in Practice](https://dylancodybrown.github.io/AI-4-U-And-I/skills/app-clean-architecture.md) — Keep business rules independent of frameworks, UI, and databases.
+- [Finite State Machines for Game AI](https://dylancodybrown.github.io/AI-4-U-And-I/skills/game-dev-state-machines.md) — Model enemy and NPC behavior with clean, debuggable state machines.
+- [Mail Merge in Word](https://dylancodybrown.github.io/AI-4-U-And-I/skills/word-mail-merge.md) — Generate personalized documents from a spreadsheet data source.
+
+### Popular (stored locally)
+
+- [Brand Guidelines](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/brand-guidelines.md) — Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.
+- [Algorithmic Art](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/algorithmic-art.md) — Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.
+- [Theme Factory](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/theme-factory.md) — Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.
+- [Canvas Design](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/canvas-design.md) — Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.
+- [Claude Api](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/claude-api.md) — Reference for the Claude API / Anthropic SDK — model ids, pricing, params, streaming, tool use, MCP, agents, caching, token counting, model migration.
+- [Frontend Design](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/frontend-design.md) — Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.
+- [Mcp Builder](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/mcp-builder.md) — Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).
+- [Webapp Testing](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/webapp-testing.md) — Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.
+- [Skill Creator](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/skill-creator.md) — Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.
+- [Web Artifacts Builder](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/web-artifacts-builder.md) — Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.
+- [Internal Comms](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/internal-comms.md) — A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).
+- [Doc Coauthoring](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/doc-coauthoring.md) — Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.
+- [Slack Gif Creator](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/slack-gif-creator.md) — Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\"
+
+## MCP — servers by Local/Community/Homebrewed
+
+- [GitHub](https://dylancodybrown.github.io/AI-4-U-And-I/mcp/community-github.md) — Browse repos, issues, and pull requests through MCP.
+- [Notes Sync](https://dylancodybrown.github.io/AI-4-U-And-I/mcp/homebrewed-notes-sync.md) — A custom MCP server I built to sync and search my personal notes.
+- [Filesystem](https://dylancodybrown.github.io/AI-4-U-And-I/mcp/local-filesystem.md) — Read and write files on your own machine from your assistant.
+
+## Agents — browsable library
+
+- [Research Assistant](https://dylancodybrown.github.io/AI-4-U-And-I/agents/research-assistant.md) — Fans out searches, reads sources, and synthesizes a cited summary.
+- [Code Reviewer](https://dylancodybrown.github.io/AI-4-U-And-I/agents/code-reviewer.md) — Reviews a diff for correctness bugs and suggests concrete fixes.
+
+## Learning — interactive HTML docs (downloadable)
+
+- [Are You Smarter Than Claude?](https://dylancodybrown.github.io/AI-4-U-And-I/learning/are-you-smarter-than-claude.html) — A playful interactive deck — pit your instincts against Claude across a series of challenges and see who comes out smarter.
+

@@ -9,6 +9,20 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
+// Public base URL of the deployed site (GitHub Pages project site). Used to emit
+// absolute URLs in the agent-facing artifacts (llms.txt, site.json, sitemap).
+// Change this if the site moves (e.g. a custom domain).
+const BASE_URL = "https://dylancodybrown.github.io/AI-4-U-And-I/";
+
+// human-facing page per section + a short label
+const PAGES = {
+  blog: "Blog — weekly stories",
+  skills: "Skills — browsable library + popular (stored locally)",
+  mcp: "MCP — servers by Local/Community/Homebrewed",
+  agents: "Agents — browsable library",
+  learning: "Learning — interactive HTML docs (downloadable)",
+};
+
 // section name -> file type it holds
 const SECTIONS = {
   blog: "md",
@@ -48,6 +62,11 @@ function parseHtmlMeta(text) {
 
 const titleFromFile = (file) =>
   basename(file, extname(file)).replace(/[-_]+/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
+const abs = (rel) => BASE_URL + String(rel).replace(/^\/+/, "");
+
+// accumulates every section's items for the aggregate agent artifacts
+const site = [];
 
 for (const [section, type] of Object.entries(SECTIONS)) {
   const dir = join(root, section);
@@ -94,6 +113,7 @@ for (const [section, type] of Object.entries(SECTIONS)) {
 
   // Ingested "popular" content: locally-stored files under <section>/popular/.
   // These render in the right column and open in the local viewer (not links).
+  let popItems = [];
   let popNames;
   try {
     popNames = await readdir(join(dir, "popular"));
@@ -105,7 +125,6 @@ for (const [section, type] of Object.entries(SECTIONS)) {
       .filter((f) => f.endsWith(".md"))
       .filter((f) => !f.startsWith("_") && f.toLowerCase() !== "readme.md")
       .sort();
-    const popItems = [];
     for (const f of popFiles) {
       const fm = parseFrontmatter(await readFile(join(dir, "popular", f), "utf8"));
       popItems.push({
@@ -124,4 +143,98 @@ for (const [section, type] of Object.entries(SECTIONS)) {
     await writeFile(join(dir, "popular.json"), JSON.stringify(popOut, null, 2) + "\n");
     console.log(`Wrote ${section}/popular.json with ${popItems.length} item(s).`);
   }
+
+  site.push({ section, type, page: `${section}.html`, label: PAGES[section] || section, items, popItems });
 }
+
+/* ----------------------------------------------------------------------------
+   Agent-facing artifacts — a discoverable "breadcrumb trail" for AI agents.
+   Generated from the same data so they never drift.
+   ---------------------------------------------------------------------------- */
+
+// open-able URL for an item: markdown opens via the viewer, html opens directly
+const openUrl = (sec, it) =>
+  sec.type === "html" ? abs(it.file) : abs("view.html?file=" + encodeURIComponent(it.file));
+const downloadUrl = (it) => abs(it.file); // raw file is always directly fetchable
+
+// --- site.json : one aggregate manifest with absolute, directly-fetchable URLs
+const siteJson = {
+  name: "AI-4-U&I",
+  base: BASE_URL,
+  generated: true,
+  note: "Machine-readable index. Every 'download' URL is a raw, directly-fetchable file.",
+  sections: site.map((sec) => ({
+    section: sec.section,
+    page: abs(sec.page),
+    label: sec.label,
+    items: sec.items.map((it) => ({
+      title: it.title,
+      category1: it.category1,
+      category2: it.category2,
+      description: it.description,
+      ...(it.published ? { published: it.published } : {}),
+      open: openUrl(sec, it),
+      download: downloadUrl(it),
+    })),
+    popular: sec.popItems.map((it) => ({
+      title: it.title,
+      category1: it.category1,
+      category2: it.category2,
+      description: it.description,
+      source: it.source,
+      open: abs("view.html?file=" + encodeURIComponent(it.file)),
+      download: downloadUrl(it),
+    })),
+  })),
+};
+await writeFile(join(root, "site.json"), JSON.stringify(siteJson, null, 2) + "\n");
+console.log("Wrote site.json");
+
+// --- llms.txt : the conventional LLM-facing map (llmstxt.org)
+let llms = "";
+llms += "# AI-4-U&I\n\n";
+llms += "> A browsable knowledge base of AI skills, MCP servers, agents, and interactive learning docs. ";
+llms += "Everything is stored in this site and directly downloadable.\n\n";
+llms += "For a complete machine-readable index with absolute download URLs, fetch ";
+llms += `[site.json](${abs("site.json")}). Each section also exposes ` +
+  "`<section>/index.json`. Markdown files open rendered via `view.html?file=<path>` " +
+  "but the raw file is always directly fetchable at its path.\n\n";
+for (const sec of site) {
+  llms += `## ${sec.label}\n\n`;
+  for (const it of sec.items) {
+    const d = it.description ? ` — ${it.description}` : "";
+    llms += `- [${it.title}](${downloadUrl(it)})${d}\n`;
+  }
+  if (sec.popItems.length) {
+    llms += `\n### Popular (stored locally)\n\n`;
+    for (const it of sec.popItems) {
+      const d = it.description ? ` — ${it.description}` : "";
+      llms += `- [${it.title}](${downloadUrl(it)})${d}\n`;
+    }
+  }
+  llms += "\n";
+}
+await writeFile(join(root, "llms.txt"), llms);
+console.log("Wrote llms.txt");
+
+// --- sitemap.xml + robots.txt : classic crawl discovery (pages + raw files)
+const urls = [BASE_URL];
+for (const sec of site) {
+  urls.push(abs(sec.page));
+  for (const it of sec.items) urls.push(downloadUrl(it));
+  for (const it of sec.popItems) urls.push(downloadUrl(it));
+}
+const sitemap =
+  '<?xml version="1.0" encoding="UTF-8"?>\n' +
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+  urls.map((u) => `  <url><loc>${u.replace(/&/g, "&amp;")}</loc></url>`).join("\n") +
+  "\n</urlset>\n";
+await writeFile(join(root, "sitemap.xml"), sitemap);
+console.log(`Wrote sitemap.xml with ${urls.length} URL(s).`);
+
+const robots =
+  "User-agent: *\nAllow: /\n\n" +
+  `# Agents: start at ${abs("llms.txt")} or ${abs("site.json")}\n` +
+  `Sitemap: ${abs("sitemap.xml")}\n`;
+await writeFile(join(root, "robots.txt"), robots);
+console.log("Wrote robots.txt");
