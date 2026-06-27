@@ -1,0 +1,29 @@
+{
+  "section": "mcp",
+  "type": "md",
+  "generated": true,
+  "count": 3,
+  "items": [
+    {
+      "file": "mcp/community-github.md",
+      "title": "GitHub",
+      "category1": "Community",
+      "category2": "Dev Tools",
+      "description": "Browse repos, issues, and pull requests through MCP."
+    },
+    {
+      "file": "mcp/homebrewed-notes-sync.md",
+      "title": "Notes Sync",
+      "category1": "Homebrewed",
+      "category2": "",
+      "description": "A custom MCP server I built to sync and search my personal notes."
+    },
+    {
+      "file": "mcp/local-filesystem.md",
+      "title": "Filesystem",
+      "category1": "Local",
+      "category2": "Files",
+      "description": "Read and write files on your own machine from your assistant."
+    }
+  ]
+}

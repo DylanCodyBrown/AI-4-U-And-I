@@ -1,0 +1,29 @@
+{
+  "section": "skills",
+  "type": "md",
+  "generated": true,
+  "count": 3,
+  "items": [
+    {
+      "file": "skills/app-clean-architecture.md",
+      "title": "Clean Architecture in Practice",
+      "category1": "App Architecture",
+      "category2": "",
+      "description": "Keep business rules independent of frameworks, UI, and databases."
+    },
+    {
+      "file": "skills/game-dev-state-machines.md",
+      "title": "Finite State Machines for Game AI",
+      "category1": "Game Development",
+      "category2": "AI & Behavior",
+      "description": "Model enemy and NPC behavior with clean, debuggable state machines."
+    },
+    {
+      "file": "skills/word-mail-merge.md",
+      "title": "Mail Merge in Word",
+      "category1": "Microsoft",
+      "category2": "Microsoft Word",
+      "description": "Generate personalized documents from a spreadsheet data source."
+    }
+  ]
+}

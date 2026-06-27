@@ -11,25 +11,28 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="wrap">
+  <div class="wrap wide">
     <div class="topbar"><a class="home" href="index.html">AI-4-U&amp;I</a><span class="sep">/</span> agents</div>
 
-    <fieldset class="box content">
-      <legend>Agents — AI agents &amp; subagents</legend>
-      <p>Agents are AI systems that can plan and act on your behalf. This page
-         will collect agent patterns, examples, and ready-to-use configs.</p>
+    <div class="two-col">
+      <fieldset class="box">
+        <legend>Library — browse agents</legend>
+        <p class="muted hint">Curated agents, nested by what they're for.
+           Click one to open it in a new tab.</p>
+        <div id="browseTree" class="tree" data-section="agents"><p class="muted">Loading…</p></div>
+      </fieldset>
 
-      <h2>On this page</h2>
-      <ul>
-        <li>What an agent is</li>
-        <li>Useful agent patterns</li>
-        <li>Examples &amp; configs</li>
-      </ul>
-      <p class="muted">Placeholder content — fill in as you go.</p>
-    </fieldset>
+      <fieldset class="box">
+        <legend>Popular — trending agents</legend>
+        <p class="muted hint">What people are using right now, with links out.</p>
+        <div id="popularList" class="popular"><p class="muted">Loading…</p></div>
+      </fieldset>
+    </div>
 
     <div id="cmdbar"></div>
   </div>
+
+  <script src="browse.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

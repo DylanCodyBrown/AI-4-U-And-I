@@ -1,0 +1,15 @@
+{
+  "section": "learning",
+  "type": "html",
+  "generated": true,
+  "count": 1,
+  "items": [
+    {
+      "file": "learning/are-you-smarter-than-claude.html",
+      "title": "Are You Smarter Than Claude?",
+      "category1": "AI Literacy",
+      "category2": "Just for Fun",
+      "description": "A playful interactive deck — pit your instincts against Claude across a series of challenges and see who comes out smarter."
+    }
+  ]
+}

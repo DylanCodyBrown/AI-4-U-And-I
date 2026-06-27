@@ -11,26 +11,28 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="wrap">
+  <div class="wrap wide">
     <div class="topbar"><a class="home" href="index.html">AI-4-U&amp;I</a><span class="sep">/</span> mcp</div>
 
-    <fieldset class="box content">
-      <legend>MCP — Model Context Protocol</legend>
-      <p>MCP is an open standard for connecting AI assistants to the tools,
-         data, and systems they need. This page will collect servers, setup
-         guides, and one-click installs.</p>
+    <div class="two-col">
+      <fieldset class="box">
+        <legend>Servers — browse MCPs</legend>
+        <p class="muted hint">Organized by source: Local, Community, and
+           Homebrewed. Click one to open it in a new tab.</p>
+        <div id="browseTree" class="tree" data-section="mcp"><p class="muted">Loading…</p></div>
+      </fieldset>
 
-      <h2>On this page</h2>
-      <ul>
-        <li>What MCP is and why it matters</li>
-        <li>Recommended servers</li>
-        <li>Setup &amp; install guides</li>
-      </ul>
-      <p class="muted">Placeholder content — fill in as you go.</p>
-    </fieldset>
+      <fieldset class="box">
+        <legend>Popular — trending MCPs</legend>
+        <p class="muted hint">What people are using right now, with links out.</p>
+        <div id="popularList" class="popular"><p class="muted">Loading…</p></div>
+      </fieldset>
+    </div>
 
     <div id="cmdbar"></div>
   </div>
+
+  <script src="browse.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,8 @@
+{
+  "updated": "seed data — pending live scrape",
+  "items": [
+    { "name": "anthropics/skills", "source": "GitHub", "url": "https://github.com/anthropics/skills", "note": "Official Anthropic agent skills", "metric": "★" },
+    { "name": "Awesome Claude", "source": "GitHub", "url": "https://github.com/hesreallyhim/awesome-claude-code", "note": "Curated Claude tooling & skills", "metric": "★" },
+    { "name": "Model Context Protocol", "source": "modelcontextprotocol.io", "url": "https://modelcontextprotocol.io", "note": "Spec & server ecosystem", "metric": "" }
+  ]
+}

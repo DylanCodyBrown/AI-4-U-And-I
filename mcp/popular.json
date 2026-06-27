@@ -1,0 +1,8 @@
+{
+  "updated": "seed data — pending live scrape",
+  "items": [
+    { "name": "Model Context Protocol servers", "source": "GitHub", "url": "https://github.com/modelcontextprotocol/servers", "note": "Reference server collection", "metric": "★" },
+    { "name": "Awesome MCP Servers", "source": "GitHub", "url": "https://github.com/punkpeye/awesome-mcp-servers", "note": "Community directory", "metric": "★" },
+    { "name": "MCP registry", "source": "modelcontextprotocol.io", "url": "https://modelcontextprotocol.io", "note": "Spec & official docs", "metric": "" }
+  ]
+}

@@ -1,0 +1,39 @@
+name: Build indexes
+
+# Regenerates <section>/index.json whenever a skill/mcp/agent markdown file
+# changes. Triggers only on *.md under those folders, and only commits the
+# generated *.json, so it never re-triggers itself.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "skills/**.md"
+      - "mcp/**.md"
+      - "agents/**.md"
+      - "learning/**.html"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Build indexes
+        run: node scripts/build-index.mjs
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- '**/index.json'; then
+            echo "Indexes already up to date."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add '**/index.json'
+            git commit -m "chore: rebuild section indexes [skip ci]"
+            git push
+          fi

@@ -3,28 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learning · AI-4-U&amp;I</title>
+  <title>Viewer · AI-4-U&amp;I</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#129302;</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="viewer-body">
   <div class="wrap">
-    <div class="topbar"><a class="home" href="index.html">AI-4-U&amp;I</a><span class="sep">/</span> learning</div>
-
-    <fieldset class="box">
-      <legend>Learning — interactive docs</legend>
-      <p class="muted hint">Quick intros to interactive learning docs. Click a card
-         to open the full experience in a new tab.</p>
-      <div id="learnCol" class="learn-col"><p class="muted">Loading…</p></div>
-    </fieldset>
-
-    <div id="cmdbar"></div>
+    <div class="viewer-bar">
+      <a id="backLink" class="home" href="skills.html">&larr; Back</a>
+      <a id="downloadBtn" class="dl-btn" download>&#8595; Download .md</a>
+    </div>
+    <article id="doc" class="box content markdown">
+      <p class="muted">Loading…</p>
+    </article>
   </div>
 
-  <script src="learn.js"></script>
-  <script src="app.js"></script>
+  <script src="assets/vendor/marked.min.js"></script>
+  <script src="assets/vendor/purify.min.js"></script>
+  <script src="viewer.js"></script>
 </body>
 </html>

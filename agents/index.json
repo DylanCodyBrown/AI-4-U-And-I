@@ -1,0 +1,22 @@
+{
+  "section": "agents",
+  "type": "md",
+  "generated": true,
+  "count": 2,
+  "items": [
+    {
+      "file": "agents/research-assistant.md",
+      "title": "Research Assistant",
+      "category1": "Productivity",
+      "category2": "Research",
+      "description": "Fans out searches, reads sources, and synthesizes a cited summary."
+    },
+    {
+      "file": "agents/code-reviewer.md",
+      "title": "Code Reviewer",
+      "category1": "Software",
+      "category2": "Code Quality",
+      "description": "Reviews a diff for correctness bugs and suggests concrete fixes."
+    }
+  ]
+}
