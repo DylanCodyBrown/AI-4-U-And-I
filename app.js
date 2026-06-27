@@ -20,25 +20,28 @@
     { cmd: "/clear",    title: "Clear",    desc: "Clear the prompt",         action: "clear", keys: ["clear", "reset"] }
   ];
 
-  // markup for the command bar
+  // markup for the command bar — pinned to the bottom of every page.
+  // suggestions sit ABOVE the prompt so the dropdown opens upward.
   var TEMPLATE =
-    '<fieldset class="box term">' +
-      '<legend>Navigation — type / to navigate</legend>' +
-      '<div class="term-line" id="termLine">' +
-        '<span class="prompt">&gt;</span>' +
-        '<span class="echo" id="echo"></span>' +
-        '<span class="cursor" id="cursor"></span>' +
-        '<input id="cmdInput" class="cmd-input" autocomplete="off" autocapitalize="off" ' +
-               'spellcheck="false" aria-label="Site command bar" />' +
-      '</div>' +
-      '<ul class="suggestions" id="suggestions" role="listbox"></ul>' +
-      '<div class="status">' +
-        '<span class="dot"></span> ready' +
-        '<span class="seg">·</span> <kbd>&uarr;</kbd><kbd>&darr;</kbd> select' +
-        '<span class="seg">·</span> <kbd>&crarr;</kbd> go' +
-        '<span class="seg">·</span> <kbd>esc</kbd> clear' +
-      '</div>' +
-    '</fieldset>';
+    '<div class="cmdbar-fixed">' +
+      '<fieldset class="box term">' +
+        '<legend>Navigation — type / to navigate</legend>' +
+        '<ul class="suggestions" id="suggestions" role="listbox"></ul>' +
+        '<div class="term-line" id="termLine">' +
+          '<span class="prompt">&gt;</span>' +
+          '<span class="echo" id="echo"></span>' +
+          '<span class="cursor" id="cursor"></span>' +
+          '<input id="cmdInput" class="cmd-input" autocomplete="off" autocapitalize="off" ' +
+                 'spellcheck="false" aria-label="Site command bar" />' +
+        '</div>' +
+        '<div class="status">' +
+          '<span class="dot"></span> ready' +
+          '<span class="seg">·</span> <kbd>&uarr;</kbd><kbd>&darr;</kbd> select' +
+          '<span class="seg">·</span> <kbd>&crarr;</kbd> go' +
+          '<span class="seg">·</span> <kbd>esc</kbd> clear' +
+        '</div>' +
+      '</fieldset>' +
+    '</div>';
 
   function init() {
     var mount = document.getElementById("cmdbar");
