@@ -1,0 +1,32 @@
+{
+  "section": "blog",
+  "type": "md",
+  "generated": true,
+  "count": 3,
+  "items": [
+    {
+      "file": "blog/2026-06-27-why-a-command-bar.md",
+      "title": "Why a command bar?",
+      "category1": "Uncategorized",
+      "category2": "",
+      "description": "A terminal-style prompt is the fastest way to navigate — and the most agent-friendly.",
+      "published": "2026-06-27 15:30"
+    },
+    {
+      "file": "blog/2026-06-27-hello-world.md",
+      "title": "Hello, world",
+      "category1": "Uncategorized",
+      "category2": "",
+      "description": "The first entry — what this site is and where it's going.",
+      "published": "2026-06-27 09:00"
+    },
+    {
+      "file": "blog/2026-06-20-kickoff.md",
+      "title": "Kicking things off",
+      "category1": "Uncategorized",
+      "category2": "",
+      "description": "Why I'm building a personal, browsable home for everything AI.",
+      "published": "2026-06-20 11:00"
+    }
+  ]
+}

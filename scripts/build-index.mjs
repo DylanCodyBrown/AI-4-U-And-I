@@ -11,6 +11,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 // section name -> file type it holds
 const SECTIONS = {
+  blog: "md",
   skills: "md",
   mcp: "md",
   agents: "md",
@@ -67,18 +68,25 @@ for (const [section, type] of Object.entries(SECTIONS)) {
   for (const f of files) {
     const text = await readFile(join(dir, f), "utf8");
     const meta = type === "html" ? parseHtmlMeta(text) : parseFrontmatter(text);
-    items.push({
+    const item = {
       file: `${section}/${f}`,
       title: meta.title || titleFromFile(f),
       category1: meta.category1 || "Uncategorized",
       category2: meta.category2 || "",
       description: meta.intro || meta.description || "",
-    });
+    };
+    if (meta.published) item.published = meta.published; // blog posts
+    items.push(item);
   }
 
-  items.sort((a, b) =>
-    (a.category1 + a.category2 + a.title).localeCompare(b.category1 + b.category2 + b.title)
-  );
+  if (section === "blog") {
+    // newest first by published timestamp
+    items.sort((a, b) => String(b.published || "").localeCompare(String(a.published || "")));
+  } else {
+    items.sort((a, b) =>
+      (a.category1 + a.category2 + a.title).localeCompare(b.category1 + b.category2 + b.title)
+    );
+  }
 
   const out = { section, type, generated: true, count: items.length, items };
   await writeFile(join(dir, "index.json"), JSON.stringify(out, null, 2) + "\n");

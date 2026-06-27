@@ -85,6 +85,7 @@ a:hover { color: var(--accent-2); }
 }
 .tree .leaf:hover { background: var(--bg-2); color: var(--accent); }
 .tree .leaf-ico { color: var(--accent); margin-right: .4rem; font-size: .7em; }
+.tree .leaf-time { color: var(--fg-dim); font-size: .78rem; margin-left: .6rem; }
 
 /* ---- popular list ---- */
 .popular { font-size: .92rem; }

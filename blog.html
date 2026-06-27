@@ -14,27 +14,17 @@
   <div class="wrap">
     <div class="topbar"><a class="home" href="index.html">AI-4-U&amp;I</a><span class="sep">/</span> blog</div>
 
-    <fieldset class="box content">
+    <fieldset class="box">
       <legend>Blog — weekly stories</legend>
-      <p class="muted">New stories drop every week. Notes from building with AI.</p>
-
-      <article class="post">
-        <div class="meta">2026-06-27 · week 01</div>
-        <h3>Hello, world</h3>
-        <p>The first entry. This is where weekly stories will live — short
-           write-ups on what we tried, what worked, and what we learned.</p>
-      </article>
-
-      <article class="post">
-        <div class="meta">coming soon</div>
-        <h3>Your next story</h3>
-        <p class="muted">Replace these placeholders with real posts. Each entry
-           is just an <code>&lt;article class="post"&gt;</code> block.</p>
-      </article>
+      <p class="muted hint">Posts by publish day, newest first. Click one to read
+         it in a new tab.</p>
+      <div id="blogTree" class="tree"><p class="muted">Loading…</p></div>
     </fieldset>
 
     <div id="cmdbar"></div>
   </div>
+
+  <script src="blog.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

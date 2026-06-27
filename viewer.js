@@ -7,7 +7,7 @@
   var dl = document.getElementById("downloadBtn");
   var back = document.getElementById("backLink");
 
-  var SECTIONS = { skills: "Skills", mcp: "MCP", agents: "Agents" };
+  var SECTIONS = { blog: "Blog", skills: "Skills", mcp: "MCP", agents: "Agents" };
 
   function fail(msg) {
     doc.innerHTML = '<h1>Not found</h1><p class="muted">' + msg + "</p>";
@@ -17,7 +17,7 @@
   // only allow curated same-origin files: <section>/<name>.md, no traversal
   function safePath(p) {
     if (!p) return null;
-    if (!/^(skills|mcp|agents)\/[A-Za-z0-9._-]+\.md$/.test(p)) return null;
+    if (!/^(blog|skills|mcp|agents)\/[A-Za-z0-9._-]+\.md$/.test(p)) return null;
     if (p.indexOf("..") !== -1) return null;
     return p;
   }
