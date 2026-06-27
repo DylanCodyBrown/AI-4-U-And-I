@@ -77,7 +77,7 @@
           })
           .join("");
         return (
-          '<details class="node cat1" open><summary>' + esc(heading) + "</summary>" +
+          '<details class="node cat1"><summary>' + esc(heading) + "</summary>" +
           '<div class="children">' + leaves + "</div></details>"
         );
       })

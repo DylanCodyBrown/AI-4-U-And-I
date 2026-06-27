@@ -51,12 +51,12 @@
           .sort()
           .forEach(function (c2) {
             inner +=
-              '<details class="node cat2" open><summary>' + esc(c2) + "</summary>" +
+              '<details class="node cat2"><summary>' + esc(c2) + "</summary>" +
               '<div class="children">' + g.subs[c2].map(leaf).join("") + "</div></details>";
           });
         inner += g._direct.map(leaf).join("");
         return (
-          '<details class="node cat1" open><summary>' + esc(c1) + "</summary>" +
+          '<details class="node cat1"><summary>' + esc(c1) + "</summary>" +
           '<div class="children">' + inner + "</div></details>"
         );
       })
