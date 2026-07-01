@@ -89,6 +89,53 @@ python3 -m http.server
 # open http://localhost:8000
 ```
 
+## Presentation companion (local)
+
+`companion/` is a small **local** Flask server that lets a slide button in an
+interactive learning doc push a prompt to your own `claude` CLI, so a demo runs
+live in a terminal you keep visible while presenting. One-way: the deck sends →
+Claude Code runs → you watch the terminal. It is a local dev tool and is **not**
+part of the deployed site.
+
+Why it exists: Claude Code only makes *outbound* HTTPS calls — it has no inbound
+port a browser could hit. This server is that missing inbound endpoint.
+
+```
+deck (GitHub Pages) ──POST /run {prompt}──▶ companion (127.0.0.1:8765) ──▶ claude -p "<prompt>"
+```
+
+### Setup
+
+Requires Python 3.10+ and the `claude` CLI installed & authenticated.
+
+```bash
+cd companion
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+python server.py                 # listens on http://127.0.0.1:8765 (loopback only)
+```
+
+Keep that terminal visible while presenting. Smoke-test it from another terminal:
+
+```bash
+curl -s http://127.0.0.1:8765/health
+curl -s -X POST http://127.0.0.1:8765/run \
+  -H 'Content-Type: application/json' \
+  -d '{"prompt":"say hello in one line"}'
+```
+
+### Useful options (env vars)
+
+| Variable                | Default     | Purpose                                                        |
+| ----------------------- | ----------- | -------------------------------------------------------------- |
+| `COMPANION_MASK_PROMPT` | `false`     | Hide prompt text in the terminal (or per request `"mask":true`). |
+| `CLAUDE_FLAGS`          | `-p`        | Add `--dangerously-skip-permissions` to let demos run tools unattended (auto-approves everything). |
+| `COMPANION_TOKEN`       | _(unset)_   | Shared secret the deck must send (second factor).              |
+| `COMPANION_ORIGINS`     | Pages + localhost | Browser origins allowed to call.                         |
+
+Full docs, endpoints, and safety notes: [`companion/README.md`](companion/README.md).
+
 ## Deploy
 
 **Settings → Pages**, source = `main`, folder `/ (root)`.
