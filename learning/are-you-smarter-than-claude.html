@@ -2877,8 +2877,8 @@ Open only the entries you need.</pre>
   function runNeedleRace(){
     const pile = NEEDLE_QA.filter(function(_,i){return i!==NEEDLE_IDX;})
       .map(function(qa){return 'Q: '+qa[0]+'\nA: '+qa[1];}).join('\n');
-    const prompt = 'Answer using ONLY these notes. If the answer is not in them, say so.\n\nNOTES:\n'
-      + pile + '\n\nQUESTION: ' + NEEDLE_QUESTION + ' Answer with just the rate.';
+    const prompt = 'You have a set of Q&A notes from a reserve review session. Search them and answer the question below.\n\nNOTES:\n'
+      + pile + '\n\nQUESTION: ' + NEEDLE_QUESTION + '\n\nAnswer with the rate and one sentence of reasoning.';
     pushClaude(prompt, 'needleStatus');
   }
 
