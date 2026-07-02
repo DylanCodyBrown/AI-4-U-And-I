@@ -859,37 +859,75 @@
 
   <!-- LIVE NEEDLE RACE · companion push (audience vs Claude) -->
   <section class="slide" id="s-needle-live">
-    <div class="kicker">Live · You vs Claude</div>
-    <h2>What Rate Did<br>They Actually Land On?</h2>
-    <p class="lede" style="font-size:clamp(1rem,1.7vw,1.25rem);margin:.2rem 0 .5rem;">A real reserve thread — the discount rate changes four times, with a retraction and a final call. <strong>You</strong> read the whole thread. <strong>Claude</strong> gets it pushed to its terminal with the <em>last two replies cut off</em> — exactly what happens when a teammate pastes "the context" and misses the newest messages.</p>
-    <div class="lot-shell" style="max-width:920px;margin-top:.15rem;">
-      <div id="needleThread" style="padding:.4rem .6rem;"></div>
+    <div class="kicker">Live · You vs Claude · Needle In A Haystack</div>
+    <h2>Find The Needle</h2>
+    <p class="lede" style="font-size:clamp(1.05rem,1.9vw,1.4rem);margin:.2rem 0 .5rem;color:var(--rust);"><strong>Q: What discount rate did Dana lock in for the whole book?</strong></p>
+    <div class="lot-shell" style="max-width:960px;margin-top:.1rem;">
+      <div id="needleHaystack" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem;padding:.4rem .5rem;text-align:left;"></div>
     </div>
-    <div class="note-callout" id="needleQ" style="font-size:1.05rem;margin-top:.45rem;background:rgba(193,68,14,.12);border-left-color:var(--rust);"><strong>Your question:</strong> what single discount rate does Dana want used for the whole book? Put a number on your sticky note before you press the button.</div>
-    <div class="controls" style="justify-content:flex-start;margin-top:.45rem;gap:.5rem;flex-wrap:wrap;">
-      <button class="btn" id="raceBtn" onclick="runNeedleRace()">▶ Push to Claude — last replies cut</button>
+    <div class="controls" style="justify-content:flex-start;margin-top:.5rem;gap:.7rem;align-items:center;">
+      <button class="btn" id="raceBtn" onclick="runNeedleRace()" title="Push to Claude" aria-label="Push to Claude" style="padding:.5rem;line-height:0;border-radius:10px;"><svg viewBox="0 0 100 100" width="30" height="30" aria-hidden="true" style="display:block"><g stroke="currentColor" stroke-width="9" stroke-linecap="round"><line x1="50" y1="8" x2="50" y2="34"/><line x1="50" y1="66" x2="50" y2="92"/><line x1="8" y1="50" x2="34" y2="50"/><line x1="66" y1="50" x2="92" y2="50"/><line x1="21" y1="21" x2="39" y2="39"/><line x1="61" y1="61" x2="79" y2="79"/><line x1="79" y1="21" x2="61" y2="39"/><line x1="39" y1="61" x2="21" y2="79"/></g></svg></button>
       <button class="btn" id="revealNeedleBtn" onclick="revealNeedleLive()">✅ Reveal The Answer</button>
-      <span id="needleStatus" style="font-size:.9rem;opacity:.85;align-self:center;"></span>
+      <span id="needleStatus" style="font-size:.9rem;opacity:.85;"></span>
     </div>
-    <div class="note-callout" id="needleWhy" style="font-size:.95rem;margin-top:.45rem;display:none;">The answer is <strong>11%</strong> — Dana's final "lock it." Claude's copy stops just before the retraction, so it confidently answers the stale <strong>10 / 12 split</strong>. You had the newest messages; it didn't. <strong>Whoever has the better context wins.</strong></div>
+    <div class="note-callout" id="needleWhy" style="font-size:.92rem;margin-top:.5rem;display:none;">Answer: <strong>11% flat</strong> — buried mid-pile. Claude's pushed copy leaves that line out, so it grabs a stale number it CAN see (the 8% prior-quarter, or the 10/12 split). You scanned the whole board; it didn't. <strong>Better context wins.</strong></div>
   </section>
 
   <!-- MITIGATIONS -->
 
     <!-- CONTEXT ROT DEFENSE · all six architectures on one slide -->
   <section class="slide" id="s-harness-all">
-    <div class="kicker">Working Around Context Rot</div>
+    <div class="kicker">Working Around Context Rot · Click Any Pattern</div>
     <h2>Six Ways To<br>Fight Context Rot</h2>
-    <p class="lede" style="font-size:clamp(1rem,1.7vw,1.2rem);margin:.2rem 0 .6rem;">None of these fix the model — they change what it <em>sees</em>. Six patterns Claude composes on its own, each keeping one agent’s window small and clean.</p>
-    <div class="cols" style="grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin-top:.3rem;">
-      <div class="card" style="padding:.7rem .9rem;"><span style="font-family:'Space Mono',monospace;font-size:.64rem;color:var(--rust);display:block;">01 · Route First</span><h3 style="margin:.15rem 0;font-size:1.02rem;">Triage &amp; Route</h3><p style="font-size:.8rem;margin:0;">A triage agent reads the input and hands it to the one specialist that fits. Nobody else sees it.</p></div>
-      <div class="card" style="padding:.7rem .9rem;"><span style="font-family:'Space Mono',monospace;font-size:.64rem;color:var(--rust);display:block;">02 · Parallel Isolation</span><h3 style="margin:.15rem 0;font-size:1.02rem;">Fan-Out &amp; Merge</h3><p style="font-size:.8rem;margin:0;">Many agents work the same input in isolation; a synthesizer merges. Noise in one can’t touch another.</p></div>
-      <div class="card" style="padding:.7rem .9rem;"><span style="font-family:'Space Mono',monospace;font-size:.64rem;color:var(--rust);display:block;">03 · Fresh Eyes</span><h3 style="margin:.15rem 0;font-size:1.02rem;">Adversarial Check</h3><p style="font-size:.8rem;margin:0;">Each worker pairs with a skeptic that grades the output cold — no memory of how it was made.</p></div>
-      <div class="card" style="padding:.7rem .9rem;"><span style="font-family:'Space Mono',monospace;font-size:.64rem;color:var(--rust);display:block;">04 · Many In, One Out</span><h3 style="margin:.15rem 0;font-size:1.02rem;">Generate &amp; Filter</h3><p style="font-size:.8rem;margin:0;">Flood drafts, keep the one that passes the rubric. The rest never reach the next step.</p></div>
-      <div class="card" style="padding:.7rem .9rem;"><span style="font-family:'Space Mono',monospace;font-size:.64rem;color:var(--rust);display:block;">05 · Eliminate To One</span><h3 style="margin:.15rem 0;font-size:1.02rem;">Tournament</h3><p style="font-size:.8rem;margin:0;">Candidates face off two at a time. Each judge sees only its pair — never the whole field.</p></div>
-      <div class="card" style="padding:.7rem .9rem;"><span style="font-family:'Space Mono',monospace;font-size:.64rem;color:var(--rust);display:block;">06 · Spawn Fresh</span><h3 style="margin:.15rem 0;font-size:1.02rem;">Loop Until Done</h3><p style="font-size:.8rem;margin:0;">Each step spawns a clean agent seeded by a short handoff note. The old transcript doesn’t travel.</p></div>
+    <p class="lede" style="font-size:clamp(.95rem,1.5vw,1.15rem);margin:.15rem 0 .5rem;">None fix the model — they change what it <em>sees</em>. Click any card and Claude demos it live in the terminal.</p>
+    <div class="cols" style="grid-template-columns:1fr 1fr 1fr;gap:.7rem;margin-top:.2rem;">
+      <div class="card harness-card" role="button" tabindex="0" onclick="harnessDemo('triage')" style="padding:.5rem .65rem;cursor:pointer;">
+        <div style="height:50px;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 275 134" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:50px;"><defs><marker id="a1" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1a1410"/></marker></defs><rect x="5" y="54" width="38" height="26" rx="4" fill="rgba(244,236,216,0.8)" stroke="#1a1410" stroke-width="1.5"/><text x="24.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#1a1410">In</text><rect x="62" y="47" width="72" height="40" rx="4" fill="rgba(193,68,14,0.1)" stroke="#c1440e" stroke-width="1.5"/><text x="98.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#c1440e">Classifier</text><rect x="158" y="12" width="48" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="182.0" y="24.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Act</text><rect x="158" y="55" width="48" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="182.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Act</text><rect x="158" y="98" width="48" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="182.0" y="110.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Act</text><rect x="228" y="54" width="38" height="26" rx="4" fill="rgba(244,236,216,0.8)" stroke="#1a1410" stroke-width="1.5"/><text x="247.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#1a1410">Out</text><line x1="43" y1="67" x2="62" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a1)"/><line x1="134" y1="67" x2="158" y2="24" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a1)"/><line x1="134" y1="67" x2="158" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a1)"/><line x1="134" y1="67" x2="158" y2="110" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a1)"/><line x1="206" y1="24" x2="228" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a1)"/><line x1="206" y1="67" x2="228" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a1)"/><line x1="206" y1="110" x2="228" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a1)"/></svg></div>
+        <span style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--rust);display:block;margin-top:.2rem;">01 · Route First</span>
+        <h3 style="margin:.08rem 0;font-size:.95rem;">Triage &amp; Route</h3>
+        <p style="font-size:.72rem;margin:0;">A triage agent hands the input to the one specialist that fits.</p>
+        <span style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--sage);display:block;margin-top:.25rem;">▶ click — Claude demos it</span>
+      </div>
+      <div class="card harness-card" role="button" tabindex="0" onclick="harnessDemo('fanout')" style="padding:.5rem .65rem;cursor:pointer;">
+        <div style="height:50px;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 282 132" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:50px;"><defs><marker id="a2" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1a1410"/></marker></defs><rect x="5" y="54" width="38" height="26" rx="4" fill="rgba(244,236,216,0.8)" stroke="#1a1410" stroke-width="1.5"/><text x="24.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#1a1410">In</text><rect x="60" y="11" width="54" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="87.0" y="23.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Agent</text><rect x="60" y="54" width="54" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="87.0" y="66.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Agent</text><rect x="60" y="97" width="54" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="87.0" y="109.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Agent</text><rect x="140" y="42" width="72" height="50" rx="4" fill="rgba(193,68,14,0.1)" stroke="#c1440e" stroke-width="1.5"/><text x="176.0" y="63.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#c1440e">Synthesize</text><text x="176.0" y="73.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="7" fill="#c1440e">barrier</text><rect x="235" y="54" width="38" height="26" rx="4" fill="rgba(244,236,216,0.8)" stroke="#1a1410" stroke-width="1.5"/><text x="254.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#1a1410">Out</text><line x1="43" y1="67" x2="60" y2="23" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a2)"/><line x1="43" y1="67" x2="60" y2="66" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a2)"/><line x1="43" y1="67" x2="60" y2="109" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a2)"/><line x1="114" y1="23" x2="140" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a2)"/><line x1="114" y1="66" x2="140" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a2)"/><line x1="114" y1="109" x2="140" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a2)"/><line x1="212" y1="67" x2="235" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a2)"/></svg></div>
+        <span style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--rust);display:block;margin-top:.2rem;">02 · Parallel Isolation</span>
+        <h3 style="margin:.08rem 0;font-size:.95rem;">Fan-Out &amp; Merge</h3>
+        <p style="font-size:.72rem;margin:0;">Isolated agents work in parallel; a synthesizer merges them.</p>
+        <span style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--sage);display:block;margin-top:.25rem;">▶ click — Claude demos it</span>
+      </div>
+      <div class="card harness-card" role="button" tabindex="0" onclick="harnessDemo('adversarial')" style="padding:.5rem .65rem;cursor:pointer;">
+        <div style="height:50px;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 232 132" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:50px;"><defs><marker id="a3" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1a1410"/></marker></defs><rect x="4" y="54" width="34" height="26" rx="4" fill="rgba(244,236,216,0.8)" stroke="#1a1410" stroke-width="1.5"/><text x="21.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#1a1410">In</text><rect x="52" y="11" width="48" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="76.0" y="23.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Agent</text><rect x="52" y="54" width="48" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="76.0" y="66.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Agent</text><rect x="52" y="97" width="48" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="76.0" y="109.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Agent</text><rect x="118" y="11" width="50" height="24" rx="4" fill="rgba(90,107,74,0.1)" stroke="#5a6b4a" stroke-width="1.5"/><text x="143.0" y="23.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#5a6b4a">Verify</text><rect x="118" y="54" width="50" height="24" rx="4" fill="rgba(90,107,74,0.1)" stroke="#5a6b4a" stroke-width="1.5"/><text x="143.0" y="66.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#5a6b4a">Verify</text><rect x="118" y="97" width="50" height="24" rx="4" fill="rgba(90,107,74,0.1)" stroke="#5a6b4a" stroke-width="1.5"/><text x="143.0" y="109.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#5a6b4a">Verify</text><rect x="188" y="54" width="34" height="26" rx="4" fill="rgba(244,236,216,0.8)" stroke="#1a1410" stroke-width="1.5"/><text x="205.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#1a1410">Out</text><line x1="38" y1="67" x2="52" y2="23" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a3)"/><line x1="38" y1="67" x2="52" y2="66" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a3)"/><line x1="38" y1="67" x2="52" y2="109" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a3)"/><line x1="100" y1="23" x2="118" y2="23" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a3)"/><line x1="100" y1="66" x2="118" y2="66" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a3)"/><line x1="100" y1="109" x2="118" y2="109" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a3)"/><line x1="168" y1="23" x2="188" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a3)"/><line x1="168" y1="66" x2="188" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a3)"/><line x1="168" y1="109" x2="188" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a3)"/></svg></div>
+        <span style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--rust);display:block;margin-top:.2rem;">03 · Fresh Eyes</span>
+        <h3 style="margin:.08rem 0;font-size:.95rem;">Adversarial Check</h3>
+        <p style="font-size:.72rem;margin:0;">A skeptic grades the output cold, no memory of how it was made.</p>
+        <span style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--sage);display:block;margin-top:.25rem;">▶ click — Claude demos it</span>
+      </div>
+      <div class="card harness-card" role="button" tabindex="0" onclick="harnessDemo('genfilter')" style="padding:.5rem .65rem;cursor:pointer;">
+        <div style="height:50px;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 300 132" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:50px;"><defs><marker id="a4" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1a1410"/></marker></defs><rect x="5" y="54" width="38" height="26" rx="4" fill="rgba(244,236,216,0.8)" stroke="#1a1410" stroke-width="1.5"/><text x="24.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#1a1410">In</text><rect x="58" y="40" width="65" height="54" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="90.5" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Generator</text><circle cx="162" cy="22" r="9" fill="#d4a017" stroke="#1a1410" stroke-width="1.2"/><circle cx="162" cy="52" r="9" fill="#d4a017" stroke="#1a1410" stroke-width="1.2"/><circle cx="162" cy="82" r="9" fill="#d4a017" stroke="#1a1410" stroke-width="1.2"/><circle cx="162" cy="112" r="9" fill="#d4a017" stroke="#1a1410" stroke-width="1.2"/><rect x="180" y="40" width="58" height="54" rx="4" fill="rgba(193,68,14,0.1)" stroke="#c1440e" stroke-width="1.5"/><text x="209.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#c1440e">Filter</text><rect x="253" y="54" width="38" height="26" rx="4" fill="rgba(244,236,216,0.8)" stroke="#1a1410" stroke-width="1.5"/><text x="272.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#1a1410">Out</text><line x1="43" y1="67" x2="58" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a4)"/><line x1="123" y1="67" x2="153" y2="22" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a4)"/><line x1="123" y1="67" x2="153" y2="52" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a4)"/><line x1="123" y1="67" x2="153" y2="82" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a4)"/><line x1="123" y1="67" x2="153" y2="112" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a4)"/><line x1="171" y1="22" x2="180" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a4)"/><line x1="171" y1="52" x2="180" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a4)"/><line x1="171" y1="82" x2="180" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a4)"/><line x1="171" y1="112" x2="180" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a4)"/><line x1="238" y1="67" x2="253" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a4)"/></svg></div>
+        <span style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--rust);display:block;margin-top:.2rem;">04 · Many In, One Out</span>
+        <h3 style="margin:.08rem 0;font-size:.95rem;">Generate &amp; Filter</h3>
+        <p style="font-size:.72rem;margin:0;">Flood drafts, keep only the one that passes the rubric.</p>
+        <span style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--sage);display:block;margin-top:.25rem;">▶ click — Claude demos it</span>
+      </div>
+      <div class="card harness-card" role="button" tabindex="0" onclick="harnessDemo('tournament')" style="padding:.5rem .65rem;cursor:pointer;">
+        <div style="height:50px;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 292 148" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:50px;"><defs><marker id="a5" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1a1410"/></marker></defs><rect x="5" y="6" width="46" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="28.0" y="18.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Try A</text><rect x="5" y="42" width="46" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="28.0" y="54.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Try B</text><rect x="5" y="78" width="46" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="28.0" y="90.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Try C</text><rect x="5" y="114" width="46" height="24" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="28.0" y="126.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Try D</text><rect x="80" y="24" width="52" height="24" rx="4" fill="rgba(193,68,14,0.1)" stroke="#c1440e" stroke-width="1.5"/><text x="106.0" y="36.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#c1440e">Judge</text><rect x="80" y="80" width="52" height="24" rx="4" fill="rgba(193,68,14,0.1)" stroke="#c1440e" stroke-width="1.5"/><text x="106.0" y="92.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#c1440e">Judge</text><rect x="160" y="50" width="52" height="24" rx="4" fill="rgba(193,68,14,0.1)" stroke="#c1440e" stroke-width="1.5"/><text x="186.0" y="62.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#c1440e">Judge</text><rect x="234" y="50" width="50" height="24" rx="4" fill="rgba(90,107,74,0.1)" stroke="#5a6b4a" stroke-width="1.5"/><text x="259.0" y="62.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#5a6b4a">Winner</text><line x1="51" y1="18" x2="80" y2="36" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a5)"/><line x1="51" y1="54" x2="80" y2="36" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a5)"/><line x1="51" y1="90" x2="80" y2="92" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a5)"/><line x1="51" y1="126" x2="80" y2="92" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a5)"/><line x1="132" y1="36" x2="160" y2="62" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a5)"/><line x1="132" y1="92" x2="160" y2="62" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a5)"/><line x1="212" y1="62" x2="234" y2="62" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a5)"/></svg></div>
+        <span style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--rust);display:block;margin-top:.2rem;">05 · Eliminate To One</span>
+        <h3 style="margin:.08rem 0;font-size:.95rem;">Tournament</h3>
+        <p style="font-size:.72rem;margin:0;">Pairwise judges compare two at a time until one remains.</p>
+        <span style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--sage);display:block;margin-top:.25rem;">▶ click — Claude demos it</span>
+      </div>
+      <div class="card harness-card" role="button" tabindex="0" onclick="harnessDemo('loop')" style="padding:.5rem .65rem;cursor:pointer;">
+        <div style="height:50px;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 280 132" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:50px;"><defs><marker id="a6" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1a1410"/></marker></defs><rect x="5" y="54" width="38" height="26" rx="4" fill="rgba(244,236,216,0.8)" stroke="#1a1410" stroke-width="1.5"/><text x="24.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#1a1410">In</text><rect x="60" y="44" width="58" height="44" rx="4" fill="rgba(43,58,74,0.1)" stroke="#2b3a4a" stroke-width="1.5"/><text x="89.0" y="66.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2b3a4a">Spawn</text><rect x="145" y="44" width="58" height="44" rx="4" fill="rgba(193,68,14,0.1)" stroke="#c1440e" stroke-width="1.5"/><text x="174.0" y="66.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#c1440e">Eval</text><rect x="232" y="54" width="38" height="26" rx="4" fill="rgba(244,236,216,0.8)" stroke="#1a1410" stroke-width="1.5"/><text x="251.0" y="67.0" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#1a1410">Out</text><text x="215" y="40" text-anchor="middle" font-family="Space Mono,monospace" font-size="7" fill="#5a6b4a">yes</text><text x="153" y="112" text-anchor="middle" font-family="Space Mono,monospace" font-size="7" fill="#c1440e">no</text><line x1="43" y1="67" x2="60" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a6)"/><line x1="118" y1="67" x2="145" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a6)"/><line x1="203" y1="67" x2="232" y2="67" stroke="#1a1410" stroke-width="1.4" marker-end="url(#a6)"/><path d="M 174,88 L 174,118 L 89,118 L 89,88" stroke="#c1440e" stroke-width="1.4" fill="none" marker-end="url(#a6)"/></svg></div>
+        <span style="font-family:'Space Mono',monospace;font-size:.58rem;color:var(--rust);display:block;margin-top:.2rem;">06 · Spawn Fresh</span>
+        <h3 style="margin:.08rem 0;font-size:.95rem;">Loop Until Done</h3>
+        <p style="font-size:.72rem;margin:0;">Each step spawns a clean agent seeded by a short handoff note.</p>
+        <span style="font-family:'Space Mono',monospace;font-size:.6rem;color:var(--sage);display:block;margin-top:.25rem;">▶ click — Claude demos it</span>
+      </div>
     </div>
-    <div class="note-callout" style="font-size:.85rem;margin-top:.6rem;">The one they can’t automate is yours: <strong>put the critical instruction at the edges</strong> — the start or end, never buried in the middle.</div>
+    <div style="display:flex;gap:.6rem;align-items:center;margin-top:.5rem;">
+      <span style="font-size:.8rem;">The one they can't automate is yours: <strong>put the critical instruction at the edges.</strong></span>
+      <span id="harnessStatus" style="font-family:'Space Mono',monospace;font-size:.82rem;opacity:.9;margin-left:auto;"></span>
+    </div>
   </section>
 
 
@@ -2784,58 +2822,184 @@ Open only the entries you need.</pre>
   }
 
   // ===== FINAL SHOWDOWN: copy deck text + question for Claude =====
-  // ── LIVE NEEDLE RACE · companion push (audience vs Claude) ─────────────────
+  // == COMPANION PUSH (shared) ================================================
   const COMPANION = 'http://127.0.0.1:8765';
-  // The full thread the ROOM sees. The last two replies (retraction + final call) are the needle.
-  const NEEDLE_THREAD = [
-    ['Dana','Kicking off the Q3 reserve true-up — start from last quarter\'s 8% discount rate.'],
-    ['Sam','Do we keep 8%? Treasury just repriced the curve this morning.'],
-    ['Dana','Good catch — bump it to 10% to match the new curve.'],
-    ['Priya','Audit flagged 10% as too aggressive for the long-tail lines.'],
-    ['Dana','Fine — 12% on long-tail, keep 10% on everything else.'],
-    ['Sam','So the model runs a 10 / 12 split? Want me to lock that in?'],
-    ['Dana','Actually ignore all that — finance wants ONE rate across the whole book.'],
-    ['Dana','Final: use 11% for the entire book. Lock it.']
+  async function pushClaude(prompt, statusId){
+    const st = statusId && document.getElementById(statusId);
+    if(st){ st.style.color=''; st.textContent='sending...'; }
+    try{
+      const r = await fetch(COMPANION+'/run',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});
+      if(st){
+        if(r.ok){ st.textContent='\u2713 pushed \u2014 watch the terminal'; st.style.color='var(--sage)'; }
+        else if(r.status===409){ st.textContent='companion busy \u2014 one already running'; st.style.color='#c1440e'; }
+        else { st.textContent='\u2717 companion error '+r.status; st.style.color='#c1440e'; }
+      }
+    }catch(e){
+      try{ await navigator.clipboard.writeText(prompt); if(st){ st.textContent='companion offline \u2014 prompt copied'; st.style.color='#c1440e'; } }
+      catch(_){ if(st){ st.textContent='companion offline'; st.style.color='#c1440e'; } }
+    }
+  }
+
+  // == NEEDLE IN A HAYSTACK (answer buried mid-pile, withheld from Claude) =====
+  const NEEDLE_QUESTION = 'What discount rate did Dana lock in for the whole book?';
+  const NEEDLE_QA = [
+    ['When does Q3 close?','September 30'],
+    ['Paid-loss dev factor?','1.08'],
+    ['Who signs off the triangles?','Priya'],
+    ['Cede rate on Treaty B?','40%'],
+    ['Prior-quarter discount rate?','8%'],
+    ['Open reserve lines this cycle?','226'],
+    ["Last cycle's long-tail split?",'10 / 12'],
+    ['Discount rate for the whole book?','11% flat'],
+    ['KRW FX rate used?','1,320'],
+    ['IBNR tolerance band?','+/- 2%'],
+    ['True-up due date?','Oct 12'],
+    ['Which server holds the triangles?','edp-prod-02'],
+    ['Daily standup time?','9:15'],
+    ['Captive entities this cycle?','14'],
+    ['Guest wifi password?','guest-2026'],
   ];
-  const NEEDLE_CUT = 2; // trailing replies withheld from Claude's copy
+  const NEEDLE_IDX = 7;
   function renderNeedle(){
-    const box = document.getElementById('needleThread'); if(!box) return;
-    const cut = NEEDLE_THREAD.length - NEEDLE_CUT;
-    box.innerHTML = NEEDLE_THREAD.map(([who,msg],i)=>
-      `<div class="${i>=cut?'needle-final':''}" style="display:flex;gap:.7rem;align-items:baseline;padding:.32rem .55rem;border-bottom:1px solid var(--line);font-family:'Space Mono',monospace;font-size:.9rem;line-height:1.35;transition:all .2s ease;">`+
-      `<span style="font-weight:700;color:var(--rust);min-width:3.6rem;">${who}</span><span>${msg}</span></div>`
-    ).join('');
+    const box = document.getElementById('needleHaystack'); if(!box) return;
+    box.innerHTML = NEEDLE_QA.map(function(qa,i){
+      return '<div class="'+(i===NEEDLE_IDX?'needle-final':'')+'" style="border:1px solid var(--line);border-radius:5px;padding:.28rem .45rem;font-family:\'Space Mono\',monospace;line-height:1.2;transition:all .2s ease;">'
+        + '<div style="font-size:.68rem;color:var(--rust);">Q: '+qa[0]+'</div>'
+        + '<div style="font-size:.78rem;font-weight:700;">A: '+qa[1]+'</div></div>';
+    }).join('');
     const why=document.getElementById('needleWhy'); if(why) why.style.display='none';
   }
   function revealNeedleLive(){
-    document.querySelectorAll('#needleThread .needle-final').forEach(el=>{
-      el.style.background='rgba(212,160,23,.25)'; el.style.borderBottom='2px solid var(--gold)';
-    });
-    const first=document.querySelector('#needleThread .needle-final'); if(first) first.scrollIntoView({block:'nearest'});
+    const el=document.querySelector('#needleHaystack .needle-final');
+    if(el){ el.style.background='rgba(212,160,23,.28)'; el.style.borderColor='var(--gold)'; el.scrollIntoView({block:'nearest'}); }
     const why=document.getElementById('needleWhy'); if(why) why.style.display='';
   }
-  async function runNeedleRace(){
-    const status = document.getElementById('needleStatus');
-    const claudeLines = NEEDLE_THREAD.slice(0, NEEDLE_THREAD.length - NEEDLE_CUT)
-      .map(([who,msg])=>`${who}: ${msg}`).join('\n');
-    const prompt =
-`Read this finance thread and answer using ONLY what's in the thread.
-
-THREAD:
-${claudeLines}
-
-QUESTION: What single discount rate does Dana want used for the whole book? Answer with just the number, then one short line of reasoning.`;
-    status.style.color=''; status.textContent='sending…';
-    try{
-      const r = await fetch(COMPANION+'/run', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({prompt})});
-      if(r.ok){ status.textContent='✓ pushed — watch the terminal'; status.style.color='var(--sage)'; }
-      else if(r.status===409){ status.textContent='companion busy — a run is already going'; status.style.color='#c1440e'; }
-      else { status.textContent='✗ companion error '+r.status; status.style.color='#c1440e'; }
-    }catch(e){
-      try{ await navigator.clipboard.writeText(prompt); status.textContent='companion offline — prompt copied, paste into Claude'; status.style.color='#c1440e'; }
-      catch(_){ status.textContent='companion offline — start companion/server.py'; status.style.color='#c1440e'; }
-    }
+  function runNeedleRace(){
+    const pile = NEEDLE_QA.filter(function(_,i){return i!==NEEDLE_IDX;})
+      .map(function(qa){return 'Q: '+qa[0]+'\nA: '+qa[1];}).join('\n');
+    const prompt = 'Answer using ONLY these notes. If the answer is not in them, say so.\n\nNOTES:\n'
+      + pile + '\n\nQUESTION: ' + NEEDLE_QUESTION + ' Answer with just the rate.';
+    pushClaude(prompt, 'needleStatus');
   }
+
+  // == HARNESS DEMOS (each card asks Claude to show the pattern tiny + clean) ==
+  const HARNESS_DEMOS = {
+    triage: `## Triage & Route — live run
+
+You are a triage router. One request comes in:
+
+> "Can you pull the Q3 loss triangles for the GL line and flag any cell where development exceeds 15%?"
+
+**Step 1 — Router agent reads the request and decides:**
+Print your routing decision in this format:
+  ROUTE → [agent name]
+  REASON: [one sentence]
+
+Choose from: Data-Pull Agent | Analysis Agent | Reporting Agent
+
+**Step 2 — Chosen agent executes:**
+Play that agent. Produce the minimal output it would return (2–4 lines, made-up but realistic numbers). Label it clearly.
+
+Show each step as it happens. Use markdown headers.`,
+
+    fanout: `## Fan-Out & Merge — live run
+
+**Task:** Summarize the key risk in this claim note in one sentence.
+> "Claimant reports water damage to kitchen floor, walls, and cabinetry following a dishwasher supply-line failure. Contractor estimate received: $18,400. No prior claims on policy. Photos uploaded."
+
+**Step 1 — Fan out to 3 isolated agents (each sees only the note above, nothing else):**
+
+[Agent A — Coverage lens] Write one sentence on coverage risk.
+[Agent B — Severity lens] Write one sentence on severity risk.
+[Agent C — Fraud lens] Write one sentence on fraud risk.
+
+Print each agent's output clearly labeled.
+
+**Step 2 — Synthesizer merges:**
+Write one final sentence that captures the most important risk across all three. Label it MERGED.
+
+Show each step as it happens.`,
+
+    adversarial: `## Adversarial Check — live run
+
+**Step 1 — Worker agent answers:**
+Question: "What does IBNR stand for and why does it matter for reserving?"
+Write a confident 2-sentence answer. Label it WORKER OUTPUT.
+
+**Step 2 — Skeptic agent checks (fresh context, no memory of step 1):**
+You are a skeptic. You receive only this output:
+
+[paste your WORKER OUTPUT here verbatim]
+
+Grade it against this rubric — respond with PASS or FAIL for each:
+  [ ] Acronym expanded correctly
+  [ ] Definition is accurate
+  [ ] Relevance to reserving explained
+
+Then give a one-line VERDICT.
+
+Run both steps and show all output.`,
+
+    genfilter: `## Generate & Filter — live run
+
+**Task:** Write a subject line for an email telling an actuary their reserve estimate was rejected.
+
+**Step 1 — Generator produces 4 candidates:**
+Write 4 different subject lines. Number them. No filtering yet.
+
+**Step 2 — Filter applies the rubric:**
+Keep only lines that satisfy ALL of:
+  - Professional tone (no blame language)
+  - Under 60 characters
+  - States what action is needed
+
+Print KEEP or DROP for each with one-word reason.
+
+**Step 3 — Output:**
+Print only the line(s) that passed. If none pass, say so.
+
+Show each step labeled.`,
+
+    tournament: `## Tournament — live run
+
+**Task:** Pick the best one-line description of context rot.
+
+**Step 1 — 4 candidates:**
+A: "Models forget things at the start of a long conversation."
+B: "Output quality drops as input grows, even before the window fills."
+C: "The AI gets confused when you give it too much text."
+D: "Long prompts cause hallucinations."
+
+**Step 2 — Round 1 (two matches):**
+[Judge 1] Compare A vs B on accuracy and precision. Pick one. One sentence why.
+[Judge 2] Compare C vs D on accuracy and precision. Pick one. One sentence why.
+
+**Step 3 — Final:**
+[Judge 3] Compare the two winners. Pick one. One sentence why.
+
+**Winner:** Print it.
+
+Show each match as it happens.`,
+
+    loop: `## Loop Until Done — live run
+
+**Task:** Improve this sentence until it passes the rubric. Max 3 iterations.
+
+Starting sentence: "The thing about context is that when it gets long it can make the output not as good sometimes."
+
+**Rubric (must pass all to stop):**
+  [ ] Under 20 words
+  [ ] No hedge words (thing, sometimes, can, not as)
+  [ ] States a specific mechanism
+
+**Run the loop:**
+Each iteration: print the current sentence, check each rubric item (PASS/FAIL), then either STOP (all pass) or spawn next iteration with an improved version.
+
+Handoff note between iterations = one line: what specifically to fix next.
+
+Show every iteration.`
+  };
+  function harnessDemo(key){ pushClaude(HARNESS_DEMOS[key], 'harnessStatus'); }
 
   function askClaude(){
     const q='What is frontmatter in a markdown file, what is it for, and what format is it written in?';
