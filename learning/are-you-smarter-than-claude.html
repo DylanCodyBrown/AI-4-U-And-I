@@ -697,26 +697,26 @@
         <li><button onclick="showById('s-audience')"><span class="toc-num">10</span>Context Window (Parking Lot)</button></li>
         <li><button onclick="showById('s-needle-live')"><span class="toc-num">11</span>Find The Needle</button></li>
         <li><button onclick="showById('s-context-rot')"><span class="toc-num">12</span>Context Rot</button></li>
-        <li><button onclick="showById('s-harness-intro')"><span class="toc-num">13</span>Context Patterns</button></li>
-        <li><button onclick="showById('s-tok-rank')"><span class="toc-num">23</span>Use Your Context Wisely</button></li>
-        <li><button onclick="showById('s-fmt-md')"><span class="toc-num">24</span>Documentation Formats</button></li>
-        <li><button onclick="showById('s-fmt-summary')"><span class="toc-num">32</span>Which Format, When</button></li>
-        <li><button onclick="showById('s-tok-effort')"><span class="toc-num">33</span>Effort & Model</button></li>
+        <li><button onclick="showById('s-harness-intro')"><span class="toc-num">14</span>Context Patterns</button></li>
+        <li><button onclick="showById('s-tok-rank')"><span class="toc-num">24</span>Use Your Context Wisely</button></li>
+        <li><button onclick="showById('s-fmt-md')"><span class="toc-num">25</span>Documentation Formats</button></li>
+        <li><button onclick="showById('s-fmt-summary')"><span class="toc-num">33</span>Which Format, When</button></li>
+        <li><button onclick="showById('s-tok-effort')"><span class="toc-num">34</span>Effort & Model</button></li>
       </ul>
       <ul class="toc-list">
-        <li><button onclick="showById('s-tok-mcp')"><span class="toc-num">35</span>The MCP Token Leak</button></li>
-        <li><button onclick="showById('s-organizing')"><span class="toc-num">38</span>Organizing Context</button></li>
-        <li><button onclick="showById('s-answer')"><span class="toc-num">39</span>How Layers Nest</button></li>
-        <li><button onclick="showById('s-claude-global')"><span class="toc-num">40</span>CLAUDE.md & Memory</button></li>
-        <li><button onclick="showById('s-md-library')"><span class="toc-num">44</span>The Markdown Library</button></li>
-        <li><button onclick="showById('s-okf-what')"><span class="toc-num">45</span>Open Knowledge Format</button></li>
-        <li><button onclick="showById('s-pcm-what')"><span class="toc-num">49</span>Project Context Map</button></li>
-        <li><button onclick="showById('s-junk-what')"><span class="toc-num">52</span>The Junkyard</button></li>
-        <li><button onclick="showById('s-junk-rag')"><span class="toc-num">53</span>RAG</button></li>
-        <li><button onclick="showById('s-cabinet')"><span class="toc-num">55</span>Filing Cabinet</button></li>
-        <li><button onclick="showById('s-final')"><span class="toc-num">56</span>The Showdown</button></li>
-        <li><button onclick="showById('s-pelican-intro')"><span class="toc-num">59</span>Guess The Pelican</button></li>
-        <li><button onclick="showById('s-final-pelican')"><span class="toc-num">68</span>Grand Finale</button></li>
+        <li><button onclick="showById('s-tok-mcp')"><span class="toc-num">36</span>The MCP Token Leak</button></li>
+        <li><button onclick="showById('s-organizing')"><span class="toc-num">39</span>Organizing Context</button></li>
+        <li><button onclick="showById('s-answer')"><span class="toc-num">40</span>How Layers Nest</button></li>
+        <li><button onclick="showById('s-claude-global')"><span class="toc-num">41</span>CLAUDE.md & Memory</button></li>
+        <li><button onclick="showById('s-md-library')"><span class="toc-num">45</span>The Markdown Library</button></li>
+        <li><button onclick="showById('s-okf-what')"><span class="toc-num">46</span>Open Knowledge Format</button></li>
+        <li><button onclick="showById('s-pcm-what')"><span class="toc-num">50</span>Project Context Map</button></li>
+        <li><button onclick="showById('s-junk-what')"><span class="toc-num">53</span>The Junkyard</button></li>
+        <li><button onclick="showById('s-junk-rag')"><span class="toc-num">54</span>RAG</button></li>
+        <li><button onclick="showById('s-cabinet')"><span class="toc-num">56</span>Filing Cabinet</button></li>
+        <li><button onclick="showById('s-final')"><span class="toc-num">57</span>The Showdown</button></li>
+        <li><button onclick="showById('s-pelican-intro')"><span class="toc-num">60</span>Guess The Pelican</button></li>
+        <li><button onclick="showById('s-final-pelican')"><span class="toc-num">69</span>Grand Finale</button></li>
       </ul>
     </div>
   </section>
@@ -1177,6 +1177,33 @@
     <div class="note-callout" style="font-size:.92rem;margin-top:1rem;">Tidy, evenly-structured input can degrade attention more than messy input. Uniform formatting makes it harder for a model to tell what's load-bearing.</div>
   </section>
 
+  <section class="slide" id="s-agent-files">
+    <div class="kicker">Before The Patterns &middot; Specialists Are Files</div>
+    <h2>What Is An<br>Agent File?</h2>
+    <p class="lede">Every &ldquo;specialist&rdquo; is a predefined <strong>agent</strong> &mdash; a markdown file, just like a CLAUDE.md, that says who it is, what it may touch, and how to act.</p>
+    <div class="cols" style="grid-template-columns:1.05fr .95fr;gap:1.2rem;align-items:start;margin-top:.4rem;">
+      <div>
+        <pre class="cmd-embed"><code>---
+name: scan-menus
+description: Finds a place to eat in
+  Nashville, TN and returns one pick
+tools: web-search, maps
+---
+You are a local food scout for
+Nashville, TN. On every request:
+1. Only suggest spots open right now.
+2. Stay within 2 miles of the user.
+3. Match the cuisine they asked for.
+4. Return ONE pick, plus a one-line why.</code></pre>
+      </div>
+      <div>
+        <p style="font-size:.98rem;">The <strong>frontmatter</strong> between the dashes is the agent&rsquo;s ID card: name, one-line description, and the tools it may use.</p>
+        <p style="font-size:.98rem;">The body is its system prompt &mdash; here, four standing requirements it follows every time it runs.</p>
+        <div class="note-callout" style="font-size:.9rem;">Drop it in <span class="mono">.claude/agents/</span> and it becomes a specialist the router can hand work to &mdash; like <b>Agent Scan Menus</b>, <b>Agent Delivery</b>, or <b>Agent Past Orders</b>.</div>
+      </div>
+    </div>
+  </section>
+
   <section class="slide" id="s-harness-intro">
     <div class="kicker">Fighting Context Rot · The Patterns</div>
     <h2>Spend The Window<br>Wisely</h2>
@@ -1193,8 +1220,8 @@
 </section>
 
   <section class="slide" id="s-harness-01">
-    <div class="kicker">01 &middot; Route First</div>
-    <h2>Triage &amp; Route</h2>
+    <div class="kicker">01 &middot; Triage &amp; Route</div>
+    <h2 style="font-size:clamp(1.3rem,3vw,2.2rem);line-height:1.05;">Route To An Agent To Keep<br>Your Parking Lot Clean</h2>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">route it to the right specialist</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-01" style="--hf:0s;">
@@ -1213,11 +1240,11 @@
   <g style="animation-name:h-dim;animation-duration:5s;animation-timing-function:ease;animation-iteration-count:infinite;;opacity:0"><rect x="293" y="34" width="82" height="26" rx="4" fill="rgba(244,236,216,.6)" stroke="#aaa" stroke-width="1"/><text x="334" y="47" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" fill="#aaa">DELIVERY</text></g>
   <g style="animation-name:h-dim;animation-duration:5s;animation-timing-function:ease;animation-iteration-count:infinite;;opacity:0">
     <rect x="293" y="87" width="82" height="26" rx="4" fill="rgba(244,236,216,.6)" stroke="#aaa" stroke-width="1"/>
-    <text x="334" y="100" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" fill="#aaa">RECIPES</text>
+    <text x="334" y="100" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" fill="#aaa">PAST ORDERS</text>
   </g>
   <g style="animation-name:h-s3;animation-duration:5s;animation-timing-function:ease;animation-iteration-count:infinite;;opacity:0">
     <rect x="293" y="140" width="82" height="26" rx="4" stroke="#1a1410" stroke-width="1.5" style="animation:h-sage 5s ease infinite;"/>
-    <text x="334" y="153" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" style="animation:h-is 5s ease infinite;">LOCAL EATS</text>
+    <text x="334" y="153" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" style="animation:h-is 5s ease infinite;">SCAN MENUS</text>
   </g>
   <text x="398" y="153" text-anchor="middle" dominant-baseline="middle" font-size="22" fill="#5a6b4a" style="animation-name:h-s4;animation-duration:5s;animation-timing-function:ease;animation-iteration-count:infinite;;opacity:0">✓</text>
 </svg>
@@ -3761,7 +3788,7 @@ const PATTERN_STEPS = {
       ret:'ROUTE &rarr; Local Eats specialist'},
     {badge:'Specialist', title:'Local Eats scans', note:'Only this agent loads the neighborhood + hours data.',
       discard:'<s>whole menu scan, 60 listings, ratings, photos</s>',
-      ret:'El Rey Tacos &middot; 0.3mi &middot; open now'},
+      ret:'Mas Tacos &middot; 0.3mi &middot; open now'},
   ],
   's-harness-02': [
     {badge:'Scout &middot; Cuisine', title:'What sounds good?', note:'Isolated context. Sees only the cuisine question.',
@@ -3775,37 +3802,37 @@ const PATTERN_STEPS = {
       ret:'Radius: under 1 mile'},
     {badge:'Merger', title:'Combine the three lines', note:'Gets 3 clean lines, not 3 long lists.',
       discard:'<s>&mdash; nothing to dump; inputs are already tiny &mdash;</s>',
-      ret:'Pick: El Rey Tacos'},
+      ret:'Pick: Mas Tacos'},
   ],
   's-harness-03': [
     {badge:'Worker', title:'Propose a pick', note:'Confident first answer from the working context.',
       discard:'<s>3 half-considered options talked through</s>',
-      ret:'Proposal: Sushi Palace'},
+      ret:'Proposal: Virago'},
     {badge:'Skeptic', title:'Check with FRESH eyes', note:'New context, no memory of the worker. Just the claim.',
       discard:'<s>research notes: hours page, price tier, reviews</s>',
       ret:'VERDICT: FAIL &mdash; closed Mon, $$$$'},
     {badge:'Worker', title:'Revise on the verdict', note:'Takes only the one-line verdict back.',
       discard:'<s>&mdash; skeptic&rsquo;s notes never re-enter &mdash;</s>',
-      ret:'Revised: El Rey Tacos'},
+      ret:'Revised: Mas Tacos'},
   ],
   's-harness-04': [
     {badge:'Generator', title:'Make 4 candidates', note:'Brainstorms wide in a throwaway context.',
       discard:'<s>rationale + backstory for each of the 4</s>',
-      ret:'Sushi &middot; Steakhouse &middot; Ramen &middot; El Rey'},
+      ret:'Sushi &middot; Steakhouse &middot; Ramen &middot; Mas Tacos'},
     {badge:'Filter', title:'Apply the rubric', note:'open now &middot; under $20 &middot; under 1 mile',
       discard:'<s>3 rejects + per-item scoring scratch</s>',
-      ret:'Kept 1: El Rey Tacos'},
+      ret:'Kept 1: Mas Tacos'},
   ],
   's-harness-05': [
     {badge:'Semi &middot; 1', title:'A vs B', note:'Judge compares the first pair, picks one.',
       discard:'<s>full reasoning for the losing branch (A)</s>',
-      ret:'Winner: El Rey (B)'},
+      ret:'Winner: Mas Tacos (B)'},
     {badge:'Semi &middot; 2', title:'C vs D', note:'Judge compares the second pair, picks one.',
       discard:'<s>full reasoning for the losing branch (D)</s>',
       ret:'Winner: Ramen (C)'},
     {badge:'Final', title:'Winners meet', note:'Only the two winners advance to the final.',
       discard:'<s>&mdash; loser branches already discarded &mdash;</s>',
-      ret:'Champion: El Rey Tacos'},
+      ret:'Champion: Mas Tacos'},
   ],
   's-harness-06': [
     {badge:'Round 1', title:'Pick &rarr; check', note:'First pick graded against the rubric.',
@@ -3816,7 +3843,7 @@ const PATTERN_STEPS = {
       ret:'Fail &rarr; too far, retry'},
     {badge:'Round 3', title:'Refine &rarr; PASS', note:'Passes the rubric; loop stops (max 3).',
       discard:'<s>&mdash; intermediate rejects never returned &mdash;</s>',
-      ret:'PASS: El Rey Tacos'},
+      ret:'PASS: Mas Tacos'},
   ],
 };
 
@@ -3893,12 +3920,12 @@ else document.addEventListener('DOMContentLoaded', hpInitAll);
 
 // ===== stepwise harness flow control =====
 const HF_T=['0s','1.5s','2.4s','3.3s','4.35s'];
-const HF={"s-harness-01": {"steps": [{"cap": "Press <b>Step</b> to route the ask.", "add": 0, "burn": 0}, {"cap": "<b>IN</b> &mdash; the ask reaches the <b>router</b>.", "add": 20, "burn": 0}, {"cap": "<b>TRIAGE</b> &mdash; the router weighs the options and routes to <b>Agent Vega &middot; Local Eats</b>. <span class=\"hf-note\">(~600 tok, tossed)</span>", "add": 8, "burn": 600}, {"cap": "<b>Agent Vega</b> scans 60 nearby menus in her own context, then drops it. <span class=\"hf-note\">(~2,400 tok, tossed &mdash; 0 added here)</span>", "add": 0, "burn": 2400}, {"cap": "<b>&#10003; Return</b> &mdash; Vega hands back one line: <span class=\"hf-ret\">El Rey Tacos &middot; 0.3mi &middot; open</span>.", "add": 14, "burn": 0}]}, "s-harness-02": {"steps": [{"cap": "Press <b>Step</b> to fan the ask out.", "add": 0, "burn": 0}, {"cap": "<b>IN</b> &mdash; the <b>router</b> splits the ask to three scouts.", "add": 20, "burn": 0}, {"cap": "<b>Scouts</b> &mdash; <b>Jones</b> (cuisine), <b>Ruiz</b> (budget), <b>Cho</b> (distance) each work alone. <span class=\"hf-note\">(~1,200 tok each, all tossed)</span>", "add": 0, "burn": 3600}, {"cap": "<b>MERGE</b> &mdash; the <b>merger</b> gets three one-liners: <i>tacos &middot; under $20 &middot; under 1mi</i>.", "add": 18, "burn": 0}, {"cap": "<b>OUT</b> &mdash; <span class=\"hf-ret\">El Rey Tacos</span>. Three long lists became three short lines.", "add": 12, "burn": 0}]}, "s-harness-03": {"steps": [{"cap": "Press <b>Step</b> to check the answer.", "add": 0, "burn": 0}, {"cap": "<b>WORKER</b> &mdash; <b>Agent Jones</b> proposes a pick.", "add": 20, "burn": 0}, {"cap": "<b>OUTPUT</b> &mdash; <i>Sushi Palace</i>.", "add": 10, "burn": 0}, {"cap": "<b>SKEPTIC</b> &mdash; <b>Agent Kim</b> checks it fresh: hours, price, reviews. <span class=\"hf-note\">(~1,800 tok, tossed)</span> &rarr; <b>FAIL</b>: closed Mon, $$$$.", "add": 8, "burn": 1800}, {"cap": "<b>&#10003; VERDICT</b> &mdash; revise to <span class=\"hf-ret\">El Rey Tacos</span>. Kim&rsquo;s notes never re-enter.", "add": 12, "burn": 0}]}, "s-harness-04": {"steps": [{"cap": "Press <b>Step</b> to generate, then filter.", "add": 0, "burn": 0}, {"cap": "<b>GEN</b> &mdash; the <b>generator</b> brainstorms wide.", "add": 20, "burn": 0}, {"cap": "<b>Candidates</b> &mdash; Sushi Palace &middot; Blue Ox Steakhouse &middot; Ramen-ya &middot; El Rey Tacos.", "add": 0, "burn": 900}, {"cap": "<b>FILTER</b> &mdash; <b>Agent Patel</b> applies the rubric (open &middot; under $20 &middot; under 1mi). Three drop. <span class=\"hf-note\">(~1,000 tok scoring, tossed)</span>", "add": 0, "burn": 1000}, {"cap": "<b>&#10003; BEST</b> &mdash; only <span class=\"hf-ret\">El Rey Tacos</span> comes back.", "add": 12, "burn": 0}]}, "s-harness-05": {"steps": [{"cap": "Press <b>Step</b> to run the bracket.", "add": 0, "burn": 0}, {"cap": "<b>Four contenders</b> &mdash; Sushi Palace &middot; Blue Ox &middot; Ramen-ya &middot; El Rey.", "add": 20, "burn": 0}, {"cap": "<b>Judges</b> &mdash; <b>Vega</b> takes Sushi vs Blue Ox; <b>Cho</b> takes Ramen vs El Rey. <span class=\"hf-note\">(~1,500 tok, tossed)</span>", "add": 0, "burn": 1500}, {"cap": "<b>Winners</b> &mdash; Blue Ox and El Rey advance to the <b>final judge</b>.", "add": 10, "burn": 800}, {"cap": "<b>&#10003; Champion</b> &mdash; <span class=\"hf-ret\">El Rey Tacos</span>.", "add": 10, "burn": 0}]}, "s-harness-06": {"steps": [{"cap": "Press <b>Step</b> to loop until it passes.", "add": 0, "burn": 0}, {"cap": "<b>Agent Jones</b> &mdash; first pick: <i>Blue Ox Steakhouse</i>.", "add": 20, "burn": 0}, {"cap": "<b>RUBRIC &#10007;</b> &mdash; too pricey. <span class=\"hf-note\">(~700 tok try, tossed)</span>", "add": 6, "burn": 700}, {"cap": "<b>Handoff &rarr; Agent Ruiz</b> &mdash; fresh start; only a one-line note carries over.", "add": 8, "burn": 700}, {"cap": "<b>&#10003; Pass</b> &mdash; <span class=\"hf-ret\">El Rey Tacos</span>. Rejected tries were tossed, not piled up.", "add": 12, "burn": 0}]}};
-const HF_WIN=300;
+const HF={"s-harness-01": {"steps": [{"cap": "Press <b>Step</b> to route the ask.", "add": 0, "burn": 0}, {"cap": "<b>IN</b> &mdash; the ask reaches the <b>router</b>.", "add": 20, "burn": 0}, {"cap": "<b>TRIAGE</b> &mdash; the router weighs the options and routes to <b>Agent Scan Menus</b>. <span class=\"hf-note\">(~600 tok, tossed)</span>", "add": 8, "burn": 600}, {"cap": "<b>Agent Scan Menus</b> reads 60 nearby menus in its own context, then drops it. <span class=\"hf-note\">(~2,400 tok, tossed &mdash; 0 added here)</span>", "add": 0, "burn": 2400}, {"cap": "<b>&#10003; Return</b> &mdash; Scan Menus hands back one line: <span class=\"hf-ret\">Mas Tacos &middot; 0.3mi &middot; open</span>.", "add": 14, "burn": 0}]}, "s-harness-02": {"steps": [{"cap": "Press <b>Step</b> to fan the ask out.", "add": 0, "burn": 0}, {"cap": "<b>IN</b> &mdash; the <b>router</b> splits the ask to three scouts.", "add": 20, "burn": 0}, {"cap": "<b>Scouts</b> &mdash; <b>Jones</b> (cuisine), <b>Ruiz</b> (budget), <b>Cho</b> (distance) each work alone. <span class=\"hf-note\">(~1,200 tok each, all tossed)</span>", "add": 0, "burn": 3600}, {"cap": "<b>MERGE</b> &mdash; the <b>merger</b> gets three one-liners: <i>tacos &middot; under $20 &middot; under 1mi</i>.", "add": 18, "burn": 0}, {"cap": "<b>OUT</b> &mdash; <span class=\"hf-ret\">Mas Tacos</span>. Three long lists became three short lines.", "add": 12, "burn": 0}]}, "s-harness-03": {"steps": [{"cap": "Press <b>Step</b> to check the answer.", "add": 0, "burn": 0}, {"cap": "<b>WORKER</b> &mdash; <b>Agent Jones</b> proposes a pick.", "add": 20, "burn": 0}, {"cap": "<b>OUTPUT</b> &mdash; <i>Virago</i>.", "add": 10, "burn": 0}, {"cap": "<b>SKEPTIC</b> &mdash; <b>Agent Kim</b> checks it fresh: hours, price, reviews. <span class=\"hf-note\">(~1,800 tok, tossed)</span> &rarr; <b>FAIL</b>: closed Mon, $$$$.", "add": 8, "burn": 1800}, {"cap": "<b>&#10003; VERDICT</b> &mdash; revise to <span class=\"hf-ret\">Mas Tacos</span>. Kim&rsquo;s notes never re-enter.", "add": 12, "burn": 0}]}, "s-harness-04": {"steps": [{"cap": "Press <b>Step</b> to generate, then filter.", "add": 0, "burn": 0}, {"cap": "<b>GEN</b> &mdash; the <b>generator</b> brainstorms wide.", "add": 20, "burn": 0}, {"cap": "<b>Candidates</b> &mdash; Virago &middot; Bourbon Steak &middot; Otaku Ramen &middot; Mas Tacos.", "add": 0, "burn": 900}, {"cap": "<b>FILTER</b> &mdash; <b>Agent Patel</b> applies the rubric (open &middot; under $20 &middot; under 1mi). Three drop. <span class=\"hf-note\">(~1,000 tok scoring, tossed)</span>", "add": 0, "burn": 1000}, {"cap": "<b>&#10003; BEST</b> &mdash; only <span class=\"hf-ret\">Mas Tacos</span> comes back.", "add": 12, "burn": 0}]}, "s-harness-05": {"steps": [{"cap": "Press <b>Step</b> to run the bracket.", "add": 0, "burn": 0}, {"cap": "<b>Four contenders</b> &mdash; Virago &middot; Bourbon &middot; Otaku Ramen &middot; Mas Tacos.", "add": 20, "burn": 0}, {"cap": "<b>Judges</b> &mdash; <b>Vega</b> takes Virago vs Bourbon; <b>Cho</b> takes Otaku vs Mas Tacos. <span class=\"hf-note\">(~1,500 tok, tossed)</span>", "add": 0, "burn": 1500}, {"cap": "<b>Winners</b> &mdash; Bourbon and Mas Tacos advance to the <b>final judge</b>.", "add": 10, "burn": 800}, {"cap": "<b>&#10003; Champion</b> &mdash; <span class=\"hf-ret\">Mas Tacos</span>.", "add": 10, "burn": 0}]}, "s-harness-06": {"steps": [{"cap": "Press <b>Step</b> to loop until it passes. In Claude Code, this is the <code>/loop</code> command.", "add": 0, "burn": 0}, {"cap": "<b>Agent Jones</b> &mdash; first pick: <i>Bourbon Steak</i>.", "add": 20, "burn": 0}, {"cap": "<b>RUBRIC &#10007;</b> &mdash; too pricey. <span class=\"hf-note\">(~700 tok try, tossed)</span>", "add": 6, "burn": 700}, {"cap": "<b>Handoff &rarr; Agent Ruiz</b> &mdash; fresh start; only a one-line note carries over.", "add": 8, "burn": 700}, {"cap": "<b>&#10003; Pass</b> &mdash; <span class=\"hf-ret\">Mas Tacos</span>. Rejected tries were tossed, not piled up.", "add": 12, "burn": 0}]}};
+const HF_WIN=6000;
 const HF_STATE={};
 const HF_SEND={"s-harness-01": "Find me somewhere to eat today near me. Route this request to the right specialist agent, and have that specialist return a single recommendation with one line of reasoning.", "s-harness-02": "Find me somewhere to eat today. Fan out to three separate agents in parallel - one for cuisine, one for budget, one for distance - then merge their one-line answers into a single recommendation.", "s-harness-03": "Find me somewhere to eat today. First propose a pick, then run a separate skeptic pass with fresh eyes to check hours, price, and reviews, and revise the pick if it fails.", "s-harness-04": "Have subagents find me 4 places to eat today, then filter them down to the single best one using this rubric: open now, under $20, under 1 mile.", "s-harness-05": "Find me somewhere to eat today. Take 4 candidate restaurants and run a tournament - compare them head-to-head in a bracket and return the single winner.", "s-harness-06": "Find me somewhere to eat today. Keep proposing picks and checking them against my rules (open now, under $20, under 1 mile), looping until one passes - max 3 tries."};
 function hfSend(id){if(typeof pushClaude==='function')pushClaude(HF_SEND[id]||'',id+'-sendstatus');}
-function hfRender(id){var st=HF_STATE[id]||0;var d=HF[id];if(!d)return;var fr=document.querySelector('.hframe[data-hf="'+id+'"]');if(fr)fr.style.setProperty('--hf',HF_T[st]);var cap=document.getElementById(id+'-cap');if(cap)cap.innerHTML=d.steps[st].cap||'';var main=0,burn=0,i;for(i=0;i<=st;i++){main+=d.steps[i].add;burn+=d.steps[i].burn;}var inl=main+burn;var mf=document.getElementById(id+'-mfill');if(mf)mf.style.width=Math.min(100,Math.round(main/HF_WIN*100))+'%';var cf=document.getElementById(id+'-cfill');if(cf)cf.style.width=Math.min(100,Math.round(inl/HF_WIN*100))+'%';var tk=document.getElementById(id+'-tok');if(tk)tk.textContent='~'+main+' tok';var ck=document.getElementById(id+'-ctok');if(ck)ck.textContent='~'+inl.toLocaleString()+' tok'+(inl>HF_WIN?' \u2014 floods it':'');var ct=document.getElementById(id+'-ct');if(ct)ct.textContent=st+' / 4';var b=document.getElementById(id+'-btn');if(b)b.disabled=st>=4;}
+function hfRender(id){var st=HF_STATE[id]||0;var d=HF[id];if(!d)return;var fr=document.querySelector('.hframe[data-hf="'+id+'"]');if(fr)fr.style.setProperty('--hf',HF_T[st]);var cap=document.getElementById(id+'-cap');if(cap)cap.innerHTML=d.steps[st].cap||'';var main=0,burn=0,i;for(i=0;i<=st;i++){main+=d.steps[i].add;burn+=d.steps[i].burn;}var inl=main+burn;var mf=document.getElementById(id+'-mfill');if(mf)mf.style.width=Math.max(5,Math.round(main/HF_WIN*100))+'%';var cf=document.getElementById(id+'-cfill');if(cf)cf.style.width=Math.min(72,Math.round(inl/HF_WIN*100))+'%';var tk=document.getElementById(id+'-tok');if(tk)tk.textContent='~'+main+' tok';var ck=document.getElementById(id+'-ctok');if(ck)ck.textContent='~'+inl.toLocaleString()+' tok'+(inl>HF_WIN?' \u2014 floods it':'');var ct=document.getElementById(id+'-ct');if(ct)ct.textContent=st+' / 4';var b=document.getElementById(id+'-btn');if(b)b.disabled=st>=4;}
 function hfStep(id){HF_STATE[id]=Math.min(4,(HF_STATE[id]||0)+1);hfRender(id);}
 function hfReset(id){HF_STATE[id]=0;hfRender(id);}
 function hfInitAll(){Object.keys(HF).forEach(function(id){if(document.querySelector('.hframe[data-hf="'+id+'"]'))hfReset(id);});}
