@@ -586,24 +586,24 @@
   justify-content:center;
   gap:.4rem;
   align-self:center;
+  perspective:700px;
 }
 .inception-top{
   width:170px;
   height:auto;
-  transform-origin:50% 62%;            /* pivot near the tip, like a real top */
-  animation:inceptionSpin 0.9s linear infinite,
-            inceptionWobble 3.1s ease-in-out infinite;
+  transform-origin:50% 88%;            /* pivot at the tip, like a real top */
+  transform-style:preserve-3d;
+  animation:inceptionSpin 0.7s linear infinite,
+            inceptionWobble 3.2s ease-in-out infinite;
 }
-@keyframes inceptionSpin{
-  from{ transform:rotate(0deg); }
-  to  { transform:rotate(360deg); }
+@keyframes inceptionSpin{               /* spin about the vertical axis, not in-plane */
+  from{ transform:rotateY(0deg); }
+  to  { transform:rotateY(360deg); }
 }
-/* subtle drift/wobble so it reads as a top that never quite falls */
+/* gentle precession: the axis leans a little, like a top that never quite falls */
 @keyframes inceptionWobble{
-  0%,100%{ translate:0 0; }
-  25%    { translate:6px -2px; }
-  50%    { translate:0 2px; }
-  75%    { translate:-6px -2px; }
+  0%,100%{ rotate:-6deg; }
+  50%    { rotate:6deg; }
 }
 .inception-top-cap{
   font-family:'Space Mono',monospace;
