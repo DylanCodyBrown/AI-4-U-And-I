@@ -473,14 +473,15 @@
 .rag-heaven{
   position:relative;width:150px;height:96px;
   display:flex;align-items:center;justify-content:center;
-  animation:rag-descend 3.4s cubic-bezier(.22,.9,.32,1) infinite;
+  transform:translateY(-90px);opacity:0;      /* waits above until the slide opens */
+}
+.slide.active .rag-heaven{
+  animation:rag-descend 1.3s cubic-bezier(.22,.9,.32,1) forwards;  /* descend once, then hold */
 }
 @keyframes rag-descend{
-  0%{transform:translateY(-84px);opacity:0;}
-  22%{opacity:1;}
-  55%{transform:translateY(0);opacity:1;}
-  82%{transform:translateY(0);opacity:1;}
-  100%{transform:translateY(-8px);opacity:0;}
+  0%{transform:translateY(-90px);opacity:0;}
+  35%{opacity:1;}
+  100%{transform:translateY(0);opacity:1;}
 }
 .rag-halo{
   position:absolute;width:150px;height:150px;border-radius:50%;
@@ -2515,23 +2516,42 @@ Open only the entries you need.</pre>
         <div class="rag-badge">RAG</div>
       </div>
     </div>
-    <div class="kicker">The Junkyard · How It Finds Anything</div>
+    <div class="kicker">The Junkyard &middot; How It Finds Anything</div>
     <h2>Chunk, Embed,<br>Search</h2>
-    <p class="lede">The mechanism behind Notion AI and Obsidian's Smart Connections is the same: Retrieval-Augmented Generation. Before the model answers, a search step pulls the most relevant pieces of the vault into context.</p>
-    <div class="cols-3" style="align-items:stretch;margin-top:1rem;">
-      <div class="card">
-        <h3>1 · Chunk</h3>
-        <p style="font-size:.95rem;">Every note is split into chunks — a few hundred to a couple thousand characters each.</p>
+    <p class="lede">Retrieval-Augmented Generation &mdash; the engine behind Notion AI and Obsidian Smart Connections. A search step pulls the most relevant pieces into context before the model answers.</p>
+    <div class="cols" style="grid-template-columns:1fr 1fr;align-items:center;margin-top:.5rem;gap:1.4rem;">
+      <div>
+        <div style="margin:.4rem 0;font-size:.98rem;"><b style="color:var(--rust);">1 &middot; Chunk</b> &mdash; split every note into small pieces.</div>
+        <div style="margin:.4rem 0;font-size:.98rem;"><b style="color:var(--rust);">2 &middot; Embed</b> &mdash; turn each piece into a vector: a point in meaning-space.</div>
+        <div style="margin:.4rem 0;font-size:.98rem;"><b style="color:var(--rust);">3 &middot; Search</b> &mdash; embed the question too, then grab the nearest points.</div>
       </div>
-      <div class="card">
-        <h3>2 · Embed</h3>
-        <p style="font-size:.95rem;">Each chunk becomes an embedding — a vector that stands for its meaning. The question gets embedded the same way.</p>
-      </div>
-      <div class="card rust">
-        <h3>3 · Search</h3>
-        <p style="font-size:.95rem;">The closest chunks to the question get inserted into context. The model answers using only those.</p>
+      <div>
+        <svg viewBox="0 0 280 200" style="width:100%;max-height:32vh;" role="img" aria-label="2-D meaning space: similar words cluster together">
+          <line x1="26" y1="176" x2="266" y2="176" stroke="#8a7a5c" stroke-width="1"/>
+          <line x1="26" y1="176" x2="26" y2="16" stroke="#8a7a5c" stroke-width="1"/>
+          <!-- query point pulls its nearest neighbours -->
+          <line x1="120" y1="54" x2="82" y2="60" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <line x1="120" y1="54" x2="104" y2="82" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <!-- food cluster -->
+          <g fill="#5a6b4a" font-family="'Space Mono',monospace" font-size="9">
+            <circle cx="82" cy="60" r="5"/><text x="90" y="63">tacos</text>
+            <circle cx="104" cy="82" r="5"/><text x="112" y="85">burrito</text>
+            <circle cx="80" cy="104" r="5"/><text x="88" y="107">salsa</text>
+          </g>
+          <!-- finance cluster -->
+          <g fill="#c1440e" font-family="'Space Mono',monospace" font-size="9">
+            <circle cx="196" cy="118" r="5"/><text x="204" y="121">invoice</text>
+            <circle cx="220" cy="138" r="5"/><text x="228" y="141">ledger</text>
+            <circle cx="200" cy="158" r="5"/><text x="208" y="161">audit</text>
+          </g>
+          <!-- the question, embedded -->
+          <circle cx="120" cy="54" r="6.5" fill="#d4a017" stroke="#1a1410" stroke-width="1.6"/>
+          <text x="120" y="40" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9" font-weight="700" fill="#8a2c08">&ldquo;where to eat?&rdquo;</text>
+        </svg>
+        <div class="mono" style="text-align:center;font-size:.7rem;opacity:.65;margin-top:.1rem;">2-D view of meaning-space &mdash; similar words land closer together</div>
       </div>
     </div>
+    <div class="note-callout" style="font-size:.95rem;margin-top:.5rem;">An agent embeds your question, drops it onto this map, and pulls whatever sits nearest &mdash; that closeness is how it finds what is related.</div>
   </section>
 
   <section class="slide" id="s-junk-breaks">
