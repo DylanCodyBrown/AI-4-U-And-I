@@ -1207,6 +1207,8 @@
     <div class="controls" style="justify-content:flex-start;">
       <button class="btn" id="s-harness-01-btn" onclick="hfStep('s-harness-01')">Step &#9656;</button>
       <button class="btn ghost" onclick="hfReset('s-harness-01')">Reset</button>
+      <button class="btn ghost" onclick="hfSend('s-harness-01')">&#9654; Send to Claude</button>
+      <span id="s-harness-01-sendstatus" class="mono" style="font-size:.82rem;opacity:.85;"></span>
       <span class="hf-count mono" id="s-harness-01-ct">0 / 4</span>
     </div>
   </section>
@@ -1256,6 +1258,8 @@
     <div class="controls" style="justify-content:flex-start;">
       <button class="btn" id="s-harness-02-btn" onclick="hfStep('s-harness-02')">Step &#9656;</button>
       <button class="btn ghost" onclick="hfReset('s-harness-02')">Reset</button>
+      <button class="btn ghost" onclick="hfSend('s-harness-02')">&#9654; Send to Claude</button>
+      <span id="s-harness-02-sendstatus" class="mono" style="font-size:.82rem;opacity:.85;"></span>
       <span class="hf-count mono" id="s-harness-02-ct">0 / 4</span>
     </div>
   </section>
@@ -1293,6 +1297,8 @@
     <div class="controls" style="justify-content:flex-start;">
       <button class="btn" id="s-harness-03-btn" onclick="hfStep('s-harness-03')">Step &#9656;</button>
       <button class="btn ghost" onclick="hfReset('s-harness-03')">Reset</button>
+      <button class="btn ghost" onclick="hfSend('s-harness-03')">&#9654; Send to Claude</button>
+      <span id="s-harness-03-sendstatus" class="mono" style="font-size:.82rem;opacity:.85;"></span>
       <span class="hf-count mono" id="s-harness-03-ct">0 / 4</span>
     </div>
   </section>
@@ -1336,6 +1342,8 @@
     <div class="controls" style="justify-content:flex-start;">
       <button class="btn" id="s-harness-04-btn" onclick="hfStep('s-harness-04')">Step &#9656;</button>
       <button class="btn ghost" onclick="hfReset('s-harness-04')">Reset</button>
+      <button class="btn ghost" onclick="hfSend('s-harness-04')">&#9654; Send to Claude</button>
+      <span id="s-harness-04-sendstatus" class="mono" style="font-size:.82rem;opacity:.85;"></span>
       <span class="hf-count mono" id="s-harness-04-ct">0 / 4</span>
     </div>
   </section>
@@ -1382,6 +1390,8 @@
     <div class="controls" style="justify-content:flex-start;">
       <button class="btn" id="s-harness-05-btn" onclick="hfStep('s-harness-05')">Step &#9656;</button>
       <button class="btn ghost" onclick="hfReset('s-harness-05')">Reset</button>
+      <button class="btn ghost" onclick="hfSend('s-harness-05')">&#9654; Send to Claude</button>
+      <span id="s-harness-05-sendstatus" class="mono" style="font-size:.82rem;opacity:.85;"></span>
       <span class="hf-count mono" id="s-harness-05-ct">0 / 4</span>
     </div>
   </section>
@@ -1419,6 +1429,8 @@
     <div class="controls" style="justify-content:flex-start;">
       <button class="btn" id="s-harness-06-btn" onclick="hfStep('s-harness-06')">Step &#9656;</button>
       <button class="btn ghost" onclick="hfReset('s-harness-06')">Reset</button>
+      <button class="btn ghost" onclick="hfSend('s-harness-06')">&#9654; Send to Claude</button>
+      <span id="s-harness-06-sendstatus" class="mono" style="font-size:.82rem;opacity:.85;"></span>
       <span class="hf-count mono" id="s-harness-06-ct">0 / 4</span>
     </div>
   </section>
@@ -3851,6 +3863,8 @@ const HF_T=['0s','1.5s','2.4s','3.3s','4.35s'];
 const HF={"s-harness-01": {"steps": [{"cap": "Press <b>Step</b> to route the ask.", "add": 0, "burn": 0}, {"cap": "<b>IN</b> &mdash; the ask reaches the <b>router</b>.", "add": 20, "burn": 0}, {"cap": "<b>TRIAGE</b> &mdash; the router weighs the options and routes to <b>Agent Vega &middot; Local Eats</b>. <span class=\"hf-note\">(~600 tok, tossed)</span>", "add": 8, "burn": 600}, {"cap": "<b>Agent Vega</b> scans 60 nearby menus in her own context, then drops it. <span class=\"hf-note\">(~2,400 tok, tossed &mdash; 0 added here)</span>", "add": 0, "burn": 2400}, {"cap": "<b>&#10003; Return</b> &mdash; Vega hands back one line: <span class=\"hf-ret\">El Rey Tacos &middot; 0.3mi &middot; open</span>.", "add": 14, "burn": 0}]}, "s-harness-02": {"steps": [{"cap": "Press <b>Step</b> to fan the ask out.", "add": 0, "burn": 0}, {"cap": "<b>IN</b> &mdash; the <b>router</b> splits the ask to three scouts.", "add": 20, "burn": 0}, {"cap": "<b>Scouts</b> &mdash; <b>Jones</b> (cuisine), <b>Ruiz</b> (budget), <b>Cho</b> (distance) each work alone. <span class=\"hf-note\">(~1,200 tok each, all tossed)</span>", "add": 0, "burn": 3600}, {"cap": "<b>MERGE</b> &mdash; the <b>merger</b> gets three one-liners: <i>tacos &middot; under $20 &middot; under 1mi</i>.", "add": 18, "burn": 0}, {"cap": "<b>OUT</b> &mdash; <span class=\"hf-ret\">El Rey Tacos</span>. Three long lists became three short lines.", "add": 12, "burn": 0}]}, "s-harness-03": {"steps": [{"cap": "Press <b>Step</b> to check the answer.", "add": 0, "burn": 0}, {"cap": "<b>WORKER</b> &mdash; <b>Agent Jones</b> proposes a pick.", "add": 20, "burn": 0}, {"cap": "<b>OUTPUT</b> &mdash; <i>Sushi Palace</i>.", "add": 10, "burn": 0}, {"cap": "<b>SKEPTIC</b> &mdash; <b>Agent Kim</b> checks it fresh: hours, price, reviews. <span class=\"hf-note\">(~1,800 tok, tossed)</span> &rarr; <b>FAIL</b>: closed Mon, $$$$.", "add": 8, "burn": 1800}, {"cap": "<b>&#10003; VERDICT</b> &mdash; revise to <span class=\"hf-ret\">El Rey Tacos</span>. Kim&rsquo;s notes never re-enter.", "add": 12, "burn": 0}]}, "s-harness-04": {"steps": [{"cap": "Press <b>Step</b> to generate, then filter.", "add": 0, "burn": 0}, {"cap": "<b>GEN</b> &mdash; the <b>generator</b> brainstorms wide.", "add": 20, "burn": 0}, {"cap": "<b>Candidates</b> &mdash; Sushi Palace &middot; Blue Ox Steakhouse &middot; Ramen-ya &middot; El Rey Tacos.", "add": 0, "burn": 900}, {"cap": "<b>FILTER</b> &mdash; <b>Agent Patel</b> applies the rubric (open &middot; under $20 &middot; under 1mi). Three drop. <span class=\"hf-note\">(~1,000 tok scoring, tossed)</span>", "add": 0, "burn": 1000}, {"cap": "<b>&#10003; BEST</b> &mdash; only <span class=\"hf-ret\">El Rey Tacos</span> comes back.", "add": 12, "burn": 0}]}, "s-harness-05": {"steps": [{"cap": "Press <b>Step</b> to run the bracket.", "add": 0, "burn": 0}, {"cap": "<b>Four contenders</b> &mdash; Sushi Palace &middot; Blue Ox &middot; Ramen-ya &middot; El Rey.", "add": 20, "burn": 0}, {"cap": "<b>Judges</b> &mdash; <b>Vega</b> takes Sushi vs Blue Ox; <b>Cho</b> takes Ramen vs El Rey. <span class=\"hf-note\">(~1,500 tok, tossed)</span>", "add": 0, "burn": 1500}, {"cap": "<b>Winners</b> &mdash; Blue Ox and El Rey advance to the <b>final judge</b>.", "add": 10, "burn": 800}, {"cap": "<b>&#10003; Champion</b> &mdash; <span class=\"hf-ret\">El Rey Tacos</span>.", "add": 10, "burn": 0}]}, "s-harness-06": {"steps": [{"cap": "Press <b>Step</b> to loop until it passes.", "add": 0, "burn": 0}, {"cap": "<b>Agent Jones</b> &mdash; first pick: <i>Blue Ox Steakhouse</i>.", "add": 20, "burn": 0}, {"cap": "<b>RUBRIC &#10007;</b> &mdash; too pricey. <span class=\"hf-note\">(~700 tok try, tossed)</span>", "add": 6, "burn": 700}, {"cap": "<b>Handoff &rarr; Agent Ruiz</b> &mdash; fresh start; only a one-line note carries over.", "add": 8, "burn": 700}, {"cap": "<b>&#10003; Pass</b> &mdash; <span class=\"hf-ret\">El Rey Tacos</span>. Rejected tries were tossed, not piled up.", "add": 12, "burn": 0}]}};
 const HF_WIN=300;
 const HF_STATE={};
+const HF_SEND={"s-harness-01": "Find me somewhere to eat today near me. Route this request to the right specialist agent, and have that specialist return a single recommendation with one line of reasoning.", "s-harness-02": "Find me somewhere to eat today. Fan out to three separate agents in parallel - one for cuisine, one for budget, one for distance - then merge their one-line answers into a single recommendation.", "s-harness-03": "Find me somewhere to eat today. First propose a pick, then run a separate skeptic pass with fresh eyes to check hours, price, and reviews, and revise the pick if it fails.", "s-harness-04": "Have subagents find me 4 places to eat today, then filter them down to the single best one using this rubric: open now, under $20, under 1 mile.", "s-harness-05": "Find me somewhere to eat today. Take 4 candidate restaurants and run a tournament - compare them head-to-head in a bracket and return the single winner.", "s-harness-06": "Find me somewhere to eat today. Keep proposing picks and checking them against my rules (open now, under $20, under 1 mile), looping until one passes - max 3 tries."};
+function hfSend(id){if(typeof pushClaude==='function')pushClaude(HF_SEND[id]||'',id+'-sendstatus');}
 function hfRender(id){var st=HF_STATE[id]||0;var d=HF[id];if(!d)return;var fr=document.querySelector('.hframe[data-hf="'+id+'"]');if(fr)fr.style.setProperty('--hf',HF_T[st]);var cap=document.getElementById(id+'-cap');if(cap)cap.innerHTML=d.steps[st].cap||'';var main=0,burn=0,i;for(i=0;i<=st;i++){main+=d.steps[i].add;burn+=d.steps[i].burn;}var inl=main+burn;var mf=document.getElementById(id+'-mfill');if(mf)mf.style.width=Math.min(100,Math.round(main/HF_WIN*100))+'%';var cf=document.getElementById(id+'-cfill');if(cf)cf.style.width=Math.min(100,Math.round(inl/HF_WIN*100))+'%';var tk=document.getElementById(id+'-tok');if(tk)tk.textContent='~'+main+' tok';var ck=document.getElementById(id+'-ctok');if(ck)ck.textContent='~'+inl.toLocaleString()+' tok'+(inl>HF_WIN?' \u2014 floods it':'');var ct=document.getElementById(id+'-ct');if(ct)ct.textContent=st+' / 4';var b=document.getElementById(id+'-btn');if(b)b.disabled=st>=4;}
 function hfStep(id){HF_STATE[id]=Math.min(4,(HF_STATE[id]||0)+1);hfRender(id);}
 function hfReset(id){HF_STATE[id]=0;hfRender(id);}
