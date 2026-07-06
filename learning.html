@@ -15,6 +15,20 @@
     <div class="topbar"><a class="home" href="index.html">AI-4-U&amp;I</a><span class="sep">/</span> learning</div>
 
     <fieldset class="box">
+      <legend>Run a deck live — install the companion</legend>
+      <p class="muted hint">The interactive decks below can drive your local
+         <code>claude</code> CLI so demos run live in a terminal while you present.
+         Paste the prompt below into <strong>Claude Code</strong> — it fetches the
+         companion skill from
+         <a href="https://github.com/DylanCodyBrown/AI-4-U-And-I/tree/main/companion" target="_blank" rel="noopener">GitHub</a>
+         and sets it up for you.</p>
+      <pre id="installPrompt" style="white-space:pre-wrap;word-break:break-word;background:var(--bg);border:1px solid var(--border-soft);border-radius:var(--radius);padding:.8rem .9rem;font-family:var(--mono);font-size:.82rem;line-height:1.5;color:var(--fg);margin:.4rem 0 .6rem;">Install the &quot;Are You Smarter Than Claude?&quot; presentation companion skill from GitHub: fetch https://raw.githubusercontent.com/DylanCodyBrown/AI-4-U-And-I/main/companion/SKILL.md and save it to ~/.claude/skills/presentation-companion/SKILL.md, then follow that skill to download companion/server.py and requirements.txt from the DylanCodyBrown/AI-4-U-And-I repo, install Flask, and start the local companion server so the deck's live demo buttons work.</pre>
+      <button type="button"
+        onclick="(function(b){var t=document.getElementById('installPrompt').innerText;navigator.clipboard.writeText(t).then(function(){b.textContent='Copied ✓';setTimeout(function(){b.textContent='Copy install prompt';},1600);});})(this)"
+        style="font-family:var(--mono);font-size:.82rem;cursor:pointer;background:var(--accent);color:#1b1a18;border:none;border-radius:var(--radius);padding:.5rem .95rem;font-weight:600;">Copy install prompt</button>
+    </fieldset>
+
+    <fieldset class="box">
       <legend>Learning — interactive docs</legend>
       <p class="muted hint">Quick intros to interactive learning docs. Click a card
          to open the full experience in a new tab.</p>
