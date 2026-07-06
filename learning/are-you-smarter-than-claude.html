@@ -649,6 +649,25 @@
 .hf-ctx-lab{flex:0 0 9em;text-align:right;color:var(--dusk);}
 .hf-mfill.hf-bad{background:var(--tow);}
 .hf-badtok{color:var(--tow);font-weight:700;}
+
+/* ===== RAG phases + no-vector paragraph scan ===== */
+.rag-phase{display:flex;gap:.5rem;justify-content:center;font-family:'Space Mono',monospace;font-size:.78rem;margin:.15rem 0 .1rem;}
+.rag-phase span{padding:.12rem .55rem;border:1.5px solid var(--line);border-radius:4px;opacity:.38;transition:all .3s ease;}
+.rag-phase span.on{opacity:1;border-color:var(--rust);background:rgba(193,68,14,.1);color:var(--rust-deep);font-weight:700;}
+.nv-para{position:relative;overflow:hidden;line-height:1.7;font-size:.92rem;border:1.5px solid var(--line);border-radius:6px;padding:.5rem .6rem;background:rgba(26,20,16,.03);}
+.nv-word{padding:0 1px;border-radius:2px;transition:background .25s ease;}
+.nv-word.hit{background:rgba(90,107,74,.4);font-weight:700;}
+.nv-scan{position:absolute;top:0;bottom:0;left:-44px;width:38px;opacity:0;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(212,160,23,.55),transparent);}
+.nv-para.searching .nv-scan{opacity:1;animation:nvsweep 2.2s linear 2;}
+@keyframes nvsweep{from{left:-44px;}to{left:100%;}}
+
+/* ===== RAG-limits tables + thanks slide ===== */
+.rag-tbl{width:100%;border-collapse:collapse;font-size:.86rem;margin-top:.5rem;}
+.rag-tbl th{font-family:'Space Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--rust-deep);text-align:left;padding:.3rem .5rem;border-bottom:2px solid var(--line);}
+.rag-tbl td{padding:.32rem .5rem;border-bottom:1px solid var(--line);vertical-align:top;}
+.rag-tbl .num{font-family:'Space Mono',monospace;font-weight:700;color:var(--tow);}
+#s-thanks{justify-content:center;}
+#s-thanks h1{font-size:clamp(2.6rem,8vw,6.5rem);line-height:.95;}
 </style>
 </head>
 <body>
@@ -690,8 +709,8 @@
         <li><button onclick="showById('s-junk-rag')"><span class="toc-num">53</span>RAG</button></li>
         <li><button onclick="showById('s-cabinet')"><span class="toc-num">56</span>Filing Cabinet</button></li>
         <li><button onclick="showById('s-final')"><span class="toc-num">57</span>The Showdown</button></li>
-        <li><button onclick="showById('s-pelican-intro')"><span class="toc-num">59</span>Guess The Pelican</button></li>
-        <li><button onclick="showById('s-final-pelican')"><span class="toc-num">68</span>Grand Finale</button></li>
+        <li><button onclick="showById('s-pelican-intro')"><span class="toc-num">60</span>Guess The Pelican</button></li>
+        <li><button onclick="showById('s-final-pelican')"><span class="toc-num">69</span>Grand Finale</button></li>
       </ul>
     </div>
   </section>
@@ -2510,71 +2529,84 @@ Open only the entries you need.</pre>
 
   <section class="slide" id="s-junk-rag">
     <div class="rag-heaven-stage" aria-hidden="true">
-      <div class="rag-heaven">
-        <div class="rag-halo"></div>
-        <div class="rag-rays"></div>
-        <div class="rag-badge">RAG</div>
-      </div>
+      <div class="rag-heaven"><div class="rag-halo"></div><div class="rag-rays"></div><div class="rag-badge">RAG</div></div>
     </div>
     <div class="kicker">The Junkyard &middot; How It Finds Anything</div>
-    <h2>Chunk, Embed,<br>Search</h2>
-    <p class="lede">Retrieval-Augmented Generation &mdash; the engine behind Notion AI and Obsidian Smart Connections. A search step pulls the most relevant pieces into context before the model answers.</p>
-    <div class="cols" style="grid-template-columns:1fr 1fr;align-items:center;margin-top:.5rem;gap:1.4rem;">
+    <h2 style="margin-bottom:.2rem;">Chunk, Embed, Search</h2>
+    <div class="rag-phase">
+      <span id="rag-p1">1 &middot; Chunk</span>
+      <span id="rag-p2">2 &middot; Embed</span>
+      <span id="rag-p3">3 &middot; Search</span>
+    </div>
+    <div style="min-height:2.5em;margin:.1rem 0;">
+      <div id="rag-s1" style="opacity:0;transition:opacity .45s ease;font-size:.96rem;margin:.06rem 0;">&ldquo;I really like <b style="color:var(--sage)">burritos</b>, <b style="color:var(--sage)">salsa</b>, <b style="color:var(--sage)">tacos</b>, and <b style="color:var(--sage)">Mexican food</b>.&rdquo;</div>
+      <div id="rag-s2" style="opacity:0;transition:opacity .45s ease;font-size:.96rem;margin:.06rem 0;">&ldquo;The <b style="color:var(--rust)">invoice</b> needs to make it to the <b style="color:var(--rust)">ledger</b> for <b style="color:var(--rust)">audit</b>.&rdquo;</div>
+      <div id="rag-q" style="opacity:0;transition:opacity .45s ease;font-size:1.02rem;margin:.06rem 0;font-weight:700;color:var(--rust-deep);">&ldquo;Where should I get food?&rdquo;</div>
+    </div>
+    <div class="cols" style="grid-template-columns:1fr 1fr;gap:1.2rem;align-items:start;margin-top:.2rem;">
       <div>
-        <div style="margin:.4rem 0;font-size:.98rem;"><b style="color:var(--rust);">1 &middot; Chunk</b> &mdash; split every note into small pieces.</div>
-        <div style="margin:.4rem 0;font-size:.98rem;"><b style="color:var(--rust);">2 &middot; Embed</b> &mdash; turn each piece into a vector: a point in meaning-space.</div>
-        <div style="margin:.4rem 0;font-size:.98rem;"><b style="color:var(--rust);">3 &middot; Search</b> &mdash; embed the question too, then grab the nearest points.</div>
+        <div class="mono" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--tow);margin-bottom:.2rem;">Without a vector</div>
+        <div class="nv-para" id="rag-para" style="opacity:0;transition:opacity .4s ease;">
+          <div class="nv-scan" id="rag-scan"></div>
+          <span class="nv-word">Morning</span> <span class="nv-word">standup</span> <span class="nv-word">ran</span> <span class="nv-word">long.</span> <span class="nv-word">I</span> <span class="nv-word">really</span> <span class="nv-word">like</span> <span class="nv-word" data-food="1">burritos,</span> <span class="nv-word" data-food="1">salsa,</span> <span class="nv-word" data-food="1">tacos,</span> <span class="nv-word">and</span> <span class="nv-word" data-food="1">Mexican</span> <span class="nv-word" data-food="1">food.</span> <span class="nv-word">The</span> <span class="nv-word">3rd-street</span> <span class="nv-word">garage</span> <span class="nv-word">is</span> <span class="nv-word">closed</span> <span class="nv-word">till</span> <span class="nv-word">Thursday.</span> <span class="nv-word">The</span> <span class="nv-word">invoice</span> <span class="nv-word">needs</span> <span class="nv-word">to</span> <span class="nv-word">make</span> <span class="nv-word">it</span> <span class="nv-word">to</span> <span class="nv-word">the</span> <span class="nv-word">ledger</span> <span class="nv-word">for</span> <span class="nv-word">audit.</span> <span class="nv-word">Someone</span> <span class="nv-word">left</span> <span class="nv-word">yogurt</span> <span class="nv-word">in</span> <span class="nv-word">the</span> <span class="nv-word">fridge</span> <span class="nv-word">since</span> <span class="nv-word">March.</span> <span class="nv-word">The</span> <span class="nv-word">retro</span> <span class="nv-word">moved</span> <span class="nv-word">to</span> <span class="nv-word">Friday.</span> <span class="nv-word">Remember</span> <span class="nv-word">to</span> <span class="nv-word">water</span> <span class="nv-word">the</span> <span class="nv-word">plant.</span> 
+        </div>
       </div>
       <div>
-        <svg viewBox="0 0 280 200" style="width:100%;max-height:32vh;" role="img" aria-label="2-D meaning space: similar words cluster together">
-          <line x1="26" y1="176" x2="266" y2="176" stroke="#8a7a5c" stroke-width="1"/>
-          <line x1="26" y1="176" x2="26" y2="16" stroke="#8a7a5c" stroke-width="1"/>
-          <!-- query point pulls its nearest neighbours -->
-          <line x1="120" y1="54" x2="82" y2="60" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="3 2"/>
-          <line x1="120" y1="54" x2="104" y2="82" stroke="#d4a017" stroke-width="1.5" stroke-dasharray="3 2"/>
-          <!-- food cluster -->
-          <g fill="#5a6b4a" font-family="'Space Mono',monospace" font-size="9">
-            <circle cx="82" cy="60" r="5"/><text x="90" y="63">tacos</text>
-            <circle cx="104" cy="82" r="5"/><text x="112" y="85">burrito</text>
-            <circle cx="80" cy="104" r="5"/><text x="88" y="107">salsa</text>
+        <div class="mono" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--sage);margin-bottom:.2rem;">With a vector</div>
+        <svg viewBox="0 0 320 200" style="width:100%;max-height:26vh;" role="img" aria-label="Meaning space">
+          <line x1="24" y1="176" x2="304" y2="176" stroke="#8a7a5c" stroke-width="1"/>
+          <line x1="24" y1="176" x2="24" y2="12" stroke="#8a7a5c" stroke-width="1"/>
+          <circle id="rag-circle" cx="90" cy="78" r="58" fill="rgba(212,160,23,.12)" stroke="var(--gold)" stroke-width="2" stroke-dasharray="5 3" style="opacity:0;transition:opacity .5s ease;"/>
+          <g id="rag-words" style="opacity:0;transition:opacity .5s ease;">
+            <g fill="#5a6b4a" font-family="'Space Mono',monospace" font-size="9">
+              <circle cx="64" cy="52" r="5"/><text x="72" y="55">tacos</text>
+              <circle cx="104" cy="58" r="5"/><text x="112" y="61">burritos</text>
+              <circle cx="68" cy="90" r="5"/><text x="76" y="93">salsa</text>
+              <circle cx="94" cy="112" r="5"/><text x="102" y="115">mexican food</text>
+            </g>
+            <g fill="#c1440e" font-family="'Space Mono',monospace" font-size="9">
+              <circle cx="228" cy="120" r="5"/><text x="236" y="123">invoice</text>
+              <circle cx="252" cy="140" r="5"/><text x="260" y="143">ledger</text>
+              <circle cx="232" cy="160" r="5"/><text x="240" y="163">audit</text>
+            </g>
           </g>
-          <!-- finance cluster -->
-          <g fill="#c1440e" font-family="'Space Mono',monospace" font-size="9">
-            <circle cx="196" cy="118" r="5"/><text x="204" y="121">invoice</text>
-            <circle cx="220" cy="138" r="5"/><text x="228" y="141">ledger</text>
-            <circle cx="200" cy="158" r="5"/><text x="208" y="161">audit</text>
+          <g id="rag-qdot" style="opacity:0;transition:opacity .5s ease;">
+            <circle cx="90" cy="78" r="6.5" fill="var(--gold)" stroke="#1a1410" stroke-width="1.6"/>
+            <text x="90" y="66" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9" font-weight="700" fill="#8a2c08">question</text>
           </g>
-          <!-- the question, embedded -->
-          <circle cx="120" cy="54" r="6.5" fill="#d4a017" stroke="#1a1410" stroke-width="1.6"/>
-          <text x="120" y="40" text-anchor="middle" font-family="'Space Mono',monospace" font-size="9" font-weight="700" fill="#8a2c08">&ldquo;where to eat?&rdquo;</text>
         </svg>
-        <div class="mono" style="text-align:center;font-size:.7rem;opacity:.65;margin-top:.1rem;">2-D view of meaning-space &mdash; similar words land closer together</div>
       </div>
     </div>
-    <div class="note-callout" style="font-size:.95rem;margin-top:.5rem;">An agent embeds your question, drops it onto this map, and pulls whatever sits nearest &mdash; that closeness is how it finds what is related.</div>
+    <div class="controls" style="justify-content:flex-start;margin-top:.3rem;">
+      <button class="btn" id="rag-btn" onclick="ragStep()">Step &#9656;</button>
+      <button class="btn ghost" onclick="ragReset()">Reset</button>
+      <span class="hf-count mono" id="rag-ct">0 / 5</span>
+    </div>
+    <div class="hf-cap" id="rag-cap" style="min-height:2.2em;"></div>
   </section>
 
   <section class="slide" id="s-junk-breaks">
     <div class="rag-broken-stage" aria-hidden="true">
-      <div class="rag-broken">
-        <span class="rag-shard rag-shard-l">RA</span><span class="rag-shard rag-shard-r">G</span>
-        <span class="rag-crack"></span>
-      </div>
+      <div class="rag-broken"><span class="rag-shard rag-shard-l">RA</span><span class="rag-shard rag-shard-r">G</span><span class="rag-crack"></span></div>
     </div>
-    <div class="kicker">The Junkyard · Where The Savior Cracks</div>
-    <h2>RAG Was Not<br>The Rapture</h2>
-    <p class="lede">Chunk size is a real trade-off, not a setting to ignore. Get it wrong in either direction and search hands the model the wrong context.</p>
-    <div class="cols" style="align-items:stretch;margin-top:1rem;">
+    <div class="kicker">The Junkyard &middot; Where RAG Cracks</div>
+    <h2>RAG Did Not<br>Save Us</h2>
+    <p class="lede">Embeddings match on surface <strong>similarity</strong>, not <strong>logic</strong>. So retrieval quietly fails wherever the answer needs reasoning instead of resemblance.</p>
+    <div class="cols-3" style="align-items:stretch;margin-top:1rem;">
       <div class="card rust">
-        <h3>Chunks too small</h3>
-        <p style="font-size:.98rem;">Under a few hundred characters, a chunk loses its context — a sentence about a number with no record of what the number was <em>for</em>. The line matches, but the meaning was left behind.</p>
+        <h3>It cannot reason</h3>
+        <p style="font-size:.92rem;">No cause-and-effect, no concept hierarchies, no step-by-step logic. Sitting near a question is not the same as answering it.</p>
       </div>
       <div class="card">
-        <h3>Chunks too big</h3>
-        <p style="font-size:.98rem;">Over a few thousand characters, the relevant line drowns in everything else on the page — the same crowding problem from the context rot slides, now inside a single retrieved chunk.</p>
+        <h3>The event &rarr; concept gap</h3>
+        <p style="font-size:.92rem;">A note says &ldquo;bought 2024, 2-year warranty.&rdquo; You ask &ldquo;when does it expire?&rdquo; The words barely overlap, so it is never retrieved &mdash; ugly in contracts, insurance, and compliance.</p>
+      </div>
+      <div class="card">
+        <h3>It is a stopgap</h3>
+        <p style="font-size:.92rem;">Search is one-way, with no room to ask a follow-up or verify. And the tiny windows and high costs it was built around are mostly gone.</p>
       </div>
     </div>
-    <div class="note-callout" style="font-size:.92rem;margin-top:.9rem;">A note never gets reorganized by this process — it still lives wherever it was dropped. Only chunk boundaries and search ranking decide what the model actually sees.</div>
+    <div class="note-callout" style="font-size:.92rem;margin-top:.7rem;">The fix is not a bigger model. It is co-designing retrieval with reasoning: distil the sources first, retrieve dense summaries, and pull exact citations only when needed.</div>
   </section>
 
   <section class="slide" id="s-junk-vs">
@@ -2631,7 +2663,8 @@ Open only the entries you need.</pre>
       </div>
     </div>
     <div class="controls" style="margin-top:1rem;">
-      <button class="btn" id="askClaudeBtn" onclick="askClaude()">📋 Copy Deck + Question For Claude</button>
+      <button class="btn ghost" id="askClaudeBtn" onclick="askClaude()">📋 Copy Deck + Question</button>
+      <button class="btn" onclick="askClaudeSend()">▶ Send To Claude</button>
       <span id="askStatus" class="mono" style="font-size:.82rem;"></span>
     </div>
     <p class="sub mono" style="margin-top:1rem;">Good documentation isn't busywork. It's the difference between answering and guessing.</p>
@@ -2666,6 +2699,12 @@ Open only the entries you need.</pre>
         <div class="note-callout" style="font-size:.95rem;">The thing you almost didn't write down is the thing Claude's entire skill system is built on.</div>
       </div>
     </div>
+  </section>
+
+  <section class="slide" id="s-thanks">
+    <div class="kicker">Fin</div>
+    <h1>Thanks for<br>reading along!</h1>
+    <div class="title-rule"></div>
   </section>
 
   <section class="slide" id="s-pelican-intro">
@@ -3887,6 +3926,40 @@ function hfReset(id){HF_STATE[id]=0;hfRender(id);}
 function hfInitAll(){Object.keys(HF).forEach(function(id){if(document.querySelector('.hframe[data-hf="'+id+'"]'))hfReset(id);});}
 if(document.readyState!=='loading')hfInitAll();else document.addEventListener('DOMContentLoaded',hfInitAll);
 
+// ===== RAG embed/search sequence =====
+var RAG_MAX=5, ragState=0;
+var RAG_CAP=[
+ 'Two notes are about to go into the vault. Press Step.',
+ 'Note one goes in.',
+ 'Note two goes in - unrelated to the first.',
+ 'WITH a vector: each word becomes a point and like meanings cluster. WITHOUT one: it is still just a wall of text.',
+ 'The question arrives. The vector version drops it on the map; the plain-text version starts reading from the top.',
+ 'Each point also stores a pointer back to where its text lives - so a nearby match comes with a roadmap straight to its source.'
+];
+function ragShow(id,on){var e=document.getElementById(id);if(e)e.style.opacity=on?'1':'0';}
+function ragTog(id,on){var e=document.getElementById(id);if(e)e.classList.toggle('on',on);}
+function ragRender(){var s=ragState;
+ ragShow('rag-s1',s>=1);ragShow('rag-s2',s>=2);ragShow('rag-q',s>=4);
+ ragShow('rag-words',s>=3);ragShow('rag-qdot',s>=4);ragShow('rag-circle',s>=5);
+ ragShow('rag-para',s>=1);
+ ragTog('rag-p1',s>=1);ragTog('rag-p2',s>=3);ragTog('rag-p3',s>=4);
+ var p=document.getElementById('rag-para');if(p)p.classList.toggle('searching',s>=4);
+ var hits=document.querySelectorAll('#rag-para [data-food]');for(var i=0;i<hits.length;i++)hits[i].classList.toggle('hit',s>=5);
+ var c=document.getElementById('rag-cap');if(c)c.innerHTML=RAG_CAP[s]||'';
+ var ct=document.getElementById('rag-ct');if(ct)ct.textContent=s+' / '+RAG_MAX;
+ var b=document.getElementById('rag-btn');if(b)b.disabled=s>=RAG_MAX;}
+function ragStep(){if(ragState<RAG_MAX){ragState++;ragRender();}}
+function ragReset(){ragState=0;ragRender();}
+function ragInit(){if(document.getElementById('rag-cap'))ragReset();}
+if(document.readyState!=='loading')ragInit();else document.addEventListener('DOMContentLoaded',ragInit);
+
+function askClaudeSend(){
+  var q='What is frontmatter in a markdown file, what is it for, and what format is it written in?';
+  var deckText='';
+  document.querySelectorAll('.slide').forEach(function(s){ if(s.id==='s-final') return; deckText += s.innerText.replace(/\s+\n/g,'\n').trim()+'\n\n---\n\n'; });
+  var payload='You are answering ONLY from the presentation context provided below - do not use outside knowledge.\n\nQUESTION: '+q+'\n\n=== PRESENTATION CONTEXT ===\n'+deckText;
+  if(typeof pushClaude==='function') pushClaude(payload,'askStatus');
+}
   // init
   show(0);
 </script>
