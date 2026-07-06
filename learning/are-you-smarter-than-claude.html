@@ -707,10 +707,10 @@
         <li><button onclick="showById('s-pcm-what')"><span class="toc-num">49</span>Project Context Map</button></li>
         <li><button onclick="showById('s-junk-what')"><span class="toc-num">52</span>The Junkyard</button></li>
         <li><button onclick="showById('s-junk-rag')"><span class="toc-num">53</span>RAG</button></li>
-        <li><button onclick="showById('s-cabinet')"><span class="toc-num">56</span>Filing Cabinet</button></li>
-        <li><button onclick="showById('s-final')"><span class="toc-num">57</span>The Showdown</button></li>
-        <li><button onclick="showById('s-pelican-intro')"><span class="toc-num">60</span>Guess The Pelican</button></li>
-        <li><button onclick="showById('s-final-pelican')"><span class="toc-num">69</span>Grand Finale</button></li>
+        <li><button onclick="showById('s-cabinet')"><span class="toc-num">55</span>Filing Cabinet</button></li>
+        <li><button onclick="showById('s-final')"><span class="toc-num">56</span>The Showdown</button></li>
+        <li><button onclick="showById('s-pelican-intro')"><span class="toc-num">59</span>Guess The Pelican</button></li>
+        <li><button onclick="showById('s-final-pelican')"><span class="toc-num">68</span>Grand Finale</button></li>
       </ul>
     </div>
   </section>
@@ -2606,24 +2606,7 @@ Open only the entries you need.</pre>
         <p style="font-size:.92rem;">Search is one-way, with no room to ask a follow-up or verify. And the tiny windows and high costs it was built around are mostly gone.</p>
       </div>
     </div>
-    <div class="note-callout" style="font-size:.92rem;margin-top:.7rem;">The fix is not a bigger model. It is co-designing retrieval with reasoning: distil the sources first, retrieve dense summaries, and pull exact citations only when needed.</div>
-  </section>
-
-  <section class="slide" id="s-junk-vs">
-    <div class="kicker">The Junkyard · Where It Fits</div>
-    <h2>Search Finds It.<br>Curation Knows It.</h2>
-    <p class="lede">OKF and PCM put the structure in at write time. The Junkyard puts it in at read time, through search. Neither is wrong — they fit different amounts of upkeep.</p>
-    <table class="fmt-table" style="margin-top:.6rem;">
-      <thead><tr><th style="width:18%;"></th><th>OKF / PCM — Curated Index</th><th>Junkyard — RAG Over Everything</th></tr></thead>
-      <tbody>
-        <tr><td class="fmt-name">Structure added</td><td>At write time — frontmatter, index, links.</td><td>At read time — chunking and embedding search.</td></tr>
-        <tr><td class="fmt-name">Upkeep</td><td>Someone maintains the index as things change.</td><td>None. Drop a note in and move on.</td></tr>
-        <tr><td class="fmt-name">What the agent gets</td><td>The exact file the index points to.</td><td>Whichever chunks scored closest to the question.</td></tr>
-        <tr><td class="fmt-name">Fails when</td><td>The index goes stale and stops matching reality.</td><td>The real answer is split across chunks, or buried under near-duplicates.</td></tr>
-        <tr><td class="fmt-name">Best when</td><td>The knowledge is stable enough to be worth indexing.</td><td>The vault is large, messy, and growing faster than anyone can curate.</td></tr>
-      </tbody>
-    </table>
-    <div class="note-callout" style="font-size:.92rem;margin-top:.9rem;">Most real vaults end up as a mix: a few load-bearing notes get an index and consistent tags, and everything else sits in the Junkyard until search needs to find it.</div>
+    <div class="note-callout" style="font-size:.92rem;margin-top:.7rem;">And it buckles at scale: too much to search in time, and vector search returns too many near-identical hits. Vectors are sharpest on small, well-scoped chunks &mdash; so RAG only scales if you keep the pile small and organized.</div>
   </section>
 
   <section class="slide" id="s-cabinet">
