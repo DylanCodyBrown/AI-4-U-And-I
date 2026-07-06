@@ -591,19 +591,17 @@
 .inception-top{
   width:170px;
   height:auto;
-  transform-origin:50% 88%;            /* pivot at the tip, like a real top */
+  transform-origin:50% 89%;            /* pivot at the tip */
   transform-style:preserve-3d;
-  animation:inceptionSpin 0.7s linear infinite,
-            inceptionWobble 3.2s ease-in-out infinite;
+  animation:inceptionTurn 2.6s linear infinite;
 }
-@keyframes inceptionSpin{               /* spin about the vertical axis, not in-plane */
-  from{ transform:rotateY(0deg); }
-  to  { transform:rotateY(360deg); }
-}
-/* gentle precession: the axis leans a little, like a top that never quite falls */
-@keyframes inceptionWobble{
-  0%,100%{ rotate:-6deg; }
-  50%    { rotate:6deg; }
+/* precession: the tip stays planted and the top TURNS around its point (no axial spin) */
+@keyframes inceptionTurn{
+  0%   { transform:rotateZ(9deg)  rotateX(0deg); }
+  25%  { transform:rotateZ(0deg)  rotateX(9deg); }
+  50%  { transform:rotateZ(-9deg) rotateX(0deg); }
+  75%  { transform:rotateZ(0deg)  rotateX(-9deg); }
+  100% { transform:rotateZ(9deg)  rotateX(0deg); }
 }
 .inception-top-cap{
   font-family:'Space Mono',monospace;
@@ -616,7 +614,7 @@
   line-height:1.35;
 }
 @media (prefers-reduced-motion:reduce){
-  .inception-top{ animation:inceptionWobble 4s ease-in-out infinite; }
+  .inception-top{ animation:none; transform:rotateZ(7deg); }
 }
 @media (max-width:860px){
   .inception-top-wrap{ display:none; }   /* drop the totem before it crowds the layers */
