@@ -3001,11 +3001,22 @@ Open only the entries you need.</pre>
         `<text x="24" y="49.5" text-anchor="middle" font-family="'Space Mono',monospace" font-size="4.6" fill="#1a1410" font-weight="700">${label}</text>`+
         `</g>`;
     }
-    // 1 gold, centered, up high
-    tidyDocs.insertAdjacentHTML('beforeend', record(166, 280, true, 'BEATLES'));
-    // 4 ordinary records in a row below
-    const others=[['ELVIS',70],['MADONNA',122],['ABBA',174],['R.E.M.',226]];
-    others.forEach(([name,rx])=> tidyDocs.insertAdjacentHTML('beforeend', record(rx, 352, false, name)));
+    // Beatles is the ONLY record up on the wall
+    tidyDocs.insertAdjacentHTML('beforeend', record(166, 254, true, 'BEATLES'));
+    tidyDocs.insertAdjacentHTML('beforeend',
+      '<text x="190" y="324" text-anchor="middle" font-family="\'Space Mono\',monospace" font-size="7.6" fill="#5a6b4a" font-weight="700">"I think the Beatles are</text>'+
+      '<text x="190" y="335" text-anchor="middle" font-family="\'Space Mono\',monospace" font-size="7.6" fill="#5a6b4a" font-weight="700">the greatest band ever"</text>');
+    // everyone else is filed away in a record box, off the wall
+    function recordBox(bx, by, names){
+      var w=150, h=26, s='<g transform="translate('+bx+','+by+')">';
+      s+='<rect x="-3" y="0" width="'+(w+6)+'" height="7" rx="2" fill="#7a5227" stroke="#1a1410" stroke-width="1.8"/>';
+      s+='<rect x="0" y="6" width="'+w+'" height="'+(h-6)+'" rx="2" fill="#9c6b33" stroke="#1a1410" stroke-width="1.8"/>';
+      for(var i=0;i<9;i++){ var sx=7+i*((w-14)/9);
+        s+='<rect x="'+sx+'" y="9" width="'+((w-14)/9-3)+'" height="'+(h-13)+'" fill="#f4ecd8" stroke="#1a1410" stroke-width="0.6"/>'; }
+      s+='<text x="'+(w/2)+'" y="'+(h+9)+'" text-anchor="middle" font-family="\'Space Mono\',monospace" font-size="6.5" fill="#8a7a5c">'+names.join(' &middot; ')+'</text></g>';
+      return s;
+    }
+    tidyDocs.insertAdjacentHTML('beforeend', recordBox(115, 348, ['Elvis','Madonna','ABBA','R.E.M.']));
   }
 
   let curVeh='sonnet';
