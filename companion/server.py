@@ -96,6 +96,10 @@ def add_cors(resp: Response) -> Response:  # runs for every response
 
 # --- Terminal output ---------------------------------------------------------
 def _banner(prompt: str, masked: bool) -> None:
+    # Clear the terminal (screen + scrollback) before each run so the audience sees
+    # a clean demo. Toggle off with COMPANION_CLEAR=false.
+    if os.environ.get("COMPANION_CLEAR", "true").lower() in ("1", "true", "yes", "on"):
+        print("\033[2J\033[3J\033[H", end="", flush=True)
     ts = datetime.now().strftime("%H:%M:%S")
     bar = "─" * 64
     # When masked, show only that a prompt ran (and its length) — never the text.
