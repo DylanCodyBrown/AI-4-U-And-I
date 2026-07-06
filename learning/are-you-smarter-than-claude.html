@@ -641,6 +641,15 @@
 .hf-tok{font-weight:700;color:var(--sage);}
 .hf-burn{color:var(--rust-deep);}
 .hf-note{font-size:.85em;color:var(--rust-deep);opacity:.85;}
+
+/* ===== harness comparison bars + trigger keywords ===== */
+.hf-kw{color:var(--gold);text-decoration:underline;text-underline-offset:2px;font-weight:700;}
+.hf-trig{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--dusk);opacity:.8;margin:.05rem 0 .15rem;}
+.hf-ctx{flex-direction:column;align-items:stretch;gap:.18rem;}
+.hf-ctxrow{display:flex;align-items:center;gap:.5rem;}
+.hf-ctx-lab{flex:0 0 9em;text-align:right;color:var(--dusk);}
+.hf-mfill.hf-bad{background:var(--tow);}
+.hf-badtok{color:var(--tow);font-weight:700;}
 </style>
 </head>
 <body>
@@ -1162,10 +1171,11 @@
   <section class="slide" id="s-harness-01">
     <div class="kicker">01 &middot; Route First</div>
     <h2>Triage &amp; Route</h2>
-    <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat today, <b>Agent Smith</b></div>
+    <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">route it to the right specialist</span></div>
+    <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-01" style="--hf:0s;">
       <div class="h-stage">
-      <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:44vh;">
+      <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:40vh;">
   <defs><marker id="a1k" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1a1410"/></marker><marker id="a1s" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5a6b4a"/></marker><marker id="a1r" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#c1440e"/></marker><marker id="a1g" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#d4a017"/></marker></defs>
   <g style="animation-name:h-s1;animation-duration:5s;animation-timing-function:ease;animation-iteration-count:infinite;;opacity:0"><rect x="15" y="85" width="54" height="30" rx="4" stroke="#1a1410" stroke-width="1.5" style="fill:rgba(244,236,216,.85);" /><text x="42" y="100" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" style="fill:#1a1410;">IN</text></g>
   <line x1="69" y1="100" x2="133" y2="100" stroke="#1a1410" stroke-width="1.5" marker-end="url(#a1k)" style="animation-name:h-s1,h-d1;animation-duration:5s,5s;animation-timing-function:ease,ease;animation-iteration-count:infinite,infinite;;stroke-dasharray:74;stroke-dashoffset:74;opacity:0"/>
@@ -1190,10 +1200,8 @@
       </div>
     </div>
     <div class="hf-ctx">
-      <span class="hf-ctx-lab">Main context</span>
-      <div class="hf-mbar"><div class="hf-mfill" id="s-harness-01-mfill"></div></div>
-      <span class="hf-tok" id="s-harness-01-tok">0 tok</span>
-      <span class="hf-burn" id="s-harness-01-burn"></span>
+      <div class="hf-ctxrow"><span class="hf-ctx-lab">With pattern</span><div class="hf-mbar"><div class="hf-mfill hf-good" id="s-harness-01-mfill"></div></div><span class="hf-tok" id="s-harness-01-tok">0 tok</span></div>
+      <div class="hf-ctxrow"><span class="hf-ctx-lab">Inline, no pattern</span><div class="hf-mbar"><div class="hf-mfill hf-bad" id="s-harness-01-cfill"></div></div><span class="hf-tok hf-badtok" id="s-harness-01-ctok">0 tok</span></div>
     </div>
     <div class="hf-cap" id="s-harness-01-cap"></div>
     <div class="controls" style="justify-content:flex-start;">
@@ -1206,10 +1214,11 @@
   <section class="slide" id="s-harness-02">
     <div class="kicker">02 &middot; Parallel Isolation</div>
     <h2>Fan-Out &amp; Merge</h2>
-    <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat today, <b>Agent Smith</b></div>
+    <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">check cuisine, budget &amp; distance in parallel, then merge</span></div>
+    <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-02" style="--hf:0s;">
       <div class="h-stage">
-      <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:44vh;">
+      <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:40vh;">
   <defs><marker id="a2k" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1a1410"/></marker><marker id="a2s" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5a6b4a"/></marker><marker id="a2r" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#c1440e"/></marker><marker id="a2g" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#d4a017"/></marker></defs>
   <g style="animation-name:h-s1;animation-duration:5s;animation-timing-function:ease;animation-iteration-count:infinite;;opacity:0"><rect x="10" y="90" width="50" height="30" rx="4" stroke="#1a1410" stroke-width="1.5" style="fill:rgba(244,236,216,.85);" /><text x="35" y="105" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" style="fill:#1a1410;">IN</text></g>
   <line x1="60" y1="100" x2="138" y2="50" stroke="#1a1410" stroke-width="1.5" marker-end="url(#a2k)" style="animation-name:h-s1,h-d1;animation-duration:5s,5s;animation-timing-function:ease,ease;animation-iteration-count:infinite,infinite;;stroke-dasharray:103;stroke-dashoffset:103;opacity:0"/>
@@ -1240,10 +1249,8 @@
       </div>
     </div>
     <div class="hf-ctx">
-      <span class="hf-ctx-lab">Main context</span>
-      <div class="hf-mbar"><div class="hf-mfill" id="s-harness-02-mfill"></div></div>
-      <span class="hf-tok" id="s-harness-02-tok">0 tok</span>
-      <span class="hf-burn" id="s-harness-02-burn"></span>
+      <div class="hf-ctxrow"><span class="hf-ctx-lab">With pattern</span><div class="hf-mbar"><div class="hf-mfill hf-good" id="s-harness-02-mfill"></div></div><span class="hf-tok" id="s-harness-02-tok">0 tok</span></div>
+      <div class="hf-ctxrow"><span class="hf-ctx-lab">Inline, no pattern</span><div class="hf-mbar"><div class="hf-mfill hf-bad" id="s-harness-02-cfill"></div></div><span class="hf-tok hf-badtok" id="s-harness-02-ctok">0 tok</span></div>
     </div>
     <div class="hf-cap" id="s-harness-02-cap"></div>
     <div class="controls" style="justify-content:flex-start;">
@@ -1256,10 +1263,11 @@
   <section class="slide" id="s-harness-03">
     <div class="kicker">03 &middot; Fresh Eyes</div>
     <h2>Adversarial Check</h2>
-    <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat today, <b>Agent Smith</b></div>
+    <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">then have a skeptic double-check it</span></div>
+    <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-03" style="--hf:0s;">
       <div class="h-stage">
-      <svg viewBox="0 0 480 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:44vh;">
+      <svg viewBox="0 0 480 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:40vh;">
   <defs><marker id="a3k" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1a1410"/></marker><marker id="a3s" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5a6b4a"/></marker><marker id="a3r" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#c1440e"/></marker><marker id="a3g" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#d4a017"/></marker></defs>
   <g style="animation-name:h-s1;animation-duration:5s;animation-timing-function:ease;animation-iteration-count:infinite;;opacity:0"><rect x="20" y="85" width="80" height="30" rx="4" stroke="#1a1410" stroke-width="1.5" style="animation:h-rust 5s ease infinite;" /><text x="60" y="100" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" style="animation:h-ir 5s ease infinite;">WORKER</text></g>
   <line x1="100" y1="100" x2="178" y2="100" stroke="#1a1410" stroke-width="1.5" marker-end="url(#a3k)" style="animation-name:h-s1,h-d1;animation-duration:5s,5s;animation-timing-function:ease,ease;animation-iteration-count:infinite,infinite;;stroke-dasharray:88;stroke-dashoffset:88;opacity:0"/>
@@ -1278,10 +1286,8 @@
       </div>
     </div>
     <div class="hf-ctx">
-      <span class="hf-ctx-lab">Main context</span>
-      <div class="hf-mbar"><div class="hf-mfill" id="s-harness-03-mfill"></div></div>
-      <span class="hf-tok" id="s-harness-03-tok">0 tok</span>
-      <span class="hf-burn" id="s-harness-03-burn"></span>
+      <div class="hf-ctxrow"><span class="hf-ctx-lab">With pattern</span><div class="hf-mbar"><div class="hf-mfill hf-good" id="s-harness-03-mfill"></div></div><span class="hf-tok" id="s-harness-03-tok">0 tok</span></div>
+      <div class="hf-ctxrow"><span class="hf-ctx-lab">Inline, no pattern</span><div class="hf-mbar"><div class="hf-mfill hf-bad" id="s-harness-03-cfill"></div></div><span class="hf-tok hf-badtok" id="s-harness-03-ctok">0 tok</span></div>
     </div>
     <div class="hf-cap" id="s-harness-03-cap"></div>
     <div class="controls" style="justify-content:flex-start;">
@@ -1294,10 +1300,11 @@
   <section class="slide" id="s-harness-04">
     <div class="kicker">04 &middot; Many In, One Out</div>
     <h2>Generate &amp; Filter</h2>
-    <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat today, <b>Agent Smith</b></div>
+    <div class="hf-ask"><span class="hf-caret">&gt;</span> <span class="hf-kw">Have subagents find me 4 places to eat, then keep the best</span></div>
+    <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-04" style="--hf:0s;">
       <div class="h-stage">
-      <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:44vh;">
+      <svg viewBox="0 0 500 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:40vh;">
   <defs><marker id="a4k" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1a1410"/></marker><marker id="a4s" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5a6b4a"/></marker><marker id="a4r" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#c1440e"/></marker><marker id="a4g" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#d4a017"/></marker></defs>
   <g style="animation-name:h-s1;animation-duration:5s;animation-timing-function:ease;animation-iteration-count:infinite;;opacity:0"><rect x="10" y="85" width="70" height="30" rx="4" stroke="#1a1410" stroke-width="1.5" style="animation:h-rust 5s ease infinite;" /><text x="45" y="100" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" style="animation:h-ir 5s ease infinite;">GEN</text></g>
   <line x1="80" y1="95" x2="155" y2="45" stroke="#1a1410" stroke-width="1.5" marker-end="url(#a4k)" style="animation-name:h-s1,h-d1;animation-duration:5s,5s;animation-timing-function:ease,ease;animation-iteration-count:infinite,infinite;;stroke-dasharray:101;stroke-dashoffset:101;opacity:0"/>
@@ -1322,10 +1329,8 @@
       </div>
     </div>
     <div class="hf-ctx">
-      <span class="hf-ctx-lab">Main context</span>
-      <div class="hf-mbar"><div class="hf-mfill" id="s-harness-04-mfill"></div></div>
-      <span class="hf-tok" id="s-harness-04-tok">0 tok</span>
-      <span class="hf-burn" id="s-harness-04-burn"></span>
+      <div class="hf-ctxrow"><span class="hf-ctx-lab">With pattern</span><div class="hf-mbar"><div class="hf-mfill hf-good" id="s-harness-04-mfill"></div></div><span class="hf-tok" id="s-harness-04-tok">0 tok</span></div>
+      <div class="hf-ctxrow"><span class="hf-ctx-lab">Inline, no pattern</span><div class="hf-mbar"><div class="hf-mfill hf-bad" id="s-harness-04-cfill"></div></div><span class="hf-tok hf-badtok" id="s-harness-04-ctok">0 tok</span></div>
     </div>
     <div class="hf-cap" id="s-harness-04-cap"></div>
     <div class="controls" style="justify-content:flex-start;">
@@ -1338,10 +1343,11 @@
   <section class="slide" id="s-harness-05">
     <div class="kicker">05 &middot; Eliminate To One</div>
     <h2>Tournament</h2>
-    <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat today, <b>Agent Smith</b></div>
+    <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">compare them head-to-head, pick a winner</span></div>
+    <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-05" style="--hf:0s;">
       <div class="h-stage">
-      <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:44vh;">
+      <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:40vh;">
   <defs><marker id="a5k" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1a1410"/></marker><marker id="a5s" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5a6b4a"/></marker><marker id="a5r" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#c1440e"/></marker><marker id="a5g" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#d4a017"/></marker></defs>
   <g style="animation-name:h-s1;animation-duration:5s;animation-timing-function:ease;animation-iteration-count:infinite;;opacity:0"><rect x="15" y="24" width="58" height="26" rx="4" stroke="#1a1410" stroke-width="1.5" style="fill:rgba(244,236,216,.85);" /><text x="44" y="37" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" style="fill:#1a1410;">CAND A</text></g>
   <g style="animation-name:h-s1;animation-duration:5s;animation-timing-function:ease;animation-iteration-count:infinite;;opacity:0"><rect x="15" y="62" width="58" height="26" rx="4" stroke="#1a1410" stroke-width="1.5" style="fill:rgba(244,236,216,.85);" /><text x="44" y="75" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" style="fill:#1a1410;">CAND B</text></g>
@@ -1369,10 +1375,8 @@
       </div>
     </div>
     <div class="hf-ctx">
-      <span class="hf-ctx-lab">Main context</span>
-      <div class="hf-mbar"><div class="hf-mfill" id="s-harness-05-mfill"></div></div>
-      <span class="hf-tok" id="s-harness-05-tok">0 tok</span>
-      <span class="hf-burn" id="s-harness-05-burn"></span>
+      <div class="hf-ctxrow"><span class="hf-ctx-lab">With pattern</span><div class="hf-mbar"><div class="hf-mfill hf-good" id="s-harness-05-mfill"></div></div><span class="hf-tok" id="s-harness-05-tok">0 tok</span></div>
+      <div class="hf-ctxrow"><span class="hf-ctx-lab">Inline, no pattern</span><div class="hf-mbar"><div class="hf-mfill hf-bad" id="s-harness-05-cfill"></div></div><span class="hf-tok hf-badtok" id="s-harness-05-ctok">0 tok</span></div>
     </div>
     <div class="hf-cap" id="s-harness-05-cap"></div>
     <div class="controls" style="justify-content:flex-start;">
@@ -1385,10 +1389,11 @@
   <section class="slide" id="s-harness-06">
     <div class="kicker">06 &middot; Spawn Fresh</div>
     <h2>Loop Until Done</h2>
-    <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat today, <b>Agent Smith</b></div>
+    <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">keep trying until one passes my rules</span></div>
+    <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-06" style="--hf:0s;">
       <div class="h-stage">
-      <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:44vh;">
+      <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-height:40vh;">
   <defs><marker id="a6k" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1a1410"/></marker><marker id="a6s" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#5a6b4a"/></marker><marker id="a6r" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#c1440e"/></marker><marker id="a6g" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#d4a017"/></marker></defs>
   <g style="animation-name:h-s1;animation-duration:5s;animation-timing-function:ease;animation-iteration-count:infinite;;opacity:0"><rect x="15" y="75" width="80" height="34" rx="4" stroke="#1a1410" stroke-width="1.5" style="animation:h-rust 5s ease infinite;" /><text x="55" y="92" text-anchor="middle" dominant-baseline="middle" font-family="Space Mono,monospace" font-size="8" font-weight="700" style="animation:h-ir 5s ease infinite;">AGENT 1</text></g>
   <line x1="95" y1="92" x2="163" y2="92" stroke="#1a1410" stroke-width="1.5" marker-end="url(#a6k)" style="animation-name:h-s1,h-d1;animation-duration:5s,5s;animation-timing-function:ease,ease;animation-iteration-count:infinite,infinite;;stroke-dasharray:78;stroke-dashoffset:78;opacity:0"/>
@@ -1407,10 +1412,8 @@
       </div>
     </div>
     <div class="hf-ctx">
-      <span class="hf-ctx-lab">Main context</span>
-      <div class="hf-mbar"><div class="hf-mfill" id="s-harness-06-mfill"></div></div>
-      <span class="hf-tok" id="s-harness-06-tok">0 tok</span>
-      <span class="hf-burn" id="s-harness-06-burn"></span>
+      <div class="hf-ctxrow"><span class="hf-ctx-lab">With pattern</span><div class="hf-mbar"><div class="hf-mfill hf-good" id="s-harness-06-mfill"></div></div><span class="hf-tok" id="s-harness-06-tok">0 tok</span></div>
+      <div class="hf-ctxrow"><span class="hf-ctx-lab">Inline, no pattern</span><div class="hf-mbar"><div class="hf-mfill hf-bad" id="s-harness-06-cfill"></div></div><span class="hf-tok hf-badtok" id="s-harness-06-ctok">0 tok</span></div>
     </div>
     <div class="hf-cap" id="s-harness-06-cap"></div>
     <div class="controls" style="justify-content:flex-start;">
@@ -3845,10 +3848,10 @@ else document.addEventListener('DOMContentLoaded', hpInitAll);
 
 // ===== stepwise harness flow control =====
 const HF_T=['0s','1.5s','2.4s','3.3s','4.35s'];
-const HF={"s-harness-01": {"steps": [{"cap": "Press <b>Step</b> to route the ask.", "add": 0, "burn": 0}, {"cap": "<b>IN</b> &mdash; the ask reaches <b>Agent Smith</b>, the router.", "add": 20, "burn": 0}, {"cap": "<b>TRIAGE</b> &mdash; Smith weighs ~40 request types and routes to <b>Agent Vega &middot; Local Eats</b>. <span class=\"hf-note\">(~600 tok, tossed)</span>", "add": 8, "burn": 600}, {"cap": "<b>Agent Vega</b> scans 60 nearby menus in her own context, then drops it. <span class=\"hf-note\">(~2,400 tok, tossed &mdash; 0 added here)</span>", "add": 0, "burn": 2400}, {"cap": "<b>&#10003; Return</b> &mdash; Vega hands back one line: <span class=\"hf-ret\">El Rey Tacos &middot; 0.3mi &middot; open</span>.", "add": 14, "burn": 0}]}, "s-harness-02": {"steps": [{"cap": "Press <b>Step</b> to fan the ask out.", "add": 0, "burn": 0}, {"cap": "<b>IN</b> &mdash; <b>Agent Smith</b> splits the ask to three scouts.", "add": 20, "burn": 0}, {"cap": "<b>Scouts</b> &mdash; <b>Jones</b> (cuisine), <b>Ruiz</b> (budget), <b>Cho</b> (distance) each work alone. <span class=\"hf-note\">(~1,200 tok each, all tossed)</span>", "add": 0, "burn": 3600}, {"cap": "<b>MERGE</b> &mdash; Smith gets three one-liners: <i>tacos &middot; under $20 &middot; under 1mi</i>.", "add": 18, "burn": 0}, {"cap": "<b>OUT</b> &mdash; <span class=\"hf-ret\">El Rey Tacos</span>. Three long lists became three short lines.", "add": 12, "burn": 0}]}, "s-harness-03": {"steps": [{"cap": "Press <b>Step</b> to check the answer.", "add": 0, "burn": 0}, {"cap": "<b>WORKER</b> &mdash; <b>Agent Jones</b> proposes a pick.", "add": 20, "burn": 0}, {"cap": "<b>OUTPUT</b> &mdash; <i>Sushi Palace</i>.", "add": 10, "burn": 0}, {"cap": "<b>SKEPTIC</b> &mdash; <b>Agent Kim</b> checks it fresh: hours, price, reviews. <span class=\"hf-note\">(~1,800 tok, tossed)</span> &rarr; <b>FAIL</b>: closed Mon, $$$$.", "add": 8, "burn": 1800}, {"cap": "<b>&#10003; VERDICT</b> &mdash; revise to <span class=\"hf-ret\">El Rey Tacos</span>. Kim&rsquo;s notes never re-enter.", "add": 12, "burn": 0}]}, "s-harness-04": {"steps": [{"cap": "Press <b>Step</b> to generate, then filter.", "add": 0, "burn": 0}, {"cap": "<b>GEN</b> &mdash; <b>Agent Smith</b> brainstorms wide.", "add": 20, "burn": 0}, {"cap": "<b>Candidates</b> &mdash; Sushi Palace &middot; Blue Ox Steakhouse &middot; Ramen-ya &middot; El Rey Tacos.", "add": 0, "burn": 900}, {"cap": "<b>FILTER</b> &mdash; <b>Agent Patel</b> applies the rubric (open &middot; under $20 &middot; under 1mi). Three drop. <span class=\"hf-note\">(~1,000 tok scoring, tossed)</span>", "add": 0, "burn": 1000}, {"cap": "<b>&#10003; BEST</b> &mdash; only <span class=\"hf-ret\">El Rey Tacos</span> comes back.", "add": 12, "burn": 0}]}, "s-harness-05": {"steps": [{"cap": "Press <b>Step</b> to run the bracket.", "add": 0, "burn": 0}, {"cap": "<b>Four contenders</b> &mdash; Sushi Palace &middot; Blue Ox &middot; Ramen-ya &middot; El Rey.", "add": 20, "burn": 0}, {"cap": "<b>Judges</b> &mdash; <b>Vega</b> takes Sushi vs Blue Ox; <b>Cho</b> takes Ramen vs El Rey. <span class=\"hf-note\">(~1,500 tok, tossed)</span>", "add": 0, "burn": 1500}, {"cap": "<b>Winners</b> &mdash; Blue Ox and El Rey advance to <b>Agent Smith</b>, the final judge.", "add": 10, "burn": 800}, {"cap": "<b>&#10003; Champion</b> &mdash; <span class=\"hf-ret\">El Rey Tacos</span>.", "add": 10, "burn": 0}]}, "s-harness-06": {"steps": [{"cap": "Press <b>Step</b> to loop until it passes.", "add": 0, "burn": 0}, {"cap": "<b>Agent Jones</b> &mdash; first pick: <i>Blue Ox Steakhouse</i>.", "add": 20, "burn": 0}, {"cap": "<b>RUBRIC &#10007;</b> &mdash; too pricey. <span class=\"hf-note\">(~700 tok try, tossed)</span>", "add": 6, "burn": 700}, {"cap": "<b>Handoff &rarr; Agent Ruiz</b> &mdash; fresh start; only a one-line note carries over.", "add": 8, "burn": 700}, {"cap": "<b>&#10003; Pass</b> &mdash; <span class=\"hf-ret\">El Rey Tacos</span>. Rejected tries were tossed, not piled up.", "add": 12, "burn": 0}]}};
-const HF_CAP_CAP=300;
+const HF={"s-harness-01": {"steps": [{"cap": "Press <b>Step</b> to route the ask.", "add": 0, "burn": 0}, {"cap": "<b>IN</b> &mdash; the ask reaches the <b>router</b>.", "add": 20, "burn": 0}, {"cap": "<b>TRIAGE</b> &mdash; Smith weighs ~40 request types and routes to <b>Agent Vega &middot; Local Eats</b>. <span class=\"hf-note\">(~600 tok, tossed)</span>", "add": 8, "burn": 600}, {"cap": "<b>Agent Vega</b> scans 60 nearby menus in her own context, then drops it. <span class=\"hf-note\">(~2,400 tok, tossed &mdash; 0 added here)</span>", "add": 0, "burn": 2400}, {"cap": "<b>&#10003; Return</b> &mdash; Vega hands back one line: <span class=\"hf-ret\">El Rey Tacos &middot; 0.3mi &middot; open</span>.", "add": 14, "burn": 0}]}, "s-harness-02": {"steps": [{"cap": "Press <b>Step</b> to fan the ask out.", "add": 0, "burn": 0}, {"cap": "<b>IN</b> &mdash; the <b>router</b> splits the ask to three scouts.", "add": 20, "burn": 0}, {"cap": "<b>Scouts</b> &mdash; <b>Jones</b> (cuisine), <b>Ruiz</b> (budget), <b>Cho</b> (distance) each work alone. <span class=\"hf-note\">(~1,200 tok each, all tossed)</span>", "add": 0, "burn": 3600}, {"cap": "<b>MERGE</b> &mdash; the <b>merger</b> gets three one-liners: <i>tacos &middot; under $20 &middot; under 1mi</i>.", "add": 18, "burn": 0}, {"cap": "<b>OUT</b> &mdash; <span class=\"hf-ret\">El Rey Tacos</span>. Three long lists became three short lines.", "add": 12, "burn": 0}]}, "s-harness-03": {"steps": [{"cap": "Press <b>Step</b> to check the answer.", "add": 0, "burn": 0}, {"cap": "<b>WORKER</b> &mdash; <b>Agent Jones</b> proposes a pick.", "add": 20, "burn": 0}, {"cap": "<b>OUTPUT</b> &mdash; <i>Sushi Palace</i>.", "add": 10, "burn": 0}, {"cap": "<b>SKEPTIC</b> &mdash; <b>Agent Kim</b> checks it fresh: hours, price, reviews. <span class=\"hf-note\">(~1,800 tok, tossed)</span> &rarr; <b>FAIL</b>: closed Mon, $$$$.", "add": 8, "burn": 1800}, {"cap": "<b>&#10003; VERDICT</b> &mdash; revise to <span class=\"hf-ret\">El Rey Tacos</span>. Kim&rsquo;s notes never re-enter.", "add": 12, "burn": 0}]}, "s-harness-04": {"steps": [{"cap": "Press <b>Step</b> to generate, then filter.", "add": 0, "burn": 0}, {"cap": "<b>GEN</b> &mdash; the <b>generator</b> brainstorms wide.", "add": 20, "burn": 0}, {"cap": "<b>Candidates</b> &mdash; Sushi Palace &middot; Blue Ox Steakhouse &middot; Ramen-ya &middot; El Rey Tacos.", "add": 0, "burn": 900}, {"cap": "<b>FILTER</b> &mdash; <b>Agent Patel</b> applies the rubric (open &middot; under $20 &middot; under 1mi). Three drop. <span class=\"hf-note\">(~1,000 tok scoring, tossed)</span>", "add": 0, "burn": 1000}, {"cap": "<b>&#10003; BEST</b> &mdash; only <span class=\"hf-ret\">El Rey Tacos</span> comes back.", "add": 12, "burn": 0}]}, "s-harness-05": {"steps": [{"cap": "Press <b>Step</b> to run the bracket.", "add": 0, "burn": 0}, {"cap": "<b>Four contenders</b> &mdash; Sushi Palace &middot; Blue Ox &middot; Ramen-ya &middot; El Rey.", "add": 20, "burn": 0}, {"cap": "<b>Judges</b> &mdash; <b>Vega</b> takes Sushi vs Blue Ox; <b>Cho</b> takes Ramen vs El Rey. <span class=\"hf-note\">(~1,500 tok, tossed)</span>", "add": 0, "burn": 1500}, {"cap": "<b>Winners</b> &mdash; Blue Ox and El Rey advance to the <b>final judge</b>.", "add": 10, "burn": 800}, {"cap": "<b>&#10003; Champion</b> &mdash; <span class=\"hf-ret\">El Rey Tacos</span>.", "add": 10, "burn": 0}]}, "s-harness-06": {"steps": [{"cap": "Press <b>Step</b> to loop until it passes.", "add": 0, "burn": 0}, {"cap": "<b>Agent Jones</b> &mdash; first pick: <i>Blue Ox Steakhouse</i>.", "add": 20, "burn": 0}, {"cap": "<b>RUBRIC &#10007;</b> &mdash; too pricey. <span class=\"hf-note\">(~700 tok try, tossed)</span>", "add": 6, "burn": 700}, {"cap": "<b>Handoff &rarr; Agent Ruiz</b> &mdash; fresh start; only a one-line note carries over.", "add": 8, "burn": 700}, {"cap": "<b>&#10003; Pass</b> &mdash; <span class=\"hf-ret\">El Rey Tacos</span>. Rejected tries were tossed, not piled up.", "add": 12, "burn": 0}]}};
+const HF_WIN=300;
 const HF_STATE={};
-function hfRender(id){var st=HF_STATE[id]||0;var d=HF[id];if(!d)return;var fr=document.querySelector('.hframe[data-hf="'+id+'"]');if(fr)fr.style.setProperty('--hf',HF_T[st]);var cap=document.getElementById(id+'-cap');if(cap)cap.innerHTML=d.steps[st].cap||'';var main=0,burn=0,i;for(i=0;i<=st;i++){main+=d.steps[i].add;burn+=d.steps[i].burn;}var mf=document.getElementById(id+'-mfill');if(mf)mf.style.width=Math.min(100,Math.round(main/HF_CAP_CAP*100))+'%';var tk=document.getElementById(id+'-tok');if(tk)tk.textContent='~'+main+' tok';var bn=document.getElementById(id+'-burn');if(bn)bn.innerHTML=burn?('&middot; ~'+burn.toLocaleString()+' tok did the work elsewhere &amp; was discarded'):'';var ct=document.getElementById(id+'-ct');if(ct)ct.textContent=st+' / 4';var b=document.getElementById(id+'-btn');if(b)b.disabled=st>=4;}
+function hfRender(id){var st=HF_STATE[id]||0;var d=HF[id];if(!d)return;var fr=document.querySelector('.hframe[data-hf="'+id+'"]');if(fr)fr.style.setProperty('--hf',HF_T[st]);var cap=document.getElementById(id+'-cap');if(cap)cap.innerHTML=d.steps[st].cap||'';var main=0,burn=0,i;for(i=0;i<=st;i++){main+=d.steps[i].add;burn+=d.steps[i].burn;}var inl=main+burn;var mf=document.getElementById(id+'-mfill');if(mf)mf.style.width=Math.min(100,Math.round(main/HF_WIN*100))+'%';var cf=document.getElementById(id+'-cfill');if(cf)cf.style.width=Math.min(100,Math.round(inl/HF_WIN*100))+'%';var tk=document.getElementById(id+'-tok');if(tk)tk.textContent='~'+main+' tok';var ck=document.getElementById(id+'-ctok');if(ck)ck.textContent='~'+inl.toLocaleString()+' tok'+(inl>HF_WIN?' \u2014 floods it':'');var ct=document.getElementById(id+'-ct');if(ct)ct.textContent=st+' / 4';var b=document.getElementById(id+'-btn');if(b)b.disabled=st>=4;}
 function hfStep(id){HF_STATE[id]=Math.min(4,(HF_STATE[id]||0)+1);hfRender(id);}
 function hfReset(id){HF_STATE[id]=0;hfRender(id);}
 function hfInitAll(){Object.keys(HF).forEach(function(id){if(document.querySelector('.hframe[data-hf="'+id+'"]'))hfReset(id);});}
