@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/</loc></url>
-  <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/blog.html</loc></url>
-  <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/blog/2026-06-27-why-a-command-bar.md</loc></url>
-  <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/blog/2026-06-27-hello-world.md</loc></url>
-  <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/blog/2026-06-20-kickoff.md</loc></url>
   <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/skills.html</loc></url>
   <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/skills/app-clean-architecture.md</loc></url>
   <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/skills/game-dev-state-machines.md</loc></url>
@@ -30,5 +26,5 @@
   <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/agents/research-assistant.md</loc></url>
   <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/agents/code-reviewer.md</loc></url>
   <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/learning.html</loc></url>
-  <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/learning/are-you-smarter-than-claude.html</loc></url>
+  <url><loc>https://dylancodybrown.github.io/AI-4-U-And-I/learning/context-management-for-claude.html</loc></url>
 </urlset>

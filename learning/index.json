@@ -5,11 +5,11 @@
   "count": 1,
   "items": [
     {
-      "file": "learning/are-you-smarter-than-claude.html",
-      "title": "Are You Smarter Than Claude?",
+      "file": "learning/context-management-for-claude.html",
+      "title": "Context management for Claude",
       "category1": "AI Literacy",
       "category2": "Just for Fun",
-      "description": "A playful interactive deck — pit your instincts against Claude across a series of challenges and see who comes out smarter."
+      "description": "A factual presentation on context management for Claude."
     }
   ]
 }

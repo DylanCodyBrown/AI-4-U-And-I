@@ -4,12 +4,6 @@
 
 For a complete machine-readable index with absolute download URLs, fetch [site.json](https://dylancodybrown.github.io/AI-4-U-And-I/site.json). Each section also exposes `<section>/index.json`. Markdown files open rendered via `view.html?file=<path>` but the raw file is always directly fetchable at its path.
 
-## Blog — weekly stories
-
-- [Why a command bar?](https://dylancodybrown.github.io/AI-4-U-And-I/blog/2026-06-27-why-a-command-bar.md) — A terminal-style prompt is the fastest way to navigate — and the most agent-friendly.
-- [Hello, world](https://dylancodybrown.github.io/AI-4-U-And-I/blog/2026-06-27-hello-world.md) — The first entry — what this site is and where it's going.
-- [Kicking things off](https://dylancodybrown.github.io/AI-4-U-And-I/blog/2026-06-20-kickoff.md) — Why I'm building a personal, browsable home for everything AI.
-
 ## Skills — browsable library + popular (stored locally)
 
 - [Clean Architecture in Practice](https://dylancodybrown.github.io/AI-4-U-And-I/skills/app-clean-architecture.md) — Keep business rules independent of frameworks, UI, and databases.
@@ -45,5 +39,5 @@ For a complete machine-readable index with absolute download URLs, fetch [site.j
 
 ## Learning — interactive HTML docs (downloadable)
 
-- [Are You Smarter Than Claude?](https://dylancodybrown.github.io/AI-4-U-And-I/learning/are-you-smarter-than-claude.html) — A playful interactive deck — pit your instincts against Claude across a series of challenges and see who comes out smarter.
+- [Context management for Claude](https://dylancodybrown.github.io/AI-4-U-And-I/learning/context-management-for-claude.html) — A factual presentation on context management for Claude.
 

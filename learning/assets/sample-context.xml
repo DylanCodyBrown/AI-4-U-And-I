@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <name>Project Apollo</name>
+  <status>In Progress</status>
+  <launchDate>2024-12-01</launchDate>
+  <objectives>
+    <objective>Improve system latency by 20%</objective>
+    <objective>Refactor the authentication module</objective>
+  </objectives>
+</project>

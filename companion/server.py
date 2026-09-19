@@ -1,5 +1,5 @@
 """
-Presentation companion server for "Are You Smarter Than Claude?".
+Presentation companion server for "Context management for Claude".
 
 A slide button POSTs a prompt here; we shell out to the local `claude` CLI in
 print mode and let its output stream straight into the terminal you keep visible
