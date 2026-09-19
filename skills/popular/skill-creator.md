@@ -3,13 +3,13 @@ title: "Skill Creator"
 category1: "Development & Technical"
 category2: "Tooling"
 description: "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy."
-source: "https://github.com/anthropics/skills/tree/main/skills/skill-creator"
+source: "https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md"
 author: "Anthropic"
 license: "Apache-2.0"
 ---
 
 > **Popular skill** — content stored locally for reference.
-> Source: [anthropics/skills/skill-creator](https://github.com/anthropics/skills/tree/main/skills/skill-creator) · License: Apache-2.0
+> Source: [anthropics/skills](https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md) · License: Apache-2.0
 
 # Skill Creator
 

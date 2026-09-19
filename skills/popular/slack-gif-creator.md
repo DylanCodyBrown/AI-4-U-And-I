@@ -3,13 +3,13 @@ title: "Slack Gif Creator"
 category1: "Enterprise & Communication"
 category2: "Slack"
 description: "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\""
-source: "https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator"
+source: "https://github.com/anthropics/skills/blob/main/skills/slack-gif-creator/SKILL.md"
 author: "Anthropic"
 license: "Apache-2.0"
 ---
 
 > **Popular skill** — content stored locally for reference.
-> Source: [anthropics/skills/slack-gif-creator](https://github.com/anthropics/skills/tree/main/skills/slack-gif-creator) · License: Apache-2.0
+> Source: [anthropics/skills](https://github.com/anthropics/skills/blob/main/skills/slack-gif-creator/SKILL.md) · License: Apache-2.0
 
 # Slack GIF Creator
 

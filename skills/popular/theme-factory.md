@@ -3,13 +3,13 @@ title: "Theme Factory"
 category1: "Creative & Design"
 category2: "Theming"
 description: "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly."
-source: "https://github.com/anthropics/skills/tree/main/skills/theme-factory"
+source: "https://github.com/anthropics/skills/blob/main/skills/theme-factory/SKILL.md"
 author: "Anthropic"
 license: "Apache-2.0"
 ---
 
 > **Popular skill** — content stored locally for reference.
-> Source: [anthropics/skills/theme-factory](https://github.com/anthropics/skills/tree/main/skills/theme-factory) · License: Apache-2.0
+> Source: [anthropics/skills](https://github.com/anthropics/skills/blob/main/skills/theme-factory/SKILL.md) · License: Apache-2.0
 
 # Theme Factory Skill
 

@@ -3,13 +3,13 @@ title: "Internal Comms"
 category1: "Enterprise & Communication"
 category2: "Comms"
 description: "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.)."
-source: "https://github.com/anthropics/skills/tree/main/skills/internal-comms"
+source: "https://github.com/anthropics/skills/blob/main/skills/internal-comms/SKILL.md"
 author: "Anthropic"
 license: "Apache-2.0"
 ---
 
 > **Popular skill** — content stored locally for reference.
-> Source: [anthropics/skills/internal-comms](https://github.com/anthropics/skills/tree/main/skills/internal-comms) · License: Apache-2.0
+> Source: [anthropics/skills](https://github.com/anthropics/skills/blob/main/skills/internal-comms/SKILL.md) · License: Apache-2.0
 
 ## When to use this skill
 To write internal communications, use this skill for:

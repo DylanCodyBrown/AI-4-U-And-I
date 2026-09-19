@@ -3,13 +3,13 @@ title: "Webapp Testing"
 category1: "Development & Technical"
 category2: "Testing"
 description: "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs."
-source: "https://github.com/anthropics/skills/tree/main/skills/webapp-testing"
+source: "https://github.com/anthropics/skills/blob/main/skills/webapp-testing/SKILL.md"
 author: "Anthropic"
 license: "Apache-2.0"
 ---
 
 > **Popular skill** — content stored locally for reference.
-> Source: [anthropics/skills/webapp-testing](https://github.com/anthropics/skills/tree/main/skills/webapp-testing) · License: Apache-2.0
+> Source: [anthropics/skills](https://github.com/anthropics/skills/blob/main/skills/webapp-testing/SKILL.md) · License: Apache-2.0
 
 # Web Application Testing
 

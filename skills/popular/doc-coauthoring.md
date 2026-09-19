@@ -3,13 +3,13 @@ title: "Doc Coauthoring"
 category1: "Enterprise & Communication"
 category2: "Docs"
 description: "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks."
-source: "https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring"
+source: "https://github.com/anthropics/skills/blob/main/skills/doc-coauthoring/SKILL.md"
 author: "Anthropic"
 license: "Apache-2.0"
 ---
 
 > **Popular skill** — content stored locally for reference.
-> Source: [anthropics/skills/doc-coauthoring](https://github.com/anthropics/skills/tree/main/skills/doc-coauthoring) · License: Apache-2.0
+> Source: [anthropics/skills](https://github.com/anthropics/skills/blob/main/skills/doc-coauthoring/SKILL.md) · License: Apache-2.0
 
 # Doc Co-Authoring Workflow
 

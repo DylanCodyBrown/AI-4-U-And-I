@@ -3,13 +3,13 @@ title: "Mcp Builder"
 category1: "Development & Technical"
 category2: "MCP"
 description: "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK)."
-source: "https://github.com/anthropics/skills/tree/main/skills/mcp-builder"
+source: "https://github.com/anthropics/skills/blob/main/skills/mcp-builder/SKILL.md"
 author: "Anthropic"
 license: "Apache-2.0"
 ---
 
 > **Popular skill** — content stored locally for reference.
-> Source: [anthropics/skills/mcp-builder](https://github.com/anthropics/skills/tree/main/skills/mcp-builder) · License: Apache-2.0
+> Source: [anthropics/skills](https://github.com/anthropics/skills/blob/main/skills/mcp-builder/SKILL.md) · License: Apache-2.0
 
 # MCP Server Development Guide
 

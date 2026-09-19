@@ -11,30 +11,60 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = join(root, "skills", "popular");
 
-// Curated set of popular, openly-licensed (Apache-2.0) skills from the official
-// Anthropic skills collection. Source-available document skills (docx/pdf/pptx/
-// xlsx) are intentionally excluded — link to them instead of copying.
-const REPO = "anthropics/skills";
-const BRANCH = "main";
-const raw = (name) =>
-  `https://raw.githubusercontent.com/${REPO}/${BRANCH}/skills/${name}/SKILL.md`;
-const human = (name) =>
-  `https://github.com/${REPO}/tree/${BRANCH}/skills/${name}`;
+// Curated set of popular, openly-licensed skills pulled from various sources.
+// Each entry names its own repo/branch/path since sources differ in layout.
+// Source-available (non-open) skills are intentionally excluded — e.g.
+// anthropics/skills' docx/pdf/pptx/xlsx are "source-available", not Apache-2.0,
+// so link to them instead of copying.
+const raw = (repo, branch, path) =>
+  `https://raw.githubusercontent.com/${repo}/${branch}/${path}`;
+const human = (repo, branch, path) =>
+  `https://github.com/${repo}/blob/${branch}/${path}`;
+
+const ANTHROPIC_SKILLS = (name, category1, category2) => ({
+  name, category1, category2,
+  repo: "anthropics/skills", branch: "main", path: `skills/${name}/SKILL.md`,
+  author: "Anthropic", license: "Apache-2.0",
+});
 
 const SKILLS = [
-  { name: "algorithmic-art",      category1: "Creative & Design",          category2: "Generative Art" },
-  { name: "brand-guidelines",     category1: "Creative & Design",          category2: "Branding" },
-  { name: "canvas-design",        category1: "Creative & Design",          category2: "Visual Design" },
-  { name: "theme-factory",        category1: "Creative & Design",          category2: "Theming" },
-  { name: "frontend-design",      category1: "Development & Technical",     category2: "Frontend" },
-  { name: "web-artifacts-builder",category1: "Development & Technical",     category2: "Web" },
-  { name: "webapp-testing",       category1: "Development & Technical",     category2: "Testing" },
-  { name: "mcp-builder",          category1: "Development & Technical",     category2: "MCP" },
-  { name: "skill-creator",        category1: "Development & Technical",     category2: "Tooling" },
-  { name: "claude-api",           category1: "Development & Technical",     category2: "API" },
-  { name: "doc-coauthoring",      category1: "Enterprise & Communication",  category2: "Docs" },
-  { name: "internal-comms",       category1: "Enterprise & Communication",  category2: "Comms" },
-  { name: "slack-gif-creator",    category1: "Enterprise & Communication",  category2: "Slack" },
+  ANTHROPIC_SKILLS("algorithmic-art",       "Creative & Design",          "Generative Art"),
+  ANTHROPIC_SKILLS("brand-guidelines",      "Creative & Design",          "Branding"),
+  ANTHROPIC_SKILLS("canvas-design",         "Creative & Design",          "Visual Design"),
+  ANTHROPIC_SKILLS("theme-factory",         "Creative & Design",          "Theming"),
+  ANTHROPIC_SKILLS("frontend-design",       "Development & Technical",    "Frontend"),
+  ANTHROPIC_SKILLS("web-artifacts-builder", "Development & Technical",    "Web"),
+  ANTHROPIC_SKILLS("webapp-testing",        "Development & Technical",    "Testing"),
+  ANTHROPIC_SKILLS("mcp-builder",           "Development & Technical",    "MCP"),
+  ANTHROPIC_SKILLS("skill-creator",         "Development & Technical",    "Tooling"),
+  ANTHROPIC_SKILLS("claude-api",            "Development & Technical",    "API"),
+  ANTHROPIC_SKILLS("doc-coauthoring",       "Enterprise & Communication", "Docs"),
+  ANTHROPIC_SKILLS("internal-comms",        "Enterprise & Communication", "Comms"),
+  ANTHROPIC_SKILLS("slack-gif-creator",     "Enterprise & Communication", "Slack"),
+  {
+    name: "company-valuation", category1: "Finance", category2: "Valuation",
+    repo: "himself65/finance-skills", branch: "main",
+    path: "plugins/market-analysis/skills/company-valuation/SKILL.md",
+    author: "Alex Yang (himself65)", license: "MIT",
+  },
+  {
+    name: "yfinance-data", category1: "Finance", category2: "Market Data",
+    repo: "himself65/finance-skills", branch: "main",
+    path: "plugins/market-analysis/skills/yfinance-data/SKILL.md",
+    author: "Alex Yang (himself65)", license: "MIT",
+  },
+  {
+    name: "excel-ops", category1: "Development & Technical", category2: "Excel / Python",
+    repo: "agentui-ai/excel-ops", branch: "main",
+    path: "skills/excel-ops/SKILL.md",
+    author: "AgentUI", license: "MIT",
+  },
+  {
+    name: "jupyter-notebook", category1: "Development & Technical", category2: "Jupyter",
+    repo: "antquinonez/jupyter-notebook-skill", branch: "master",
+    path: "skills/jupyter-notebook/SKILL.md",
+    author: "Antonio Quinonez", license: "MIT",
+  },
 ];
 
 function parseFrontmatter(text) {
@@ -49,13 +79,15 @@ function parseFrontmatter(text) {
       if (!mm) continue;
       let val = mm[2].trim();
       if (/^[|>][-+]?$/.test(val)) {
-        // YAML block scalar — take the first indented content line as the value
-        let first = "";
+        // YAML block scalar — fold every indented continuation line into one
+        // string (basic ">" folding: join with spaces, blank line = paragraph break)
+        const parts = [];
         for (let j = i + 1; j < lines.length; j++) {
-          if (/^\s+\S/.test(lines[j])) { first = lines[j].trim(); break; }
-          if (/^\S/.test(lines[j])) break; // next key
+          if (/^\s+\S/.test(lines[j])) { parts.push(lines[j].trim()); i = j; }
+          else if (lines[j].trim() === "") { parts.push("\n"); }
+          else break; // next top-level key
         }
-        val = first;
+        val = parts.join(" ").replace(/ ?\n ?/g, "\n").trim();
       }
       data[mm[1]] = val;
     }
@@ -74,14 +106,14 @@ await mkdir(outDir, { recursive: true });
 let ok = 0;
 for (const s of SKILLS) {
   try {
-    const res = await fetch(raw(s.name));
+    const res = await fetch(raw(s.repo, s.branch, s.path));
     if (!res.ok) throw new Error("HTTP " + res.status);
     const text = await res.text();
     const { data, body } = parseFrontmatter(text);
 
     const title = prettify(data.name || s.name);
     const description = (data.description || "").replace(/\s+/g, " ").trim();
-    const src = human(s.name);
+    const src = human(s.repo, s.branch, s.path);
 
     const front =
       "---\n" +
@@ -90,13 +122,13 @@ for (const s of SKILLS) {
       `category2: ${yaml(s.category2)}\n` +
       `description: ${yaml(description)}\n` +
       `source: ${yaml(src)}\n` +
-      `author: ${yaml("Anthropic")}\n` +
-      `license: ${yaml("Apache-2.0")}\n` +
+      `author: ${yaml(s.author)}\n` +
+      `license: ${yaml(s.license)}\n` +
       "---\n\n";
 
     const attribution =
       `> **Popular skill** — content stored locally for reference.\n` +
-      `> Source: [${REPO}/${s.name}](${src}) · License: Apache-2.0\n\n`;
+      `> Source: [${s.repo}](${src}) · License: ${s.license}\n\n`;
 
     await writeFile(join(outDir, s.name + ".md"), front + attribution + body.trimStart() + "\n");
     console.log(`✓ ${s.name}`);

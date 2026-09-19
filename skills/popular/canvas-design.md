@@ -3,13 +3,13 @@ title: "Canvas Design"
 category1: "Creative & Design"
 category2: "Visual Design"
 description: "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations."
-source: "https://github.com/anthropics/skills/tree/main/skills/canvas-design"
+source: "https://github.com/anthropics/skills/blob/main/skills/canvas-design/SKILL.md"
 author: "Anthropic"
 license: "Apache-2.0"
 ---
 
 > **Popular skill** — content stored locally for reference.
-> Source: [anthropics/skills/canvas-design](https://github.com/anthropics/skills/tree/main/skills/canvas-design) · License: Apache-2.0
+> Source: [anthropics/skills](https://github.com/anthropics/skills/blob/main/skills/canvas-design/SKILL.md) · License: Apache-2.0
 
 These are instructions for creating design philosophies - aesthetic movements that are then EXPRESSED VISUALLY. Output only .md files, .pdf files, and .png files.
 

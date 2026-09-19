@@ -10,7 +10,6 @@
   // ---- single source of truth for every navigable destination ----
   var SITE = [
     { cmd: "/home",     title: "Home",     desc: "Back to start",            url: "index.html",    keys: ["home", "start", "index", "hub"] },
-    { cmd: "/blog",     title: "Blog",     desc: "Weekly stories",           url: "blog.html",     keys: ["blog", "stories", "weekly", "posts", "news", "writing"] },
     { cmd: "/mcp",      title: "MCP",      desc: "Model Context Protocol",   url: "mcp.html",      keys: ["mcp", "model context protocol", "servers", "tools", "connect"] },
     { cmd: "/skills",   title: "Skills",   desc: "Agent skills",             url: "skills.html",   keys: ["skills", "abilities", "slash", "commands"] },
     { cmd: "/agents",   title: "Agents",   desc: "AI agents & subagents",    url: "agents.html",   keys: ["agents", "subagents", "automation", "bots"] },

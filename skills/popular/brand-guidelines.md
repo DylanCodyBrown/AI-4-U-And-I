@@ -3,13 +3,13 @@ title: "Brand Guidelines"
 category1: "Creative & Design"
 category2: "Branding"
 description: "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply."
-source: "https://github.com/anthropics/skills/tree/main/skills/brand-guidelines"
+source: "https://github.com/anthropics/skills/blob/main/skills/brand-guidelines/SKILL.md"
 author: "Anthropic"
 license: "Apache-2.0"
 ---
 
 > **Popular skill** — content stored locally for reference.
-> Source: [anthropics/skills/brand-guidelines](https://github.com/anthropics/skills/tree/main/skills/brand-guidelines) · License: Apache-2.0
+> Source: [anthropics/skills](https://github.com/anthropics/skills/blob/main/skills/brand-guidelines/SKILL.md) · License: Apache-2.0
 
 # Anthropic Brand Styling
 

@@ -3,13 +3,13 @@ title: "Web Artifacts Builder"
 category1: "Development & Technical"
 category2: "Web"
 description: "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts."
-source: "https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder"
+source: "https://github.com/anthropics/skills/blob/main/skills/web-artifacts-builder/SKILL.md"
 author: "Anthropic"
 license: "Apache-2.0"
 ---
 
 > **Popular skill** — content stored locally for reference.
-> Source: [anthropics/skills/web-artifacts-builder](https://github.com/anthropics/skills/tree/main/skills/web-artifacts-builder) · License: Apache-2.0
+> Source: [anthropics/skills](https://github.com/anthropics/skills/blob/main/skills/web-artifacts-builder/SKILL.md) · License: Apache-2.0
 
 # Web Artifacts Builder
 
