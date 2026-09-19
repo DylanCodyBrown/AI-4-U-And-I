@@ -691,31 +691,31 @@
       <ul class="toc-list">
         <li><button onclick="showById('s-title')"><span class="toc-num">02</span>Open</button></li>
         <li><button onclick="showById('s-scene')"><span class="toc-num">03</span>The Car Analogy</button></li>
-        <li><button onclick="showById('s-q1')"><span class="toc-num">05</span>The Three Questions</button></li>
+        <li><button onclick="showById('s-q1')"><span class="toc-num">04</span>The Three Questions</button></li>
 
-        <li><button onclick="showById('s-mamba')"><span class="toc-num">08</span>How Memory Grew Up</button></li>
+        <li><button onclick="showById('s-mamba')"><span class="toc-num">06</span>How Memory Grew Up</button></li>
 
 
-        <li><button onclick="showById('s-context-rot')"><span class="toc-num">12</span>Context Rot</button></li>
-        <li><button onclick="showById('s-harness-intro')"><span class="toc-num">14</span>Context Patterns</button></li>
-        <li><button onclick="showById('s-tok-rank')"><span class="toc-num">24</span>Use Your Context Wisely</button></li>
-        <li><button onclick="showById('s-fmt-md')"><span class="toc-num">25</span>Documentation Formats</button></li>
-        <li><button onclick="showById('s-fmt-summary')"><span class="toc-num">33</span>Which Format, When</button></li>
-        <li><button onclick="showById('s-tok-effort')"><span class="toc-num">34</span>Effort & Model</button></li>
+        <li><button onclick="showById('s-context-rot')"><span class="toc-num">08</span>Context Rot</button></li>
+        <li><button onclick="showById('s-harness-intro')"><span class="toc-num">10</span>Context Patterns</button></li>
+        <li><button onclick="showById('s-tok-rank')"><span class="toc-num">18</span>Use Your Context Wisely</button></li>
+        <li><button onclick="showById('s-fmt-md')"><span class="toc-num">19</span>Documentation Formats</button></li>
+        <li><button onclick="showById('s-fmt-summary')"><span class="toc-num">27</span>Which Format, When</button></li>
+        <li><button onclick="showById('s-tok-effort')"><span class="toc-num">28</span>Effort & Model</button></li>
       </ul>
       <ul class="toc-list">
-        <li><button onclick="showById('s-tok-mcp')"><span class="toc-num">36</span>The MCP Token Leak</button></li>
-        <li><button onclick="showById('s-organizing')"><span class="toc-num">39</span>Organizing Context</button></li>
-        <li><button onclick="showById('s-answer')"><span class="toc-num">40</span>How Layers Nest</button></li>
-        <li><button onclick="showById('s-claude-global')"><span class="toc-num">41</span>CLAUDE.md & Memory</button></li>
-        <li><button onclick="showById('s-md-library')"><span class="toc-num">45</span>The Markdown Library</button></li>
-        <li><button onclick="showById('s-okf-what')"><span class="toc-num">46</span>Open Knowledge Format</button></li>
-        <li><button onclick="showById('s-pcm-what')"><span class="toc-num">50</span>Project Context Map</button></li>
-        <li><button onclick="showById('s-junk-what')"><span class="toc-num">53</span>The Junkyard</button></li>
-        <li><button onclick="showById('s-junk-rag')"><span class="toc-num">54</span>RAG</button></li>
-        <li><button onclick="showById('s-cabinet')"><span class="toc-num">56</span>Filing Cabinet</button></li>
+        <li><button onclick="showById('s-tok-mcp')"><span class="toc-num">30</span>The MCP Token Leak</button></li>
+        <li><button onclick="showById('s-organizing')"><span class="toc-num">33</span>Organizing Context</button></li>
+        <li><button onclick="showById('s-answer')"><span class="toc-num">34</span>How Layers Nest</button></li>
+        <li><button onclick="showById('s-claude-global')"><span class="toc-num">35</span>CLAUDE.md & Memory</button></li>
+        <li><button onclick="showById('s-md-library')"><span class="toc-num">39</span>The Markdown Library</button></li>
+        <li><button onclick="showById('s-okf-what')"><span class="toc-num">40</span>Open Knowledge Format</button></li>
+        <li><button onclick="showById('s-pcm-what')"><span class="toc-num">44</span>Project Context Map</button></li>
+        <li><button onclick="showById('s-junk-what')"><span class="toc-num">47</span>The Junkyard</button></li>
+        <li><button onclick="showById('s-junk-rag')"><span class="toc-num">48</span>RAG</button></li>
+        <li><button onclick="showById('s-cabinet')"><span class="toc-num">50</span>Filing Cabinet</button></li>
 
-        <li><button onclick="showById('s-pelican-intro')"><span class="toc-num">60</span>Guess The Pelican</button></li>
+        <li><button onclick="showById('s-pelican-intro')"><span class="toc-num">53</span>Guess The Pelican</button></li>
 
       </ul>
     </div>
@@ -3132,26 +3132,6 @@ Open only the entries you need.</pre>
 
   // ===== IT'S RAINING PROMPTS — attach prompts.md, run the lot in 4 batches (no truck) =====
   let roomPrompts=[...SEED_PROMPTS];
-
-  function parseMd(text){
-    // one prompt per line; ignore blank lines, markdown bullets, and # comments
-    return text.split(/\r?\n/)
-      .map(l=>l.replace(/^\s*[-*]\s+/,'').trim())
-      .filter(l=>l && !l.startsWith('#'));
-  }
-  function setMdStatus(msg,ok){
-    const el=document.getElementById('mdStatus');
-    el.textContent=msg; el.style.color = ok? 'var(--sage)' : 'var(--tow)';
-  }
-  function pickPromptsFile(ev){
-    const f=ev.target.files && ev.target.files[0]; if(!f) return;
-    const reader=new FileReader();
-    reader.onload=()=>{
-      const lines=parseMd(reader.result);
-      else setMdStatus(f.name+' was empty', false);
-    };
-    reader.readAsText(f);
-  }
 
   // rain-lot state (independent of the finance tow-truck lot)
   let rainMap, rainOut, rainBatchN, rainBatches, rareSet, vipSet;
