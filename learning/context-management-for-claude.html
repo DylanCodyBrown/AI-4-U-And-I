@@ -669,9 +669,10 @@
 #s-thanks{justify-content:center;}
 #s-thanks h1{font-size:clamp(2.6rem,8vw,6.5rem);line-height:.95;}
 
-/* ===== persistent home button ===== */
-#deckHome{position:fixed;top:14px;right:16px;z-index:60;font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.03em;background:var(--ink);color:var(--paper);border:none;border-radius:5px;padding:.35rem .65rem;cursor:pointer;opacity:.72;transition:opacity .2s ease,background .2s ease;}
-#deckHome:hover{opacity:1;background:var(--rust);}
+/* ===== persistent top-bar buttons (index + exit to site) ===== */
+.deck-topbar{position:fixed;top:14px;right:16px;z-index:60;display:flex;gap:.4rem;}
+.deck-topbar button,.deck-topbar a{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.03em;background:var(--ink);color:var(--paper);border:none;border-radius:5px;padding:.35rem .65rem;cursor:pointer;opacity:.72;transition:opacity .2s ease,background .2s ease;text-decoration:none;display:inline-block;}
+.deck-topbar button:hover,.deck-topbar a:hover{opacity:1;background:var(--rust);}
 </style>
 </head>
 <body>
@@ -681,7 +682,10 @@
 
   <!-- 1 TITLE -->
   <!-- INDEX -->
-  <button id="deckHome" onclick="showById('s-index')" title="Back to index" aria-label="Back to index">&#8962; Index</button>
+  <div class="deck-topbar">
+    <a href="../learning.html" title="Back to the Learning page" aria-label="Back to the Learning page">&larr; Learning</a>
+    <button id="deckHome" onclick="showById('s-index')" title="Back to index" aria-label="Back to index">&#8962; Index</button>
+  </div>
 
   <section class="slide active" id="s-index">
     <div class="kicker">Context management for Claude · Index</div>
