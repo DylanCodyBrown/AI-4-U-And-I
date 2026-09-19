@@ -9,7 +9,7 @@ Metadata is read from the `<head>`:
 
 ```html
 <head>
-  <title>Are You Smarter Than Claude?</title>
+  <title>Context management for Claude</title>
   <meta name="intro" content="A playful interactive deck — test your instincts against Claude." />
   <meta name="category1" content="AI Literacy" />
   <meta name="category2" content="Just for Fun" />

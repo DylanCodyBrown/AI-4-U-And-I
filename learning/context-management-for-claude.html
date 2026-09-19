@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Are You Smarter Than Claude?</title>
-<meta name="intro" content="A playful interactive deck — pit your instincts against Claude across a series of challenges and see who comes out smarter.">
+<title>Context management for Claude</title>
+<meta name="intro" content="A factual presentation on context management for Claude.">
 <meta name="category1" content="AI Literacy">
 <meta name="category2" content="Just for Fun">
 <style>
@@ -684,7 +684,7 @@
   <button id="deckHome" onclick="showById('s-index')" title="Back to index" aria-label="Back to index">&#8962; Index</button>
 
   <section class="slide active" id="s-index">
-    <div class="kicker">Are You Smarter Than Claude? · Index</div>
+    <div class="kicker">Context management for Claude · Index</div>
     <h2>Jump To<br>A Section</h2>
     <p class="lede" style="margin-bottom:.6rem;">Click any section to skip there directly — handy if the deck closes or you want to revisit a slide.</p>
     <div class="cols" style="margin-top:.2rem;">
@@ -692,10 +692,10 @@
         <li><button onclick="showById('s-title')"><span class="toc-num">02</span>Open</button></li>
         <li><button onclick="showById('s-scene')"><span class="toc-num">03</span>The Car Analogy</button></li>
         <li><button onclick="showById('s-q1')"><span class="toc-num">05</span>The Three Questions</button></li>
-        <li><button onclick="showById('s-weights')"><span class="toc-num">06</span>Fast vs Slow Weights</button></li>
+
         <li><button onclick="showById('s-mamba')"><span class="toc-num">08</span>How Memory Grew Up</button></li>
-        <li><button onclick="showById('s-audience')"><span class="toc-num">10</span>Context Window (Parking Lot)</button></li>
-        <li><button onclick="showById('s-needle-live')"><span class="toc-num">11</span>Find The Needle</button></li>
+
+
         <li><button onclick="showById('s-context-rot')"><span class="toc-num">12</span>Context Rot</button></li>
         <li><button onclick="showById('s-harness-intro')"><span class="toc-num">14</span>Context Patterns</button></li>
         <li><button onclick="showById('s-tok-rank')"><span class="toc-num">24</span>Use Your Context Wisely</button></li>
@@ -714,9 +714,9 @@
         <li><button onclick="showById('s-junk-what')"><span class="toc-num">53</span>The Junkyard</button></li>
         <li><button onclick="showById('s-junk-rag')"><span class="toc-num">54</span>RAG</button></li>
         <li><button onclick="showById('s-cabinet')"><span class="toc-num">56</span>Filing Cabinet</button></li>
-        <li><button onclick="showById('s-final')"><span class="toc-num">57</span>The Showdown</button></li>
+
         <li><button onclick="showById('s-pelican-intro')"><span class="toc-num">60</span>Guess The Pelican</button></li>
-        <li><button onclick="showById('s-final-pelican')"><span class="toc-num">69</span>Grand Finale</button></li>
+
       </ul>
     </div>
   </section>
@@ -862,16 +862,6 @@
     </div>
   </section>
 
-  <section class="slide" id="s-sticky">
-    <div class="kicker">Your Job All Session</div>
-    <h2>Grab A<br>Sticky Note</h2>
-    <p class="lede">For the rest of this session, <strong>you are the harness.</strong> Every time I ask the room something, run it through the three questions and jot what survives on your note.</p>
-    <div style="display:flex;justify-content:center;align-items:flex-start;margin-top:1.5rem;">
-      <div class="sticky"><div class="pin"></div><h4>Fast Weights ▸ Me</h4>
-        <ul style="list-style:none;margin-left:0;"><li>weather</li><li>tomorrow</li><li>location?</li><li>units (°F)</li></ul>
-      </div>
-    </div>
-  </section>
 
   <section class="slide" id="s-q1">
     <div class="kicker">Three Questions · Your Guide All Session</div>
@@ -899,26 +889,6 @@
     </div>
   </section>
 
-  <section class="slide" id="s-weights">
-    <div class="kicker">How The Harness Remembers</div>
-    <h2>Fast Weights<br>vs Slow Weights</h2>
-    <p class="lede">The model is the engine. The <strong>harness</strong> is everything wrapped around it, deciding what to load and what to drop. It pulls from two kinds of memory, and both have technical names.</p>
-    <div class="cols">
-      <div class="wbox fast">
-        <span class="tag fast">Fast Weights · Short-Term</span>
-        <h3>The Sticky Notes</h3>
-        <p>The live conversation — what's visible <em>right now</em>. Quick, temporary settings that wire up on the fly and fade when you close the tab.</p>
-        <p style="font-size:.92rem;margin-top:.5rem;opacity:.85;">Fast and disposable. Your working scratchpad.</p>
-      </div>
-      <div class="wbox slow">
-        <span class="tag slow">Slow Weights · Long-Term</span>
-        <h3>The Handout Docs</h3>
-        <p>Memories, documents, knowledge bases, plus the deep parameters set during training. <strong>Persistent knowledge</strong> the model carries everywhere, changed only by retraining.</p>
-        <p style="font-size:.92rem;margin-top:.5rem;opacity:.85;">Durable and authoritative. Survives the session.</p>
-      </div>
-    </div>
-    <div class="note-callout"><strong>Why "weights"?</strong> A weight is just a number the model turns up or down to decide how hard one word pulls on another. Memory is nothing more than a giant bank of these dials — some quick to change, some slow.</div>
-  </section>
 
   <section class="slide" id="s-overlap">
     <div class="kicker">Watch Words Fire Together</div>
@@ -1072,78 +1042,7 @@
     </div>
   </section>
 
-  <section class="slide" id="s-audience">
-    <div class="kicker" style="margin-bottom:.5rem;">The Context Window · Live</div>
-    <h2 style="margin-bottom:.6rem;">What is IBNR? <span style="font-size:.6em;opacity:.7;">(The 16-Spot Parking Lot)</span></h2>
-    <p class="lede" style="font-size:1.05rem;">The context window holds <strong>16 tokens</strong>, like 16 parking spots. Six real questions go in, one batch at a time — watch which words get kept and which get <strong>towed away.</strong></p>
-    <div class="cols" style="grid-template-columns:1.4fr .6fr;gap:1.2rem;align-items:start;">
-      <div>
-        <div id="rainQuestion" class="rain-question"><span class="rq-label">Press “Process Batch 1” to send the first question →</span></div>
-        <div id="claudePopup" class="claude-popup">
-          <svg viewBox="0 0 40 40" width="34" height="34" aria-hidden="true">
-            <g transform="translate(20,20)" fill="#c1440e" stroke="#c1440e" stroke-width="1.6" stroke-linecap="round">
-              <line x1="0" y1="-13" x2="0" y2="13"/><line x1="-13" y1="0" x2="13" y2="0"/>
-              <line x1="-9.2" y1="-9.2" x2="9.2" y2="9.2"/><line x1="-9.2" y1="9.2" x2="9.2" y2="-9.2"/>
-              <line x1="-5" y1="-12" x2="5" y2="12"/><line x1="5" y1="-12" x2="-5" y2="12"/>
-              <line x1="-12" y1="-5" x2="12" y2="5"/><line x1="-12" y1="5" x2="12" y2="-5"/>
-            </g>
-          </svg>
-          <div class="cp-bubble">Hold on — <strong>are we changing the subject?</strong> A hotdog has nothing to do with IBNR. I'll note it, but it's probably not worth keeping.</div>
-        </div>
-        <div class="controls" style="margin-bottom:.25rem;">
-          <button class="btn ghost" onclick="document.getElementById('mdPicker').click()">📂 Attach prompts.md</button>
-          <input type="file" id="mdPicker" accept=".md,.txt" style="display:none" onchange="pickPromptsFile(event)">
-          <span id="mdStatus" class="mono" style="font-size:.82rem;"></span>
-        </div>
-        <div class="lot-shell">
-          <div class="lot" id="rainLot"></div>
-        </div>
-        <div class="rain-legend" style="margin-top:.5rem;">
-          <span><b class="lg lg-new"></b> NEW</span>
-          <span><b class="lg lg-old"></b> OLD</span>
-          <span><b class="lg lg-rare"></b> RARE</span>
-          <span><b class="lg" style="background:#8a2c08;"></b> ★ VIP</span>
-          <span><b class="lg" style="background:repeating-linear-gradient(45deg,#efe7d4,#efe7d4 3px,#e6dcc4 3px,#e6dcc4 6px);border:1px dashed #8a2c08;"></b> RESERVED</span>
-        </div>
-        <div class="lot-stats" style="margin-top:.4rem;">
-          <span>Batch <span class="batchpill" id="rainPill"></span></span>
-          <span>Parked: <b id="rainParked">0</b>/16</span>
-          <span>Fell out: <b id="rainOut">0</b></span>
-          <span>Top: <b id="rainTop">—</b></span>
-        </div>
-        <div class="controls" style="justify-content:flex-start;margin-top:.25rem;">
-          <button class="btn" id="rainBtn" onclick="rainBatch()">Process Batch 1 ▸</button>
-          <button class="btn ghost" onclick="resetRain()">Reset</button>
-        </div>
-      </div>
-      <div>
-        <h3 style="margin-top:0;">Why it works this way</h3>
-        <ul class="reveal-list" id="lotWhy">
-          <li data-batch="1"><strong>Finite space.</strong> 16 spots — the model literally cannot hold everything.</li>
-          <li data-batch="2"><strong>Frequency.</strong> A word that keeps re-appearing gets reinforced and defends its spot.</li>
-          <li data-batch="3"><strong>Recency.</strong> Stale one-offs age NEW → OLD, then get evicted to free space. That's the idea behind the <span class="mono">/compact</span> command, which clears out aging context to make room.</li>
-          <li data-batch="4"><strong>Rarity.</strong> A few distinctive words (up to four) earn a RARE badge and resist eviction — distinctiveness carries weight, even at low frequency.</li>
-          <li data-batch="5"><strong>VIP reserved parking.</strong> When a rare word <em>also</em> recurs often, it gets promoted into a reserved spot up top, held no matter how full the lot gets. The empty reserved spots wait until a word earns one.</li>
-        </ul>
-        <p class="mono" id="lotHint" style="font-size:.78rem;opacity:.65;margin-top:.6rem;">▸ Process a batch to reveal the next rule.</p>
-      </div>
-    </div>
-  </section>
 
-  <section class="slide" id="s-needle-live">
-    <div class="kicker">Live · You vs Claude · Needle In A Haystack</div>
-    <h2>Find The Needle</h2>
-    <p class="lede" style="font-size:clamp(1.05rem,1.9vw,1.4rem);margin:.2rem 0 .5rem;color:var(--rust);"><strong>Q: What discount rate did Dana lock in for the whole book?</strong></p>
-    <div class="lot-shell" style="max-width:960px;margin-top:.1rem;">
-      <div id="needleHaystack" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem;padding:.4rem .5rem;text-align:left;"></div>
-    </div>
-    <div class="controls" style="justify-content:flex-start;margin-top:.5rem;gap:.7rem;align-items:center;">
-      <button class="btn" id="raceBtn" onclick="runNeedleRace()" title="Push to Claude" aria-label="Push to Claude" style="padding:.5rem;line-height:0;border-radius:10px;"><svg viewBox="0 0 100 100" width="30" height="30" aria-hidden="true" style="display:block"><g stroke="currentColor" stroke-width="9" stroke-linecap="round"><line x1="50" y1="8" x2="50" y2="34"/><line x1="50" y1="66" x2="50" y2="92"/><line x1="8" y1="50" x2="34" y2="50"/><line x1="66" y1="50" x2="92" y2="50"/><line x1="21" y1="21" x2="39" y2="39"/><line x1="61" y1="61" x2="79" y2="79"/><line x1="79" y1="21" x2="61" y2="39"/><line x1="39" y1="61" x2="21" y2="79"/></g></svg></button>
-      <button class="btn" id="revealNeedleBtn" onclick="revealNeedleLive()">✅ Reveal The Answer</button>
-      <span id="needleStatus" style="font-size:.9rem;opacity:.85;"></span>
-    </div>
-    <div class="note-callout" id="needleWhy" style="font-size:.92rem;margin-top:.5rem;display:none;"><strong>Be careful in long sessions:</strong> don't bleach your context window with meaningless information. The needle can be right there and still get missed once it's buried in noise.</div>
-  </section>
 
   <section class="slide" id="s-context-rot">
     <div class="kicker">Context Rot</div>
@@ -1180,7 +1079,7 @@
   <section class="slide" id="s-agent-files">
     <div class="kicker">Before The Patterns &middot; Specialists Are Files</div>
     <h2>What Is An<br>Agent File?</h2>
-    <p class="lede">Every &ldquo;specialist&rdquo; is a predefined <strong>agent</strong> &mdash; a markdown file, just like a CLAUDE.md, that says who it is, what it may touch, and how to act.</p>
+    <p class="lede">Every &ldquo;specialist&rdquo; is a predefined <strong>agent</strong> &mdash; a markdown file, just like a CLAUDE.md, that says who it is, what it may touch, and how to act.</p><a href="assets/project-manager.md" download="project-manager.md" class="btn" style="margin-bottom:1rem;display:inline-block;">Download Example Agent</a>
     <div class="cols" style="grid-template-columns:1.05fr .95fr;gap:1.2rem;align-items:start;margin-top:.4rem;">
       <div>
         <pre class="cmd-embed"><code>---
@@ -1486,42 +1385,7 @@ Nashville, TN. On every request:
     </div>
   </section>
 
-  <section class="slide" id="s-harness-ask">
-    <div class="kicker">Live · Ask Claude</div>
-    <h2>Ask Claude Live</h2>
-    <p class="lede" style="margin:.2rem 0 .4rem;">What is the best prompt for comparing multiple objects and narrowing down to one that we covered today? Six patterns on the table &mdash; make it pick one and defend it.</p>
-    <div class="hp-plist" style="margin-bottom:.4rem;">
-      <div class="hp-pchip"><span class="hp-pn">01</span><span class="hp-pt">Triage &amp; Route</span></div>
-      <div class="hp-pchip"><span class="hp-pn">02</span><span class="hp-pt">Fan-Out &amp; Merge</span></div>
-      <div class="hp-pchip"><span class="hp-pn">03</span><span class="hp-pt">Adversarial Check</span></div>
-      <div class="hp-pchip"><span class="hp-pn">04</span><span class="hp-pt">Generate &amp; Filter</span></div>
-      <div class="hp-pchip"><span class="hp-pn">05</span><span class="hp-pt">Tournament</span></div>
-      <div class="hp-pchip"><span class="hp-pn">06</span><span class="hp-pt">Loop Until Done</span></div>
-    </div>
-    <div class="controls">
-      <button class="btn" onclick="pushClaude('What is the best prompt for comparing multiple objects and narrowing down to one? Pick ONE of the patterns we covered today - Triage and Route, Fan-Out and Merge, Adversarial Check, Generate and Filter, Tournament, or Loop Until Done - and justify in two sentences.','harnessAskStatus')">▶ Ask Claude live</button>
-      <span id="harnessAskStatus" style="font-size:.9rem;opacity:.85;"></span>
-    </div>
-    <div class="hp-cap" style="margin-top:.7rem;">Hint: comparing objects head-to-head is what a <strong>Tournament</strong> is built for &mdash; but see if Claude agrees.</div>
-</section>
 
-  <section class="slide" id="s-harness-audience">
-    <div class="kicker">Your Turn · Vote Out Loud</div>
-    <h2>Which One<br>Would You Pick?</h2>
-    <p class="lede" style="margin:.2rem 0;">What is the best prompt for comparing multiple objects and narrowing down to one that we covered today?</p>
-    <div class="hp-vote">
-      <div class="hp-vcard"><span class="hp-vn">01</span><div class="hp-vt">Triage<br>&amp; Route</div></div>
-      <div class="hp-vcard"><span class="hp-vn">02</span><div class="hp-vt">Fan-Out<br>&amp; Merge</div></div>
-      <div class="hp-vcard"><span class="hp-vn">03</span><div class="hp-vt">Adversarial<br>Check</div></div>
-      <div class="hp-vcard"><span class="hp-vn">04</span><div class="hp-vt">Generate<br>&amp; Filter</div></div>
-      <div class="hp-vcard"><span class="hp-vn">05</span><div class="hp-vt">Tournament</div></div>
-      <div class="hp-vcard"><span class="hp-vn">06</span><div class="hp-vt">Loop<br>Until Done</div></div>
-    </div>
-    <div class="controls" style="margin-top:.3rem;">
-      <button class="btn" onclick="pushClaude('What is the best prompt for comparing multiple objects and narrowing down to one? Pick ONE of the patterns we covered today - Triage and Route, Fan-Out and Merge, Adversarial Check, Generate and Filter, Tournament, or Loop Until Done. Return only one, with a one-sentence why.','audienceAskStatus')">▶ Run it on Claude</button>
-      <span id="audienceAskStatus" style="font-size:.9rem;opacity:.85;"></span>
-    </div>
-</section>
 
   <section class="slide" id="s-token-mgmt">
     <div class="kicker">The Pivot</div>
@@ -1533,7 +1397,6 @@ Nashville, TN. On every request:
   <section class="slide" id="s-tok-rank">
     <div class="kicker">Token Management · Spend It Where It Counts</div>
     <h2>Use Your<br>Context Wisely</h2>
-    <p class="lede">The window is finite, so every choice is a spending decision. Four levers, ranked by how much context they buy back. Get the top one right and the rest barely matters.</p>
     <ol class="rank-list">
       <li>
         <span class="rk-num">1</span>
@@ -1569,7 +1432,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-fmt-md">
     <div class="kicker" style="margin-bottom:.5rem;">Documentation Formats · Markdown</div>
     <h2 style="margin-bottom:.5rem;">Markdown</h2>
-    <p class="lede" style="font-size:1.05rem;margin-bottom:.6rem;">The spine of agent docs. It's <strong>plain text</strong>, so it reads fine raw, but those same characters render into real structure. Left is what you type, right is what the model gets.</p>
+    <p class="lede" style="font-size:1.05rem;margin-bottom:.6rem;">The spine of agent docs. It's <strong>plain text</strong>, so it reads fine raw, but those same characters render into real structure. Left is what you type, right is what the model gets.</p><a href="assets/sample-context.md" download="sample-context.md" class="btn" style="margin-bottom:1rem;display:inline-block;">Download Markdown Sample</a>
     <div class="md-split">
       <div>
         <div class="pane-label">▸ What you type (raw)</div>
@@ -1632,7 +1495,7 @@ ORDER BY variance DESC;
   <section class="slide" id="s-fmt-xml">
     <div class="kicker">Documentation Formats · XML</div>
     <h2>XML</h2>
-    <p class="lede">It nests <strong>anything</strong> JSON can, to the same depth — except it wraps every value in both an opening <em>and</em> a closing tag. Machines find that bulletproof. Humans find it almost unreadable.</p>
+    <p class="lede">It nests <strong>anything</strong> JSON can, to the same depth — except it wraps every value in both an opening <em>and</em> a closing tag. Machines find that bulletproof. Humans find it almost unreadable.</p><a href="assets/sample-context.xml" download="sample-context.xml" class="btn" style="margin-bottom:1rem;display:inline-block;">Download XML Sample</a>
     <div class="md-split">
       <div>
         <div class="pane-label">▸ Same data model as the JSON slide</div>
@@ -1668,7 +1531,7 @@ ORDER BY variance DESC;
   <section class="slide" id="s-fmt-json">
     <div class="kicker">Documentation Formats · JSON</div>
     <h2>JSON</h2>
-    <p class="lede">YAML's strict cousin, with braces and quotes instead of whitespace. The same bytes can take two shapes: a machine happily reads the <strong>condensed</strong> one-liner, while a human needs the <strong>expanded</strong> tree. Either way it'll hold a whole nested data model.</p>
+    <p class="lede">YAML's strict cousin, with braces and quotes instead of whitespace. The same bytes can take two shapes: a machine happily reads the <strong>condensed</strong> one-liner, while a human needs the <strong>expanded</strong> tree. Either way it'll hold a whole nested data model.</p><a href="assets/sample-context.json" download="sample-context.json" class="btn" style="margin-bottom:1rem;display:inline-block;">Download JSON Sample</a>
     <div class="md-split">
       <div>
         <div class="pane-label">▸ Condensed (what ships on the wire)</div>
@@ -1706,7 +1569,7 @@ ORDER BY variance DESC;
   <section class="slide" id="s-fmt-yaml">
     <div class="kicker">Documentation Formats · YAML</div>
     <h2>YAML</h2>
-    <p class="lede">Think of it as <strong>lazy, nested markdown</strong> — indentation instead of brackets. Whitespace <em>is</em> the structure.</p>
+    <p class="lede">Think of it as <strong>lazy, nested markdown</strong> — indentation instead of brackets. Whitespace <em>is</em> the structure.</p><a href="assets/sample-context.yaml" download="sample-context.yaml" class="btn" style="margin-bottom:1rem;display:inline-block;">Download YAML Sample</a>
     <div class="cols">
       <div>
         <pre class="code"><span class="k">reconciliation:</span>           <span class="c"># a key</span>
@@ -1736,7 +1599,7 @@ ORDER BY variance DESC;
   <section class="slide" id="s-fmt-csv">
     <div class="kicker">Documentation Formats · CSV</div>
     <h2>CSV</h2>
-    <p class="lede">It cuts two ways. A <strong>small relational map</strong> is about the best token bargain you'll find. Feed it a <strong>giant data dump</strong>, though, and you're just burning money.</p>
+    <p class="lede">It cuts two ways. A <strong>small relational map</strong> is about the best token bargain you'll find. Feed it a <strong>giant data dump</strong>, though, and you're just burning money.</p><a href="assets/sample-context.csv" download="sample-context.csv" class="btn" style="margin-bottom:1rem;display:inline-block;">Download CSV Sample</a>
     <div class="cols">
       <div>
         <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem;">
@@ -2666,16 +2529,6 @@ Open only the entries you need.</pre>
     </div>
 </section>
 
-  <section class="slide" id="s-final">
-    <div class="kicker">The Showdown</div>
-    <h2>Are You<br>Smarter Than <span style="color:var(--rust)">Claude?</span></h2>
-    <div class="note-callout" style="font-size:1.5rem;margin:1.4rem 0;"><strong>"What is frontmatter in a markdown file, what's it for &mdash; and what format is it written in?"</strong></div>
-    <div class="controls" style="margin-top:1rem;">
-      <button class="btn ghost" id="askClaudeBtn" onclick="askClaude()">📋 Copy Deck + Question</button>
-      <button class="btn" onclick="askClaudeSend()">▶ Send To Claude</button>
-      <span id="askStatus" class="mono" style="font-size:.82rem;"></span>
-    </div>
-  </section>
 
   <section class="slide" id="s-bonus">
     <div class="kicker">Bonus · It Was Never Academic</div>
@@ -2933,8 +2786,6 @@ Open only the entries you need.</pre>
     slides[idx].classList.add('active');
     document.getElementById('cur').textContent=idx+1;
     document.getElementById('progress').style.width=((idx+1)/slides.length*100)+'%';
-    if(slides[idx].id==='s-audience') resetRain();
-    if(slides[idx].id==='s-needle-live') renderNeedle();
     if(slides[idx].id==='s-fmt-html') initSlider();
     if(slides[idx].id==='s-overlap' && freqShown) showFreq();
     _tStart = Date.now(); tickTimer();
@@ -3297,7 +3148,6 @@ Open only the entries you need.</pre>
     const reader=new FileReader();
     reader.onload=()=>{
       const lines=parseMd(reader.result);
-      if(lines.length){ roomPrompts=lines; setMdStatus('✓ attached '+lines.length+' prompts from '+f.name+' — press Process', true); resetRain(); }
       else setMdStatus(f.name+' was empty', false);
     };
     reader.readAsText(f);
@@ -3756,31 +3606,6 @@ Show every iteration.`
   };
   function harnessDemo(key){ pushClaude(HARNESS_DEMOS[key], 'harnessStatus'); }
 
-  function askClaude(){
-    const q='What is frontmatter in a markdown file, what is it for, and what format is it written in?';
-    // gather the deck's visible text as Claude's "context"
-    let deckText='';
-    document.querySelectorAll('.slide').forEach(s=>{
-      if(s.id==='s-final') return; // don't feed it the question slide
-      deckText += s.innerText.replace(/\s+\n/g,'\n').trim() + '\n\n---\n\n';
-    });
-    const payload =
-      'You are answering ONLY from the presentation context provided below — do not use outside knowledge.\n\n'+
-      'QUESTION: '+q+'\n\n'+
-      '=== PRESENTATION CONTEXT ===\n'+deckText;
-    const btn=document.getElementById('askClaudeBtn');
-    const status=document.getElementById('askStatus');
-    navigator.clipboard.writeText(payload).then(()=>{
-      status.textContent='✓ copied — paste into Claude'; status.style.color='var(--sage)';
-    }).catch(()=>{
-      // fallback: drop it in a textarea the presenter can copy manually
-      const ta=document.createElement('textarea');
-      ta.value=payload; document.body.appendChild(ta); ta.select();
-      try{document.execCommand('copy'); status.textContent='✓ copied — paste into Claude'; status.style.color='var(--sage)';}
-      catch(e){ status.textContent='clipboard blocked — see console'; status.style.color='var(--tow)'; console.log(payload); }
-      ta.remove();
-    });
-  }
 
   // ===== GUESS THE PELICAN =====
   function pelicanReveal(idx, which){
@@ -3973,13 +3798,6 @@ function ragReset(){ragState=0;ragRender();}
 function ragInit(){if(document.getElementById('rag-cap'))ragReset();}
 if(document.readyState!=='loading')ragInit();else document.addEventListener('DOMContentLoaded',ragInit);
 
-function askClaudeSend(){
-  var q='What is frontmatter in a markdown file, what is it for, and what format is it written in?';
-  var deckText='';
-  document.querySelectorAll('.slide').forEach(function(s){ if(s.id==='s-final') return; deckText += s.innerText.replace(/\s+\n/g,'\n').trim()+'\n\n---\n\n'; });
-  var payload='You are answering ONLY from the presentation context provided below - do not use outside knowledge.\n\nQUESTION: '+q+'\n\n=== PRESENTATION CONTEXT ===\n'+deckText;
-  if(typeof pushClaude==='function') pushClaude(payload,'askStatus');
-}
 // ===== deckAutoPush: fire a companion prompt when certain slides open =====
 (function(){
   var AUTO={

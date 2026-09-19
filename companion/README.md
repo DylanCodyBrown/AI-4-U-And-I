@@ -1,6 +1,6 @@
 # Claude presentation companion
 
-A tiny local server that lets a slide button in *"Are You Smarter Than Claude?"*
+A tiny local server that lets a slide button in *"Context management for Claude"*
 push a prompt to your **local** `claude` CLI so the demo runs live in a terminal
 you keep visible. One-way: the deck sends → Claude Code runs → you read the
 terminal. Nothing comes back into the deck except a small ack.

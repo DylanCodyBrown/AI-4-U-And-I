@@ -1,13 +1,13 @@
 ---
 name: presentation-companion
-description: Run the live-demo companion for the "Are You Smarter Than Claude?" slide deck. Use when the user wants to present that deck and have its slide buttons drive the local `claude` CLI so demos run live in a terminal. Starts a small local Flask server on 127.0.0.1:8765 that the deck POSTs prompts to.
+description: Run the live-demo companion for the "Context management for Claude" slide deck. Use when the user wants to present that deck and have its slide buttons drive the local `claude` CLI so demos run live in a terminal. Starts a small local Flask server on 127.0.0.1:8765 that the deck POSTs prompts to.
 ---
 
-# Are You Smarter Than Claude? — presentation companion
+# Context management for Claude — presentation companion
 
 This skill sets up and runs the local companion server for the interactive deck
-**"Are You Smarter Than Claude?"**
-(https://dylancodybrown.github.io/AI-4-U-And-I/learning/are-you-smarter-than-claude.html).
+**"Context management for Claude"**
+(https://dylancodybrown.github.io/AI-4-U-And-I/learning/context-management-for-claude.html).
 
 The deck is a static GitHub Pages site. Some slides have "Run it on Claude" and
 auto-play buttons that POST a prompt to a small local server, which shells out to
