@@ -1013,7 +1013,7 @@
         </svg>
         <h3 style="font-size:1.02rem;margin:.4rem 0 .2rem;">A Running Summary</h3>
         <p style="font-size:.88rem;">One evolving summary of the whole story — all the memory, none of the sprawl.</p>
-        <p style="font-size:.82rem;color:var(--sage);margin-top:.3rem;">✓ Long memory that stays fast & cheap.</p>
+        <p style="font-size:.82rem;color:var(--sage);margin-top:.3rem;">✓ Long memory that stays fast & light.</p>
       </div>
     </div>
     <p class="mono" style="font-size:.7rem;opacity:.72;margin-top:.6rem;text-align:center;line-height:1.5;">In ML terms: sticky note = <strong>RNN</strong> (Recurrent Neural Network) · notepad = <strong>LSTM</strong> (Long Short-Term Memory) / <strong>GRU</strong> (Gated Recurrent Unit) · every page on the wall = <strong>Transformer</strong> · tidy summary = <strong>Mamba</strong> (a Selective State-Space Model)</p>
@@ -1022,17 +1022,17 @@
   <section class="slide" id="s-mamba2">
     <div class="kicker">The Missing Sauce · Found Recently</div>
     <h2>Holding<br>The Thread</h2>
-    <p class="lede">For decades the trade was brutal: remember everything and crawl, or stay fast and forget. <strong>Only in the last couple of years</strong> did models learn to carry a running summary of the whole conversation — long memory that stays cheap.</p>
+    <p class="lede">For decades the trade was brutal: remember everything and crawl, or stay fast and forget. <strong>Only in the last couple of years</strong> did models learn to carry a running summary of the whole conversation — long memory that stays lean.</p>
     <div class="cols-3" style="align-items:stretch;margin-top:1.2rem;">
       <div class="wbox slow">
         <span class="tag slow">The Old Trade-off</span>
         <h3>Remember Or Run</h3>
-        <p>Re-read the whole transcript every turn — accurate, but slow and expensive. Or keep a tiny window and lose the thread.</p>
+        <p>Re-read the whole transcript every turn — accurate, but slow. Or keep a tiny window and lose the thread.</p>
       </div>
       <div class="wbox">
         <span class="tag">The Bridge · For A While</span>
         <h3>Hybrids</h3>
-        <p>Mix the old and new memory styles into one: more memory, less cost. Jamba, Griffin, and Samba held the line until the cleaner approach caught up.</p>
+        <p>Mix the old and new memory styles into one: more memory, less overhead. Jamba, Griffin, and Samba held the line until the cleaner approach caught up.</p>
       </div>
       <div class="wbox fast">
         <span class="tag fast">The Breakthrough</span>
@@ -1105,7 +1105,7 @@ Nashville, TN. On every request:
 
   <section class="slide" id="s-harness-intro">
     <div class="kicker">Fighting Context Rot · The Patterns</div>
-    <h2>Spend The Window<br>Wisely</h2>
+    <h2>Use The Window<br>Wisely</h2>
     <p class="lede" style="margin:.2rem 0 .3rem;">Six reusable <strong>patterns</strong>, same trick every time: do the messy work in a throwaway sub-context, hand back one clean line, keep the main window small.</p>
     <p style="font-size:.95rem;opacity:.85;margin-bottom:.2rem;">One example runs through all six &mdash; <span class="mono">&ldquo;Where should I eat today?&rdquo;</span></p>
     <div class="hp-plist">
@@ -1395,7 +1395,7 @@ Nashville, TN. On every request:
   </section>
 
   <section class="slide" id="s-tok-rank">
-    <div class="kicker">Token Management · Spend It Where It Counts</div>
+    <div class="kicker">Token Management · Use It Where It Counts</div>
     <h2>Use Your<br>Context Wisely</h2>
     <ol class="rank-list">
       <li>
@@ -1409,7 +1409,7 @@ Nashville, TN. On every request:
         <span class="rk-num">2</span>
         <div class="rk-body">
           <h4>The effort / reasoning setting <span class="rk-save">big lever</span></h4>
-          <p>How hard the model thinks before answering. Max effort fills the window with its own working-out — 10× the spend of low for the same prompt. Match the setting to the task and keep that room free.</p>
+          <p>How hard the model thinks before answering. Max effort fills the window with its own working-out — 10× the tokens of low for the same prompt. Match the setting to the task and keep that room free.</p>
         </div>
       </li>
       <li>
@@ -1423,7 +1423,7 @@ Nashville, TN. On every request:
         <span class="rk-num">4</span>
         <div class="rk-body">
           <h4>MCPs &amp; tool calls <span class="rk-save">silent leak</span></h4>
-          <p>Connectors are great — until a vague request makes the model hunt call after call, dumping every result into the window. It's your context that quietly fills, not just your bill.</p>
+          <p>Connectors are great — until a vague request makes the model hunt call after call, dumping every result into the window. It's your context that quietly fills.</p>
         </div>
       </li>
     </ol>
@@ -1521,7 +1521,7 @@ ORDER BY variance DESC;
         <p style="font-size:.92rem;margin-top:.6rem;">Every field is named <strong>twice</strong> — open tag and close tag. A deep model becomes a wall of <span class="mono">&lt;/angle-brackets&gt;</span>. The machine doesn't care; your eyes do.</p>
         <div class="verdict" style="margin-top:.5rem;">
           <div class="v good"><strong>Great for:</strong> rigid schemas, config that <em>must</em> validate, legacy/enterprise systems (SOAP, .docx, RSS).</div>
-          <div class="v bad"><strong>Weak for:</strong> humans, token budgets — all those repeated tags cost real money to feed a model.</div>
+          <div class="v bad"><strong>Weak for:</strong> humans, token budgets — all those repeated tags waste the window.</div>
         </div>
       </div>
     </div>
@@ -1599,7 +1599,7 @@ ORDER BY variance DESC;
   <section class="slide" id="s-fmt-csv">
     <div class="kicker">Documentation Formats · CSV</div>
     <h2>CSV</h2>
-    <p class="lede">It cuts two ways. A <strong>small relational map</strong> is about the best token bargain you'll find. Feed it a <strong>giant data dump</strong>, though, and you're just burning money.</p><a href="assets/sample-context.csv" download="sample-context.csv" class="btn" style="margin-bottom:1rem;display:inline-block;">Download CSV Sample</a>
+    <p class="lede">It cuts two ways. A <strong>small relational map</strong> is about the leanest thing you can feed a model. Feed it a <strong>giant data dump</strong>, though, and you're just burning through the context window.</p><a href="assets/sample-context.csv" download="sample-context.csv" class="btn" style="margin-bottom:1rem;display:inline-block;">Download CSV Sample</a>
     <div class="cols">
       <div>
         <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem;">
@@ -1628,7 +1628,7 @@ AR,Accounts Receivable
 AP,Accounts Payable
 Day1,AT&amp;T Day 1 Billing
 CMM,Customer Mgmt Module</pre>
-        <p style="font-size:.95rem;margin-top:.5rem;">A compact <strong>logical mapping</strong> — acronyms, lookups, relationships — is dense, unambiguous, and cheap. This is exactly what CSV is for.</p>
+        <p style="font-size:.95rem;margin-top:.5rem;">A compact <strong>logical mapping</strong> — acronyms, lookups, relationships — is dense, unambiguous, and lean. This is exactly what CSV is for.</p>
       </div>
     </div>
   </section>
@@ -1786,7 +1786,7 @@ reviewed within 5 business days...</pre>
         <table class="model-table">
           <thead><tr><th>Tier</th><th>Model</th><th>Context</th></tr></thead>
           <tbody>
-            <tr><td rowspan="3" class="tier tier-s">SMALL<br><span>fast &amp; cheap</span></td><td>Claude Haiku 4.5</td><td class="ctx">200K</td></tr>
+            <tr><td rowspan="3" class="tier tier-s">SMALL<br><span>fast &amp; light</span></td><td>Claude Haiku 4.5</td><td class="ctx">200K</td></tr>
             <tr><td>GPT-5 Mini</td><td class="ctx">400K</td></tr>
             <tr><td>Gemini Flash</td><td class="ctx">1M</td></tr>
             <tr><td rowspan="3" class="tier tier-m">MEDIUM<br><span>the workhorse</span></td><td>Claude Sonnet 4.6</td><td class="ctx">200K*</td></tr>
@@ -1798,7 +1798,7 @@ reviewed within 5 business days...</pre>
             <tr><td class="tier tier-x">EXTREME<br><span>why not</span></td><td>Claude Fable 5</td><td class="ctx">1M</td></tr>
           </tbody>
         </table>
-        <p style="font-size:.72rem;font-style:italic;opacity:.7;margin-top:.4rem;">Fable 5: $50/M output tokens. Probably for Elon Musk.</p>
+        <p style="font-size:.72rem;font-style:italic;opacity:.7;margin-top:.4rem;">Fable 5: the extravagant option. Probably for Elon Musk.</p>
       </div>
     </div>
   </section>
@@ -1885,7 +1885,7 @@ reviewed within 5 business days...</pre>
   </section>
 
   <section class="slide" id="s-tok-mcp-good">
-    <div class="kicker">Power BI MCP · The Cheap Way</div>
+    <div class="kicker">Power BI MCP · The Lean Way</div>
     <h2 style="font-size:2rem;">Specific Prompt → Straight There</h2>
     <p class="mcp-tok" style="margin:.2rem 0 .6rem;">Token cost: <span class="small">~3,000</span> <span style="font-size:.7rem;opacity:.6;font-family:'Space Mono',monospace;">(est. — one lookup, one fetch)</span></p>
     <div class="note-callout" style="font-size:1rem;margin:.4rem 0 1rem;"><strong>Prompt:</strong> "Get data from the <em>PM_Reconciliation_data</em> dataset in the <em>Finance Reconciliation</em> workspace."</div>
@@ -1897,8 +1897,8 @@ reviewed within 5 business days...</pre>
       <span class="mcp-arrow">→</span>
       <div class="mcp-step final"><span class="ms-call">get_data</span><span class="ms-note">PM_Reconciliation_data</span></div>
     </div>
-    <p style="font-size:1rem;margin-top:1.4rem;">Three calls instead of six. One workspace list, one dataset lookup, no fan-out and no scanning. <strong>Same answer, roughly 16× cheaper.</strong></p>
-    <div class="note-callout" style="font-size:.95rem;margin-top:1rem;">The model can only skip the scavenger hunt if it's given the landmarks up front. Specific prompts stay cheap.</div>
+    <p style="font-size:1rem;margin-top:1.4rem;">Three calls instead of six. One workspace list, one dataset lookup, no fan-out and no scanning. <strong>Same answer, roughly 16× leaner.</strong></p>
+    <div class="note-callout" style="font-size:.95rem;margin-top:1rem;">The model can only skip the scavenger hunt if it's given the landmarks up front. Specific prompts stay lean.</div>
   </section>
 
   <section class="slide" id="s-organizing">
@@ -2524,7 +2524,7 @@ Open only the entries you need.</pre>
       </div>
       <div class="card rust">
         <h3>The payoff</h3>
-        <p style="font-size:1rem;margin:0;">Labeled drawers mean the agent retrieves the right note instead of sorting through everything at read time. You pay a little at write time so retrieval stays cheap and precise.</p>
+        <p style="font-size:1rem;margin:0;">Labeled drawers mean the agent retrieves the right note instead of sorting through everything at read time. You pay a little at write time so retrieval stays lean and precise.</p>
       </div>
     </div>
 </section>
