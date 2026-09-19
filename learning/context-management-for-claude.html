@@ -723,7 +723,7 @@
 
   <section class="slide" id="s-title">
     <div class="kicker">A Working Session</div>
-    <h1>Are You<br>Smarter Than<br><span style="color:var(--rust)">Claude?</span></h1>
+    <h1>Context<br>Management<br><span style="color:var(--rust)">for Claude</span></h1>
     <div class="title-rule"></div>
     <p class="sub">How an AI thinks, stores, and uses context —<br>and how to write docs that work <em>for</em> the model, not against it.</p>
   </section>
@@ -1040,6 +1040,7 @@
         <p>Keep one evolving summary that remembers what led to what, with no re-reading. It's the idea behind today's long-context models.</p>
       </div>
     </div>
+    <p class="mono" style="font-size:.7rem;opacity:.72;margin-top:.8rem;text-align:center;">Transformers came from a 2017 paper, "Attention Is All You Need" (Vaswani et al.). Mamba came from a 2023 paper by Albert Gu and Tri Dao that swapped attention for a selective state-space model — read, don't re-read.</p>
   </section>
 
 
@@ -1056,7 +1057,7 @@
       </div>
       <div>
         <h3>Position changes accuracy too</h3>
-        <p style="font-size:.95rem;margin-bottom:.5rem;">Stanford researchers measured accuracy by where the answer sits in the context window. The curve is U-shaped, and six model families show the same pattern:</p>
+        <p style="font-size:.95rem;margin-bottom:.5rem;">A 2023 Stanford study, "Lost in the Middle" (Liu et al.), measured accuracy by where the answer sits in the context window. The curve is U-shaped, and six model families show the same pattern:</p>
         <svg viewBox="0 0 360 150" style="width:100%;max-width:380px;">
           <line x1="30" y1="120" x2="340" y2="120" stroke="#8a7a5c" stroke-width="1.5"/>
           <line x1="30" y1="120" x2="30" y2="20" stroke="#8a7a5c" stroke-width="1.5"/>
@@ -1116,6 +1117,7 @@ Nashville, TN. On every request:
       <div class="hp-pchip"><span class="hp-pn">05</span><span class="hp-pt">Tournament</span><span class="hp-pd">Bracket down to a champion.</span></div>
       <div class="hp-pchip"><span class="hp-pn">06</span><span class="hp-pt">Loop Until Done</span><span class="hp-pd">Refine until it passes.</span></div>
     </div>
+    <p class="mono" style="font-size:.72rem;opacity:.7;margin-top:.8rem;text-align:center;">Same idea Anthropic wrote up in its own engineering blog on building a multi-agent research system: an orchestrator that fans work out to isolated subagents and merges back only what matters.</p>
 </section>
 
   <section class="slide" id="s-harness-01">
@@ -1879,8 +1881,8 @@ reviewed within 5 business days...</pre>
       </g>
     </svg>
     <p style="font-size:.84rem;margin-top:.4rem;">Four workspaces, four datasets each — <strong>16 dataset names</strong> pulled into context just to locate one. Only the last call does real work; everything before it is overhead you paid for.</p>
-    <div class="note-callout" style="font-size:.84rem;margin-top:.3rem;"><strong>💡 Tip:</strong> you can just <em>ask</em> the model how it would use an MCP before letting it loose — e.g. <span class="mono">"Without running anything, list the exact MCP tool calls you'd make to get the PM_Reconciliation_data dataset."</span> It'll show you the scavenger hunt, and you'll know what to shortcut.</div>
-    <div class="verdict" style="margin-top:.3rem;"><div class="v bad" style="width:100%;"><strong>⚠ Warning:</strong> putting the model in <strong>auto / full-auto mode</strong> for complex MCP work is the fastest way to burn money — it'll happily make every discovery call without asking. Keep a hand on the wheel.</div></div>
+    <div class="note-callout" style="font-size:.84rem;margin-top:.3rem;"><strong>Tip:</strong> you can just <em>ask</em> the model how it would use an MCP before letting it loose — e.g. <span class="mono">"Without running anything, list the exact MCP tool calls you'd make to get the PM_Reconciliation_data dataset."</span> It'll show you the scavenger hunt, and you'll know what to shortcut.</div>
+    <div class="verdict" style="margin-top:.3rem;"><div class="v bad" style="width:100%;"><strong>⚠ Warning:</strong> putting the model in <strong>auto / full-auto mode</strong> for complex MCP work is the fastest way to blow through the context window — it'll happily make every discovery call without asking. Keep a hand on the wheel.</div></div>
     <div class="note-callout" style="font-size:.84rem;margin-top:.3rem;"><strong>Bigger than the bill:</strong> all 16 dataset names now live in the window. That retrieved junk crowds out what matters and sets off <strong>context rot</strong> — the model's aim drifts as the useful signal drowns. You didn't just overpay; you polluted the context.</div>
   </section>
 
