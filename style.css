@@ -301,16 +301,6 @@ fieldset.box > legend {
 .content li { margin: .3rem 0; }
 .muted { color: var(--fg-dim); }
 
-/* blog entries */
-.post {
-  border-top: 1px solid var(--border-soft);
-  padding: 1.1rem 0;
-}
-.post:first-of-type { border-top: none; padding-top: .3rem; }
-.post .meta { color: var(--fg-dim); font-size: .8rem; }
-.post h3 { margin: .3rem 0 .4rem; font-size: 1.05rem; color: #efe9e0; }
-.post p { margin: 0; color: var(--fg); }
-
 /* ============================================================
    command bar  (the Claude-Code-style terminal)
    ============================================================ */

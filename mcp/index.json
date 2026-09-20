@@ -2,7 +2,7 @@
   "section": "mcp",
   "type": "md",
   "generated": true,
-  "count": 8,
+  "count": 7,
   "items": [
     {
       "file": "mcp/community-puppeteer.md",
@@ -45,13 +45,6 @@
       "category1": "Community",
       "category2": "Search",
       "description": "Give an assistant live web and local search results via the Brave Search API."
-    },
-    {
-      "file": "mcp/homebrewed-notes-sync.md",
-      "title": "Notes Sync",
-      "category1": "Homebrewed",
-      "category2": "",
-      "description": "A custom MCP server I built to sync and search my personal notes."
     },
     {
       "file": "mcp/local-filesystem.md",

@@ -124,9 +124,6 @@
   .spot.parked-weak{background:var(--gold);color:var(--ink);}
   .spot.rot-buried{background:var(--gold);color:var(--ink);font-size:.6rem;}
   .spot.rot-buried .spot-word{font-size:.6rem;}
-  .needle-pin{position:absolute;top:-44px;right:2px;opacity:0;transform:rotate(45deg) translateY(16px) scale(.5);transition:all .5s cubic-bezier(.34,1.56,.64,1);pointer-events:none;filter:drop-shadow(0 3px 4px rgba(0,0,0,.4));z-index:6;}
-  .spot.needle-shown{box-shadow:0 0 0 3px var(--rust),0 0 18px rgba(193,68,14,.65);z-index:5;}
-  .spot.needle-shown .needle-pin{opacity:1;transform:rotate(16deg) translateY(0) scale(1);}
   .truck{position:absolute;left:-180px;top:8px;width:150px;height:60px;z-index:6;transition:none;pointer-events:none;filter:drop-shadow(0 3px 4px rgba(0,0,0,.4));}
   .lot-stats{display:flex;gap:1.6rem;justify-content:center;font-family:'Space Mono',monospace;font-size:.85rem;margin-top:.3rem;flex-wrap:wrap;}
   .rain-legend{display:flex;gap:1.1rem;flex-wrap:wrap;font-family:'Space Mono',monospace;font-size:.72rem;margin:.1rem 0 .2rem;opacity:.9;}
@@ -3392,12 +3389,6 @@ Open only the entries you need.</pre>
 
   // ===== OVERLAP SLIDE: highlight toggle + frequency bar graph =====
   function toggleHL(){ document.getElementById('promptStage').classList.toggle('dim'); }
-  function toggleNeedle(){
-    const spot=document.getElementById('needleSpot');
-    const btn=document.getElementById('needleBtn');
-    const on=spot.classList.toggle('needle-shown');
-    btn.textContent = on ? '📍 Hide The Needle' : '📍 Drop The Needle';
-  }
   // frequencies of the words across the 32 mixed-topic prompts on the slide
   // (a curated slice — most of the rest, weather-related or not, sit at 1x)
   const FREQ=[
@@ -3487,47 +3478,6 @@ Open only the entries you need.</pre>
     }
   }
 
-  // == NEEDLE IN A HAYSTACK (answer buried mid-pile, withheld from Claude) =====
-  const NEEDLE_QUESTION = 'What discount rate did Dana lock in for the whole book?';
-  const NEEDLE_QA = [
-    ['When does Q3 close?','September 30'],
-    ['Paid-loss dev factor?','1.08'],
-    ['Who signs off the triangles?','Priya'],
-    ['Cede rate on Treaty B?','40%'],
-    ['Prior-quarter discount rate?','8%'],
-    ['Open reserve lines this cycle?','226'],
-    ["Last cycle's long-tail split?",'10 / 12'],
-    ['Discount rate for the whole book?','11% flat'],
-    ['KRW FX rate used?','1,320'],
-    ['IBNR tolerance band?','+/- 2%'],
-    ['True-up due date?','Oct 12'],
-    ['Which server holds the triangles?','edp-prod-02'],
-    ['Daily standup time?','9:15'],
-    ['Captive entities this cycle?','14'],
-    ['Guest wifi password?','guest-2026'],
-  ];
-  const NEEDLE_IDX = 7;
-  function renderNeedle(){
-    const box = document.getElementById('needleHaystack'); if(!box) return;
-    box.innerHTML = NEEDLE_QA.map(function(qa,i){
-      return '<div class="'+(i===NEEDLE_IDX?'needle-final':'')+'" style="border:1px solid var(--line);border-radius:5px;padding:.28rem .45rem;font-family:\'Space Mono\',monospace;line-height:1.2;transition:all .2s ease;">'
-        + '<div style="font-size:.68rem;color:var(--rust);">Q: '+qa[0]+'</div>'
-        + '<div style="font-size:.78rem;font-weight:700;">A: '+qa[1]+'</div></div>';
-    }).join('');
-    const why=document.getElementById('needleWhy'); if(why) why.style.display='none';
-  }
-  function revealNeedleLive(){
-    const el=document.querySelector('#needleHaystack .needle-final');
-    if(el){ el.style.background='rgba(212,160,23,.28)'; el.style.borderColor='var(--gold)'; el.scrollIntoView({block:'nearest'}); }
-    const why=document.getElementById('needleWhy'); if(why) why.style.display='';
-  }
-  function runNeedleRace(){
-    const pile = NEEDLE_QA.filter(function(_,i){return i!==NEEDLE_IDX;})
-      .map(function(qa){return 'Q: '+qa[0]+'\nA: '+qa[1];}).join('\n');
-    const prompt = 'You have a set of Q&A notes from a reserve review session. Search them and answer the question below.\n\nNOTES:\n'
-      + pile + '\n\nQUESTION: ' + NEEDLE_QUESTION + '\n\nAnswer with the rate and one sentence of reasoning.';
-    pushClaude(prompt, 'needleStatus');
-  }
 
   // == HARNESS DEMOS (each card asks Claude to show the pattern tiny + clean) ==
   const HARNESS_DEMOS = {

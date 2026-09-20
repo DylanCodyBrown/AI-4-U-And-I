@@ -269,14 +269,6 @@
           "download": "https://dylancodybrown.github.io/AI-4-U-And-I/mcp/community-brave-search.md"
         },
         {
-          "title": "Notes Sync",
-          "category1": "Homebrewed",
-          "category2": "",
-          "description": "A custom MCP server I built to sync and search my personal notes.",
-          "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=mcp%2Fhomebrewed-notes-sync.md",
-          "download": "https://dylancodybrown.github.io/AI-4-U-And-I/mcp/homebrewed-notes-sync.md"
-        },
-        {
           "title": "Filesystem",
           "category1": "Local",
           "category2": "Files",
@@ -299,22 +291,6 @@
           "description": "Builds and audits Excel workbooks, Word docs, and PowerPoint decks without breaking formulas or formatting.",
           "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=agents%2Fexcel-office-specialist.md",
           "download": "https://dylancodybrown.github.io/AI-4-U-And-I/agents/excel-office-specialist.md"
-        },
-        {
-          "title": "Research Assistant",
-          "category1": "Productivity",
-          "category2": "Research",
-          "description": "Fans out searches, reads sources, and synthesizes a cited summary.",
-          "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=agents%2Fresearch-assistant.md",
-          "download": "https://dylancodybrown.github.io/AI-4-U-And-I/agents/research-assistant.md"
-        },
-        {
-          "title": "Code Reviewer",
-          "category1": "Software",
-          "category2": "Code Quality",
-          "description": "Reviews a diff for correctness bugs and suggests concrete fixes.",
-          "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=agents%2Fcode-reviewer.md",
-          "download": "https://dylancodybrown.github.io/AI-4-U-And-I/agents/code-reviewer.md"
         }
       ],
       "popular": [

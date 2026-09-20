@@ -41,14 +41,11 @@ For a complete machine-readable index with absolute download URLs, fetch [site.j
 - [GitHub](https://dylancodybrown.github.io/AI-4-U-And-I/mcp/community-github.md) — Browse repos, issues, and pull requests through MCP.
 - [Google Drive](https://dylancodybrown.github.io/AI-4-U-And-I/mcp/community-google-drive.md) — Search and read Docs, Sheets, and files from a Google Drive account.
 - [Brave Search](https://dylancodybrown.github.io/AI-4-U-And-I/mcp/community-brave-search.md) — Give an assistant live web and local search results via the Brave Search API.
-- [Notes Sync](https://dylancodybrown.github.io/AI-4-U-And-I/mcp/homebrewed-notes-sync.md) — A custom MCP server I built to sync and search my personal notes.
 - [Filesystem](https://dylancodybrown.github.io/AI-4-U-And-I/mcp/local-filesystem.md) — Read and write files on your own machine from your assistant.
 
 ## Agents — browsable library
 
 - [Excel & Office Specialist](https://dylancodybrown.github.io/AI-4-U-And-I/agents/excel-office-specialist.md) — Builds and audits Excel workbooks, Word docs, and PowerPoint decks without breaking formulas or formatting.
-- [Research Assistant](https://dylancodybrown.github.io/AI-4-U-And-I/agents/research-assistant.md) — Fans out searches, reads sources, and synthesizes a cited summary.
-- [Code Reviewer](https://dylancodybrown.github.io/AI-4-U-And-I/agents/code-reviewer.md) — Reviews a diff for correctness bugs and suggests concrete fixes.
 
 ### Popular (stored locally)
 
