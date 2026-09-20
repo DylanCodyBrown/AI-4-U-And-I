@@ -15,8 +15,5 @@ Make many. Keep one.
 
 Candidates must differ in approach, not just in wording.
 
-## Works without subagents
-
-Claude Desktop has no subagent tool. Run each pass in this one conversation and
-keep only the short result of each, dropping the working detail. In Claude Code,
-the same steps map onto real subagents.
+Isolate each pass: a subagent where you have them, otherwise a separate pass
+in this conversation. Carry forward only the short result, not the working detail.

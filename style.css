@@ -452,3 +452,5 @@ fieldset.box > legend {
 .pat-n { color: var(--accent); font-weight: 600; }
 .pat-n::before { content: "\2193  "; opacity: .75; }
 .pat-d { color: var(--fg-dim); font-size: .8rem; }
+
+.pat-first { border-color: var(--accent); }

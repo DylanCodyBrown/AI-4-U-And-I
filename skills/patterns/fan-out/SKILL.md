@@ -12,10 +12,5 @@ Work each angle in isolation. Merge short answers, not transcripts.
 3. Reduce each angle to 3 lines or fewer.
 4. Merge into one answer. Say where the angles disagree.
 
-Drop the working detail. Only the merged answer and the disagreements survive.
-
-## Works without subagents
-
-Claude Desktop has no subagent tool. Run each pass in this one conversation and
-keep only the short result of each, dropping the working detail. In Claude Code,
-the same steps map onto real subagents.
+Isolate each pass: a subagent where you have them, otherwise a separate pass
+in this conversation. Carry forward only the short result, not the working detail.

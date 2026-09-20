@@ -1,11 +1,14 @@
 # Agent patterns as Skills
 
-Six orchestration patterns from the *Context Management for Claude* deck, each
+Seven orchestration patterns from the *Context Management for Claude* deck, each
 packaged as a standalone Skill. They are deliberately generic: point any of them
 at any prompt and it applies that method to whatever you asked for.
 
+Not sure which one fits? Install `analyze-prompt` and let it choose.
+
 | Skill | What it does |
 | --- | --- |
+| `analyze-prompt` | Reads the task and names which pattern below to use |
 | `route` | Picks one specialist role and answers as that role only |
 | `fan-out` | Works several angles separately, merges only the conclusions |
 | `critique` | Drafts, then attacks the draft with fresh eyes before delivering |
@@ -29,12 +32,13 @@ unzip route.zip -d .claude/skills/       # this project only
 Exact menu wording moves around between versions, so follow whatever your
 current Claude build calls custom Skills rather than a screenshot.
 
-## They work without subagents
+## Subagents optional
 
-Claude Desktop has no subagent tool, so each skill is written to run its passes
-inside one conversation and keep only the short result of each, dropping the
-working detail in between. That is what makes the pattern pay off: the main
-thread stays small. In Claude Code the same steps map onto real subagents.
+Where subagents exist, each isolated pass maps onto one. Claude Desktop ships
+with Claude Code, so that is available there too. In a plain chat the same steps
+run as separate passes in one conversation. Either way the rule is the same:
+carry forward the short result and drop the working detail, so the main thread
+stays small.
 
 ## Keeping them cheap
 
