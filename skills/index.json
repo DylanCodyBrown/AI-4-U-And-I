@@ -2,7 +2,7 @@
   "section": "skills",
   "type": "md",
   "generated": true,
-  "count": 4,
+  "count": 8,
   "items": [
     {
       "file": "skills/app-clean-architecture.md",
@@ -10,6 +10,13 @@
       "category1": "App Architecture",
       "category2": "",
       "description": "Keep business rules independent of frameworks, UI, and databases."
+    },
+    {
+      "file": "skills/skills-vs-mcp.md",
+      "title": "Skills vs. MCP: What Your Policy Actually Allows",
+      "category1": "Enterprise & Communication",
+      "category2": "No MCP Needed",
+      "description": "Why a \"no MCP\" policy usually still leaves Skills on the table, and how to build your own."
     },
     {
       "file": "skills/game-dev-state-machines.md",
@@ -31,6 +38,27 @@
       "category1": "Productivity",
       "category2": "Claude Desktop",
       "description": "Get the most out of the Claude desktop app — local files, Skills, Projects, and connectors."
+    },
+    {
+      "file": "skills/excel-no-mcp.md",
+      "title": "Excel Workbooks, No MCP Required",
+      "category1": "Productivity",
+      "category2": "No MCP Needed",
+      "description": "Build, edit, and analyze Excel workbooks in Claude Desktop with nothing but file attachments."
+    },
+    {
+      "file": "skills/meeting-notes-no-mcp.md",
+      "title": "Meeting Notes to Action Items",
+      "category1": "Productivity",
+      "category2": "No MCP Needed",
+      "description": "Turn a raw transcript or your own scratch notes into structured, assignable action items — no connector required."
+    },
+    {
+      "file": "skills/pdf-review-no-mcp.md",
+      "title": "PDF Review & Extraction, No Add-ons",
+      "category1": "Productivity",
+      "category2": "No MCP Needed",
+      "description": "Extract tables, pull answers, and compare across PDFs in Claude Desktop with nothing but attachments."
     }
   ]
 }
