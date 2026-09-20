@@ -10,36 +10,12 @@
       "label": "Skills — browsable library + popular (stored locally)",
       "items": [
         {
-          "title": "Clean Architecture in Practice",
-          "category1": "App Architecture",
-          "category2": "",
-          "description": "Keep business rules independent of frameworks, UI, and databases.",
-          "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=skills%2Fapp-clean-architecture.md",
-          "download": "https://dylancodybrown.github.io/AI-4-U-And-I/skills/app-clean-architecture.md"
-        },
-        {
           "title": "Skills vs. MCP: What Your Policy Actually Allows",
           "category1": "Enterprise & Communication",
           "category2": "No MCP Needed",
           "description": "Why a \"no MCP\" policy usually still leaves Skills on the table, and how to build your own.",
           "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=skills%2Fskills-vs-mcp.md",
           "download": "https://dylancodybrown.github.io/AI-4-U-And-I/skills/skills-vs-mcp.md"
-        },
-        {
-          "title": "Finite State Machines for Game AI",
-          "category1": "Game Development",
-          "category2": "AI & Behavior",
-          "description": "Model enemy and NPC behavior with clean, debuggable state machines.",
-          "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=skills%2Fgame-dev-state-machines.md",
-          "download": "https://dylancodybrown.github.io/AI-4-U-And-I/skills/game-dev-state-machines.md"
-        },
-        {
-          "title": "Mail Merge in Word",
-          "category1": "Microsoft",
-          "category2": "Microsoft Word",
-          "description": "Generate personalized documents from a spreadsheet data source.",
-          "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=skills%2Fword-mail-merge.md",
-          "download": "https://dylancodybrown.github.io/AI-4-U-And-I/skills/word-mail-merge.md"
         },
         {
           "title": "Claude Desktop Essentials",

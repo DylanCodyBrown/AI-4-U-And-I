@@ -454,3 +454,6 @@ fieldset.box > legend {
 .pat-d { color: var(--fg-dim); font-size: .8rem; }
 
 .pat-first { border-color: var(--accent); }
+
+.pop-links { display: flex; gap: .8rem; margin-top: .2rem; }
+.pop-links .pop-link { margin-top: 0; }

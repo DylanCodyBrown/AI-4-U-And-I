@@ -9,7 +9,8 @@
       "category1": "Creative & Design",
       "category2": "Branding",
       "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/brand-guidelines/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/brand-guidelines/SKILL.md",
+      "install": "skills/install/brand-guidelines.zip"
     },
     {
       "file": "skills/popular/algorithmic-art.md",
@@ -17,7 +18,8 @@
       "category1": "Creative & Design",
       "category2": "Generative Art",
       "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/algorithmic-art/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/algorithmic-art/SKILL.md",
+      "install": "skills/install/algorithmic-art.zip"
     },
     {
       "file": "skills/popular/theme-factory.md",
@@ -25,7 +27,8 @@
       "category1": "Creative & Design",
       "category2": "Theming",
       "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/theme-factory/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/theme-factory/SKILL.md",
+      "install": "skills/install/theme-factory.zip"
     },
     {
       "file": "skills/popular/canvas-design.md",
@@ -33,7 +36,8 @@
       "category1": "Creative & Design",
       "category2": "Visual Design",
       "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/canvas-design/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/canvas-design/SKILL.md",
+      "install": "skills/install/canvas-design.zip"
     },
     {
       "file": "skills/popular/claude-api.md",
@@ -41,7 +45,8 @@
       "category1": "Development & Technical",
       "category2": "API",
       "description": "Reference for the Claude API / Anthropic SDK — model ids, pricing, params, streaming, tool use, MCP, agents, caching, token counting, model migration. TRIGGER — read BEFORE opening the target file; don't skip because it \\\"looks like a one-liner\\\" — whenever: the prompt names Claude/Anthropic in any form (Claude, Anthropic, Fable, Opus, Sonnet, Haiku, `anthropic`, `@anthropic-ai`, `claude-*`, `us.anthropic.*`, `[1m]`); the user asks about an LLM (pricing/model choice/limits/caching) — never answer from memory; OR the task is LLM-shaped with provider unstated (agent/MCP/tool-definition/multi-agent/RAG/LLM-judge/computer-use; generate/summarize/extract/classify/rewrite/converse over NL; debugging refusals/cutoffs/streaming/tool-calls/tokens). SKIP only when another provider is being worked on (overrides all triggers): OpenAI/GPT/Gemini/Llama/Mistral/Cohere/Ollama named in the query; OR `grep -rE 'openai|langchain_openai|google.generativeai|genai|mistralai|cohere|ollama'` over the project hits (run this grep FIRST if no provider named — don't Read the file).",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/claude-api/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/claude-api/SKILL.md",
+      "install": "skills/install/claude-api.zip"
     },
     {
       "file": "skills/popular/excel-ops.md",
@@ -49,7 +54,8 @@
       "category1": "Development & Technical",
       "category2": "Excel / Python",
       "description": "Read, clean, analyse and generate Excel workbooks (.xlsx/.csv) without the silent wrong answers. Use when the user has a spreadsheet to parse, summarise, validate, join, convert or produce; when a total from a sheet looks off; when dates shift by a day, numbers arrive as text, formulas read back as objects, or headers are not on row 1; and when generating a report someone else has to open and read. Covers ExcelJS in Node, with equivalents for Python (openpyxl/pandas) and the traps that apply in every language.",
-      "source": "https://github.com/agentui-ai/excel-ops/blob/main/skills/excel-ops/SKILL.md"
+      "source": "https://github.com/agentui-ai/excel-ops/blob/main/skills/excel-ops/SKILL.md",
+      "install": "skills/install/excel-ops.zip"
     },
     {
       "file": "skills/popular/frontend-design.md",
@@ -57,7 +63,8 @@
       "category1": "Development & Technical",
       "category2": "Frontend",
       "description": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md",
+      "install": "skills/install/frontend-design.zip"
     },
     {
       "file": "skills/popular/jupyter-notebook.md",
@@ -65,7 +72,8 @@
       "category1": "Development & Technical",
       "category2": "Jupyter",
       "description": "Best practices for creating, editing, and validating Jupyter notebooks with AI agents. Covers nbformat usage, write-run-describe workflow, AI-readable output, visualization libraries, PDF export, and notebook validation. Use when creating or modifying .ipynb files, generating notebook-based reports, or debugging notebook execution failures.",
-      "source": "https://github.com/antquinonez/jupyter-notebook-skill/blob/master/skills/jupyter-notebook/SKILL.md"
+      "source": "https://github.com/antquinonez/jupyter-notebook-skill/blob/master/skills/jupyter-notebook/SKILL.md",
+      "install": "skills/install/jupyter-notebook.zip"
     },
     {
       "file": "skills/popular/mcp-builder.md",
@@ -73,7 +81,8 @@
       "category1": "Development & Technical",
       "category2": "MCP",
       "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/mcp-builder/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/mcp-builder/SKILL.md",
+      "install": "skills/install/mcp-builder.zip"
     },
     {
       "file": "skills/popular/webapp-testing.md",
@@ -81,7 +90,8 @@
       "category1": "Development & Technical",
       "category2": "Testing",
       "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/webapp-testing/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/webapp-testing/SKILL.md",
+      "install": "skills/install/webapp-testing.zip"
     },
     {
       "file": "skills/popular/skill-creator.md",
@@ -89,7 +99,8 @@
       "category1": "Development & Technical",
       "category2": "Tooling",
       "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md",
+      "install": "skills/install/skill-creator.zip"
     },
     {
       "file": "skills/popular/web-artifacts-builder.md",
@@ -97,7 +108,8 @@
       "category1": "Development & Technical",
       "category2": "Web",
       "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/web-artifacts-builder/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/web-artifacts-builder/SKILL.md",
+      "install": "skills/install/web-artifacts-builder.zip"
     },
     {
       "file": "skills/popular/internal-comms.md",
@@ -105,7 +117,8 @@
       "category1": "Enterprise & Communication",
       "category2": "Comms",
       "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/internal-comms/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/internal-comms/SKILL.md",
+      "install": "skills/install/internal-comms.zip"
     },
     {
       "file": "skills/popular/doc-coauthoring.md",
@@ -113,7 +126,8 @@
       "category1": "Enterprise & Communication",
       "category2": "Docs",
       "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/doc-coauthoring/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/doc-coauthoring/SKILL.md",
+      "install": "skills/install/doc-coauthoring.zip"
     },
     {
       "file": "skills/popular/slack-gif-creator.md",
@@ -121,7 +135,8 @@
       "category1": "Enterprise & Communication",
       "category2": "Slack",
       "description": "Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \\\"make me a GIF of X doing Y for Slack.\\\"",
-      "source": "https://github.com/anthropics/skills/blob/main/skills/slack-gif-creator/SKILL.md"
+      "source": "https://github.com/anthropics/skills/blob/main/skills/slack-gif-creator/SKILL.md",
+      "install": "skills/install/slack-gif-creator.zip"
     },
     {
       "file": "skills/popular/yfinance-data.md",
@@ -129,7 +144,8 @@
       "category1": "Finance",
       "category2": "Market Data",
       "description": "Fetch financial and market data using the yfinance Python library. Use this skill whenever the user asks for stock prices, historical data, financial statements, options chains, dividends, earnings, analyst recommendations, or any market data. Triggers include: any mention of stock price, ticker symbol (AAPL, MSFT, TSLA, etc.), \\\"get me the financials\\\", \\\"show earnings\\\", \\\"what's the price of\\\", \\\"download stock data\\\", \\\"options chain\\\", \\\"dividend history\\\", \\\"balance sheet\\\", \\\"income statement\\\", \\\"cash flow\\\", \\\"analyst targets\\\", \\\"institutional holders\\\", \\\"compare stocks\\\", \\\"screen for stocks\\\", or any request involving Yahoo Finance data. Always use this skill even if the user only provides a ticker — infer intent from context.",
-      "source": "https://github.com/himself65/finance-skills/blob/main/plugins/market-analysis/skills/yfinance-data/SKILL.md"
+      "source": "https://github.com/himself65/finance-skills/blob/main/plugins/market-analysis/skills/yfinance-data/SKILL.md",
+      "install": "skills/install/yfinance-data.zip"
     },
     {
       "file": "skills/popular/company-valuation.md",
@@ -137,7 +153,8 @@
       "category1": "Finance",
       "category2": "Valuation",
       "description": "Estimate the intrinsic value of a public company using DCF, relative (peer multiple) and sum-of-parts (SOTP) methods, then triangulate to an implied share price with upside/downside versus the current market price. Use this skill whenever the user asks: \\\"what is AAPL worth\\\", \\\"valuation of NVDA\\\", \\\"fair value of TSLA\\\", \\\"intrinsic value\\\", \\\"DCF for MSFT\\\", \\\"build a DCF\\\", \\\"discounted cash flow\\\", \\\"WACC\\\", \\\"terminal value\\\", \\\"implied share price\\\", \\\"upside to fair value\\\", \\\"is X overvalued/undervalued\\\", \\\"relative valuation\\\", \\\"peer comparison valuation\\\", \\\"EV/EBITDA target\\\", \\\"SOTP\\\", \\\"sum of the parts\\\", \\\"how much is [company] worth\\\", \\\"price target from fundamentals\\\", \\\"value this company\\\", or any ticker in the context of computing intrinsic or relative valuation. Default to running ALL three methods (DCF + relative + SOTP-if-applicable) and presenting a blended implied price with a sensitivity table. Do not answer valuation questions from memory — always run the workflow.",
-      "source": "https://github.com/himself65/finance-skills/blob/main/plugins/market-analysis/skills/company-valuation/SKILL.md"
+      "source": "https://github.com/himself65/finance-skills/blob/main/plugins/market-analysis/skills/company-valuation/SKILL.md",
+      "install": "skills/install/company-valuation.zip"
     },
     {
       "file": "skills/popular/voice-memo-sync.md",
@@ -145,7 +162,8 @@
       "category1": "Productivity",
       "category2": "Claude Desktop",
       "description": "Sync, transcribe, and intelligently organize voice memos, audio/video files, and URLs. 同步、转录、智能整理语音备忘录、音视频文件和视频链接。",
-      "source": "https://github.com/ying-wen/voice-memo-sync/blob/main/SKILL.md"
+      "source": "https://github.com/ying-wen/voice-memo-sync/blob/main/SKILL.md",
+      "install": "skills/install/voice-memo-sync.zip"
     }
   ]
 }

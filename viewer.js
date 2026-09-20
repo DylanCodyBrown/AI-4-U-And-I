@@ -51,6 +51,15 @@
   dl.href = file;
   dl.setAttribute("download", file.split("/").pop());
 
+  // every skill is also installable: <section>/…/<slug>.md -> skills/install/<slug>.zip
+  var install = document.getElementById("installBtn");
+  if (install && file.indexOf("skills/") === 0) {
+    var slug = file.split("/").pop().replace(/\.md$/, "");
+    install.href = "skills/install/" + slug + ".zip";
+    install.setAttribute("download", slug + ".zip");
+    install.style.display = "";
+  }
+
   fetch(file)
     .then(function (r) {
       if (!r.ok) throw new Error("HTTP " + r.status);

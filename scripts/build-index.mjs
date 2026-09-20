@@ -3,9 +3,10 @@
    Markdown sections (skills/mcp/agents) read YAML-ish frontmatter.
    HTML sections (learning) read <title> and <meta name="..."> tags.
    No dependencies. */
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import { readdir, readFile, writeFile, mkdir } from "node:fs/promises";
 import { join, dirname, basename, extname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { makeZip } from "./zip.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -63,6 +64,45 @@ function parseHtmlMeta(text) {
 const titleFromFile = (file) =>
   basename(file, extname(file)).replace(/[-_]+/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 
+/* Every skill on the site is also installable: we rewrite its site frontmatter
+   (title/category…) into the Claude Skill contract (name + description) and zip
+   it as <slug>/SKILL.md so it can be dragged straight into Claude.
+   Attribution on ingested skills is kept — their licences require it. */
+const installDir = join(root, "skills", "install");
+const usedSlugs = new Map();
+
+function bodyOf(text) {
+  const m = text.match(/^\uFEFF?---\s*\r?\n[\s\S]*?\r?\n---\s*\r?\n?/);
+  return (m ? text.slice(m[0].length) : text).trimStart();
+}
+
+async function writeSkillZip(slug, description, body, attribution) {
+  if (usedSlugs.has(slug)) {
+    console.warn(`  ! slug collision: ${slug} (${usedSlugs.get(slug)}) — skipped`);
+    return null;
+  }
+  usedSlugs.set(slug, slug);
+  // site frontmatter stores quoted values, so unescape first, then re-emit as a
+  // properly quoted YAML string — descriptions contain quotes and colons
+  const desc = String(description || "")
+    .replace(/\\"/g, '"')
+    .replace(/\\\\/g, "\\")
+    .replace(/\s+/g, " ")
+    .trim();
+  const yamlStr = '"' + desc.replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"';
+  const md =
+    "---\n" +
+    `name: ${slug}\n` +
+    `description: ${yamlStr}\n` +
+    "---\n\n" +
+    (attribution ? attribution + "\n\n" : "") +
+    body.trimEnd() +
+    "\n";
+  const zip = makeZip([{ name: `${slug}/SKILL.md`, data: Buffer.from(md, "utf8") }]);
+  await writeFile(join(installDir, `${slug}.zip`), zip);
+  return `skills/install/${slug}.zip`;
+}
+
 const abs = (rel) => BASE_URL + String(rel).replace(/^\/+/, "");
 
 // accumulates every section's items for the aggregate agent artifacts
@@ -95,6 +135,12 @@ for (const [section, type] of Object.entries(SECTIONS)) {
       description: meta.intro || meta.description || "",
     };
     if (meta.published) item.published = meta.published; // blog posts
+    if (section === "skills") {
+      await mkdir(installDir, { recursive: true });
+      const slug = basename(f, ".md");
+      const zipPath = await writeSkillZip(slug, item.description, bodyOf(text), null);
+      if (zipPath) item.install = zipPath;
+    }
     items.push(item);
   }
 
@@ -126,7 +172,18 @@ for (const [section, type] of Object.entries(SECTIONS)) {
       .filter((f) => !f.startsWith("_") && f.toLowerCase() !== "readme.md")
       .sort();
     for (const f of popFiles) {
-      const fm = parseFrontmatter(await readFile(join(dir, "popular", f), "utf8"));
+      const popText = await readFile(join(dir, "popular", f), "utf8");
+      const fm = parseFrontmatter(popText);
+      let install = null;
+      if (section === "skills") {
+        await mkdir(installDir, { recursive: true });
+        const slug = basename(f, ".md");
+        const credit = fm.source
+          ? `> Source: ${fm.source}${fm.license ? ` · License: ${fm.license}` : ""}` +
+            `${fm.author ? ` · ${fm.author}` : ""}`
+          : null;
+        install = await writeSkillZip(slug, fm.description, bodyOf(popText), credit);
+      }
       popItems.push({
         file: `${section}/popular/${f}`,
         title: fm.title || titleFromFile(f),
@@ -134,6 +191,7 @@ for (const [section, type] of Object.entries(SECTIONS)) {
         category2: fm.category2 || "",
         description: fm.description || "",
         source: fm.source || "",
+        ...(install ? { install } : {}),
       });
     }
     popItems.sort((a, b) =>

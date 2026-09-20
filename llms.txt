@@ -6,10 +6,7 @@ For a complete machine-readable index with absolute download URLs, fetch [site.j
 
 ## Skills — browsable library + popular (stored locally)
 
-- [Clean Architecture in Practice](https://dylancodybrown.github.io/AI-4-U-And-I/skills/app-clean-architecture.md) — Keep business rules independent of frameworks, UI, and databases.
 - [Skills vs. MCP: What Your Policy Actually Allows](https://dylancodybrown.github.io/AI-4-U-And-I/skills/skills-vs-mcp.md) — Why a "no MCP" policy usually still leaves Skills on the table, and how to build your own.
-- [Finite State Machines for Game AI](https://dylancodybrown.github.io/AI-4-U-And-I/skills/game-dev-state-machines.md) — Model enemy and NPC behavior with clean, debuggable state machines.
-- [Mail Merge in Word](https://dylancodybrown.github.io/AI-4-U-And-I/skills/word-mail-merge.md) — Generate personalized documents from a spreadsheet data source.
 - [Claude Desktop Essentials](https://dylancodybrown.github.io/AI-4-U-And-I/skills/desktop-essentials.md) — Get the most out of the Claude desktop app — local files, Skills, Projects, and connectors.
 - [Excel Workbooks, No MCP Required](https://dylancodybrown.github.io/AI-4-U-And-I/skills/excel-no-mcp.md) — Build, edit, and analyze Excel workbooks in Claude Desktop with nothing but file attachments.
 - [Meeting Notes to Action Items](https://dylancodybrown.github.io/AI-4-U-And-I/skills/meeting-notes-no-mcp.md) — Turn a raw transcript or your own scratch notes into structured, assignable action items — no connector required.

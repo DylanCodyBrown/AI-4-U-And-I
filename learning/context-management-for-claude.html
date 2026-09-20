@@ -673,6 +673,13 @@
 /* ===== pattern download strip on the index slide. Absolute URLs on purpose:
    this deck is meant to be downloaded and opened standalone, and relative
    links would break in a saved copy ===== */
+.slide-dl{display:inline-flex;align-items:baseline;gap:.5rem;align-self:flex-start;
+  font-family:'Space Mono',monospace;font-size:.72rem;background:var(--ink);color:var(--paper);
+  text-decoration:none;padding:.28rem .6rem;border-radius:4px;margin:.1rem 0 .35rem;
+  transition:background .15s ease;}
+.slide-dl:hover{background:var(--rust);}
+.slide-dl::before{content:"\2193  ";opacity:.65;}
+.slide-dl span{opacity:.62;font-size:.68rem;}
 .deck-dl{margin-top:.55rem;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;}
 .deck-dl-lab{font-family:'Space Mono',monospace;font-size:.7rem;text-transform:uppercase;
   letter-spacing:.14em;color:var(--rust);margin-right:.25rem;}
@@ -712,17 +719,6 @@
     <div class="kicker">Context management for Claude · Index</div>
     <h2>Jump To<br>A Section</h2>
     <p class="lede" style="margin-bottom:.35rem;">Click any section to skip there directly — handy if the deck closes or you want to revisit a slide.</p>
-    <div class="deck-dl">
-      <span class="deck-dl-lab">Take the patterns with you</span>
-      <a class="dl-first" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/analyze-prompt.zip" download>analyze-prompt</a>
-      <a class="" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/route.zip" download>route</a>
-      <a class="" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/fan-out.zip" download>fan-out</a>
-      <a class="" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/critique.zip" download>critique</a>
-      <a class="" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/shortlist.zip" download>shortlist</a>
-      <a class="" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/tournament.zip" download>tournament</a>
-      <a class="" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/iterate.zip" download>iterate</a>
-    </div>
-    <p class="mono" style="font-size:.68rem;opacity:.65;margin:.35rem 0 0;">Add a .zip as a custom Skill in Claude. Not sure which? Start with analyze-prompt.</p>
     <div class="cols" style="margin-top:.2rem;">
       <ul class="toc-list">
         <li><button onclick="showById('s-title')"><span class="toc-num">02</span>Open</button></li>
@@ -1143,6 +1139,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-harness-intro" data-concept="Context Patterns">
     <div class="kicker">Fighting Context Rot · The Patterns</div>
     <h2>Use The Window<br>Wisely</h2>
+    <a class="slide-dl" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/analyze-prompt.zip" download title="Pick a pattern for any prompt">analyze-prompt.zip<span>Pick a pattern for any prompt</span></a>
     <p class="lede" style="margin:.2rem 0 .3rem;">Six reusable <strong>patterns</strong>, same trick every time: do the messy work in a throwaway sub-context, hand back one clean line, keep the main window small.</p>
     <p style="font-size:.95rem;opacity:.85;margin-bottom:.2rem;">One example runs through all six: <span class="mono">&ldquo;Where should I eat today?&rdquo;</span></p>
     <p style="font-size:.9rem;opacity:.8;margin:.1rem 0 .2rem;">Each pattern has a <strong>Step</strong> button and two bars. The top bar is how full your main context window stays using the pattern. The bottom bar is the same work done inline, in one conversation.</p>
@@ -1160,6 +1157,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-harness-01">
     <div class="kicker">01 &middot; Triage &amp; Route</div>
     <h2 style="font-size:clamp(1.3rem,3vw,2.2rem);line-height:1.05;">Route To An Agent,<br>Keep Your Window Clean</h2>
+    <a class="slide-dl" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/route.zip" download title="Use this pattern on any prompt">route.zip<span>Use this pattern on any prompt</span></a>
     <p class="hf-what">One cheap call reads the request and hands it to a single specialist. The other specialists never load, so their instructions never reach your window.</p>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">route it to the right specialist</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
@@ -1206,6 +1204,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-harness-02">
     <div class="kicker">02 &middot; Parallel Isolation</div>
     <h2>Fan-Out &amp; Merge</h2>
+    <a class="slide-dl" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/fan-out.zip" download title="Use this pattern on any prompt">fan-out.zip<span>Use this pattern on any prompt</span></a>
     <p class="hf-what">Several subagents research different angles at the same time, each in its own separate context. Only their short answers come back to you.</p>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">check cuisine, budget &amp; distance in parallel, then merge</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
@@ -1258,6 +1257,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-harness-03">
     <div class="kicker">03 &middot; Fresh Eyes</div>
     <h2>Adversarial Check</h2>
+    <a class="slide-dl" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/critique.zip" download title="Use this pattern on any prompt">critique.zip<span>Use this pattern on any prompt</span></a>
     <p class="hf-what">A second agent receives the answer and tries to break it, knowing nothing about how the first one got there. Fresh eyes catch what the author talked themselves into.</p>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">then have a skeptic double-check it</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
@@ -1298,6 +1298,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-harness-04">
     <div class="kicker">04 &middot; Many In, One Out</div>
     <h2>Generate &amp; Filter</h2>
+    <a class="slide-dl" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/shortlist.zip" download title="Use this pattern on any prompt">shortlist.zip<span>Use this pattern on any prompt</span></a>
     <p class="hf-what">Subagents produce several candidates in parallel. A filter keeps whichever survives, and the rejects never enter your window.</p>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> <span class="hf-kw">Have subagents find me 4 places to eat, then keep the best</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
@@ -1344,6 +1345,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-harness-05">
     <div class="kicker">05 &middot; Eliminate To One</div>
     <h2>Tournament</h2>
+    <a class="slide-dl" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/tournament.zip" download title="Use this pattern on any prompt">tournament.zip<span>Use this pattern on any prompt</span></a>
     <p class="hf-what">Candidates are compared two at a time and the winner advances. Every comparison happens in a throwaway context, so only the champion comes back.</p>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">compare them head-to-head, pick a winner</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
@@ -1393,6 +1395,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-harness-06">
     <div class="kicker">06 &middot; Spawn Fresh</div>
     <h2>Loop Until Done</h2>
+    <a class="slide-dl" href="https://dylancodybrown.github.io/AI-4-U-And-I/skills/patterns/iterate.zip" download title="Use this pattern on any prompt">iterate.zip<span>Use this pattern on any prompt</span></a>
     <p class="hf-what">Each attempt runs in a fresh context and gets checked against your rules. Failed attempts are thrown away instead of piling up in the conversation.</p>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> <span class="hf-kw">/loop</span> Find me somewhere to eat &mdash; <span class="hf-kw">keep trying until one passes my rules</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>

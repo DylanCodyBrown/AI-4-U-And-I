@@ -2,63 +2,47 @@
   "section": "skills",
   "type": "md",
   "generated": true,
-  "count": 8,
+  "count": 5,
   "items": [
-    {
-      "file": "skills/app-clean-architecture.md",
-      "title": "Clean Architecture in Practice",
-      "category1": "App Architecture",
-      "category2": "",
-      "description": "Keep business rules independent of frameworks, UI, and databases."
-    },
     {
       "file": "skills/skills-vs-mcp.md",
       "title": "Skills vs. MCP: What Your Policy Actually Allows",
       "category1": "Enterprise & Communication",
       "category2": "No MCP Needed",
-      "description": "Why a \"no MCP\" policy usually still leaves Skills on the table, and how to build your own."
-    },
-    {
-      "file": "skills/game-dev-state-machines.md",
-      "title": "Finite State Machines for Game AI",
-      "category1": "Game Development",
-      "category2": "AI & Behavior",
-      "description": "Model enemy and NPC behavior with clean, debuggable state machines."
-    },
-    {
-      "file": "skills/word-mail-merge.md",
-      "title": "Mail Merge in Word",
-      "category1": "Microsoft",
-      "category2": "Microsoft Word",
-      "description": "Generate personalized documents from a spreadsheet data source."
+      "description": "Why a \"no MCP\" policy usually still leaves Skills on the table, and how to build your own.",
+      "install": "skills/install/skills-vs-mcp.zip"
     },
     {
       "file": "skills/desktop-essentials.md",
       "title": "Claude Desktop Essentials",
       "category1": "Productivity",
       "category2": "Claude Desktop",
-      "description": "Get the most out of the Claude desktop app — local files, Skills, Projects, and connectors."
+      "description": "Get the most out of the Claude desktop app — local files, Skills, Projects, and connectors.",
+      "install": "skills/install/desktop-essentials.zip"
     },
     {
       "file": "skills/excel-no-mcp.md",
       "title": "Excel Workbooks, No MCP Required",
       "category1": "Productivity",
       "category2": "No MCP Needed",
-      "description": "Build, edit, and analyze Excel workbooks in Claude Desktop with nothing but file attachments."
+      "description": "Build, edit, and analyze Excel workbooks in Claude Desktop with nothing but file attachments.",
+      "install": "skills/install/excel-no-mcp.zip"
     },
     {
       "file": "skills/meeting-notes-no-mcp.md",
       "title": "Meeting Notes to Action Items",
       "category1": "Productivity",
       "category2": "No MCP Needed",
-      "description": "Turn a raw transcript or your own scratch notes into structured, assignable action items — no connector required."
+      "description": "Turn a raw transcript or your own scratch notes into structured, assignable action items — no connector required.",
+      "install": "skills/install/meeting-notes-no-mcp.zip"
     },
     {
       "file": "skills/pdf-review-no-mcp.md",
       "title": "PDF Review & Extraction, No Add-ons",
       "category1": "Productivity",
       "category2": "No MCP Needed",
-      "description": "Extract tables, pull answers, and compare across PDFs in Claude Desktop with nothing but attachments."
+      "description": "Extract tables, pull answers, and compare across PDFs in Claude Desktop with nothing but attachments.",
+      "install": "skills/install/pdf-review-no-mcp.zip"
     }
   ]
 }

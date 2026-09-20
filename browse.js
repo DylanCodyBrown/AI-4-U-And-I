@@ -92,10 +92,16 @@
                 esc(it.title) + "</a>" +
               (cat ? '<span class="pop-src">' + cat + "</span>" : "") +
               (it.description ? '<span class="pop-note">' + esc(it.description) + "</span>" : "") +
-              (it.source
-                ? '<a class="pop-link" href="' + esc(it.source) +
-                  '" target="_blank" rel="noopener">source &#8599;</a>'
-                : "") +
+              '<span class="pop-links">' +
+                (it.install
+                  ? '<a class="pop-link" href="' + esc(it.install) +
+                    '" download>&#8595; install</a>'
+                  : "") +
+                (it.source
+                  ? '<a class="pop-link" href="' + esc(it.source) +
+                    '" target="_blank" rel="noopener">source &#8599;</a>'
+                  : "") +
+              "</span>" +
             "</span>" +
           "</div>"
         );
