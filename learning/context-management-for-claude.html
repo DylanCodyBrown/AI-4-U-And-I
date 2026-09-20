@@ -21,7 +21,7 @@
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 
   .deck{position:relative;width:100vw;height:100vh;}
-  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:5vh 6vw;opacity:0;transition:opacity .5s ease;overflow-y:auto;}
+  .slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:calc(5vh + 30px) 6vw 5vh;opacity:0;transition:opacity .5s ease;overflow-y:auto;}
   .slide.active{display:flex;opacity:1;animation:fadeUp .6s ease;}
   @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
 
@@ -322,7 +322,7 @@
   .nav .count{font-family:'Space Mono',monospace;font-size:.8rem;min-width:54px;text-align:center;}
   .progress{position:fixed;top:0;left:0;height:5px;background:var(--rust);z-index:101;transition:width .4s ease;}
 
-  #slide-timer{position:fixed;top:8px;left:14px;font-family:'Space Mono',monospace;font-size:.75rem;color:rgba(26,20,16,0.35);z-index:200;letter-spacing:.05em;transition:color .3s;pointer-events:none;}
+  #slide-timer{position:fixed;bottom:14px;left:16px;font-family:'Space Mono',monospace;font-size:.75rem;color:rgba(26,20,16,0.35);z-index:200;letter-spacing:.05em;transition:color .3s;pointer-events:none;}
   #slide-timer.done{color:#c1440e;}
 
   /* ── HARNESS ANIMATED SLIDES ───────────────────────────────────── */
@@ -643,6 +643,7 @@
 
 /* ===== harness comparison bars + trigger keywords ===== */
 .hf-kw{color:var(--gold);text-decoration:underline;text-underline-offset:2px;font-weight:700;}
+.hf-what{font-size:.92rem;line-height:1.45;margin:.25rem 0 .2rem;color:var(--ink);opacity:.9;}
 .hf-trig{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--dusk);opacity:.8;margin:.05rem 0 .15rem;}
 .hf-ctx{flex-direction:column;align-items:stretch;gap:.18rem;}
 .hf-ctxrow{display:flex;align-items:center;gap:.5rem;}
@@ -669,6 +670,13 @@
 #s-thanks{justify-content:center;}
 #s-thanks h1{font-size:clamp(2.6rem,8vw,6.5rem);line-height:.95;}
 
+/* ===== persistent concept label (top-left): tells a reader which idea the
+   current slide belongs to, so the deck reads without a narrator ===== */
+#deckConcept{position:fixed;top:14px;left:16px;z-index:60;font-family:'Space Mono',monospace;
+  font-size:.72rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  background:var(--ink);color:var(--paper);border-radius:5px;padding:.35rem .7rem;opacity:.8;
+  max-width:min(48vw,430px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
 /* ===== persistent top-bar buttons (index + exit to site) ===== */
 .deck-topbar{position:fixed;top:14px;right:16px;z-index:60;display:flex;gap:.4rem;}
 .deck-topbar button,.deck-topbar a{font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.03em;background:var(--ink);color:var(--paper);border:none;border-radius:5px;padding:.35rem .65rem;cursor:pointer;opacity:.72;transition:opacity .2s ease,background .2s ease;text-decoration:none;display:inline-block;}
@@ -682,12 +690,13 @@
 
   <!-- 1 TITLE -->
   <!-- INDEX -->
+  <div id="deckConcept"></div>
   <div class="deck-topbar">
     <a href="../learning.html" title="Back to the Learning page" aria-label="Back to the Learning page">&larr; Learning</a>
     <button id="deckHome" onclick="showById('s-index')" title="Back to index" aria-label="Back to index">&#8962; Index</button>
   </div>
 
-  <section class="slide active" id="s-index">
+  <section class="slide active" id="s-index" data-concept="">
     <div class="kicker">Context management for Claude · Index</div>
     <h2>Jump To<br>A Section</h2>
     <p class="lede" style="margin-bottom:.6rem;">Click any section to skip there directly — handy if the deck closes or you want to revisit a slide.</p>
@@ -725,14 +734,14 @@
     </div>
   </section>
 
-  <section class="slide" id="s-title">
+  <section class="slide" id="s-title" data-concept="">
     <div class="kicker">A Working Session</div>
     <h1>Context<br>Management<br><span style="color:var(--rust)">for Claude</span></h1>
     <div class="title-rule"></div>
     <p class="sub">How an AI thinks, stores, and uses context —<br>and how to write docs that work <em>for</em> the model, not against it.</p>
   </section>
 
-  <section class="slide" id="s-scene">
+  <section class="slide" id="s-scene" data-concept="The Car Analogy">
     <div class="scene-head">
       <div class="kicker">The Analogy · One Road Trip</div>
       <h2>It's Just A Car</h2>
@@ -867,34 +876,34 @@
   </section>
 
 
-  <section class="slide" id="s-q1">
+  <section class="slide" id="s-q1" data-concept="The Three Questions">
     <div class="kicker">The Question Behind It All</div>
     <h2>The Three<br>Questions</h2>
-    <p class="lede">Have you ever wondered how an LLM keeps up with what you feed it? Underneath, it's running every incoming word through three questions. What survives goes on your sticky note — the rest is noise.</p>
+    <p class="lede">Have you ever wondered how an LLM keeps up with what you feed it? Underneath, it's running every incoming word through three questions. What survives shapes the answer; the rest is noise.</p>
     <div class="cols-3" style="margin-top:1rem;align-items:stretch;">
       <div class="card">
         <span class="tag" style="background:var(--ink);color:var(--paper);">1 · Frequency Filter</span>
         <h3 style="font-style:italic;color:var(--rust-deep);">"How often have I seen this word?"</h3>
         <p>Isolates information <strong>density</strong>. Drop the background noise; keep the rare, high-value words.</p>
-        <p style="font-size:.9rem;opacity:.82;"><strong>Sticky note:</strong> a word that keeps recurring is a keeper. One-offs are usually noise.</p>
+        <p style="font-size:.9rem;opacity:.82;"><strong>In practice:</strong> a term that keeps recurring is load-bearing. One-offs are usually noise.</p>
       </div>
       <div class="card rust">
         <span class="tag" style="background:var(--ink);color:var(--paper);">2 · Boundary Trigger</span>
         <h3 style="font-style:italic;color:var(--rust-deep);">"Does this change the subject?"</h3>
         <p>Marks your <strong>context window</strong>. When it trips, flush the stale stuff and reset working memory.</p>
-        <p style="font-size:.9rem;opacity:.82;"><strong>Sticky note:</strong> when the subject shifts, draw a line. That boundary shows what no longer belongs.</p>
+        <p style="font-size:.9rem;opacity:.82;"><strong>In practice:</strong> when the subject shifts, that boundary marks what no longer belongs in the window.</p>
       </div>
       <div class="card sage">
         <span class="tag" style="background:var(--ink);color:var(--paper);">3 · Resonance Link</span>
         <h3 style="font-style:italic;color:var(--rust-deep);">"Does this relate to what's active?"</h3>
         <p>The <strong>contextual join</strong> — decide whether new data amplifies the current thread or stays separate.</p>
-        <p style="font-size:.9rem;opacity:.82;"><strong>Sticky note:</strong> draw a pointer between words that belong together. Those links are the relationships to spell out.</p>
+        <p style="font-size:.9rem;opacity:.82;"><strong>In practice:</strong> terms that point at each other are the relationships worth spelling out in your docs.</p>
       </div>
     </div>
   </section>
 
 
-  <section class="slide" id="s-overlap">
+  <section class="slide" id="s-overlap" data-concept="Word Overlap">
     <div class="kicker">Watch Words Fire Together</div>
     <h2>Same Room,<br>One Pattern</h2>
     <p class="lede">Do the neurons (the <strong>words</strong>) fire together? <strong style="color:var(--rust)">Strong overlap</strong> keeps repeating across many prompts. <strong style="color:var(--gold)">Weak overlap</strong> fires once and drifts.</p>
@@ -948,7 +957,7 @@
     <p id="overlapCaption" style="margin-top:1rem;font-size:.95rem;opacity:.8;"><span class="mono">weather · tomorrow · forecast</span> only turn up in about a fifth of these 32 prompts — plenty of others aren't even about weather — but they're still the most repeated → wired in. Everything else fires once or twice → eviction candidates.</p>
   </section>
 
-  <section class="slide" id="s-mamba">
+  <section class="slide" id="s-mamba" data-concept="How Memory Grew Up">
     <div class="kicker">How Memory Grew Up · The Road To Mamba</div>
     <h2>Building A<br>Better Memory</h2>
     <p class="lede">The first assistants barely remembered anything. Ask an early <strong>Siri or Alexa</strong> "how's the weather?", then "what about tomorrow?", and it drew a blank: each request started from nothing. Memory has been climbing out of that hole ever since.</p>
@@ -1049,7 +1058,7 @@
 
 
 
-  <section class="slide" id="s-context-rot">
+  <section class="slide" id="s-context-rot" data-concept="Context Rot">
     <div class="kicker">Context Rot</div>
     <h2>Context Rot</h2>
     <p class="lede">Context rot is the drop in output quality that happens as input gets longer, even when the window isn't close to full.</p>
@@ -1081,7 +1090,7 @@
     <div class="note-callout" style="font-size:.92rem;margin-top:1rem;">Tidy, evenly-structured input can degrade attention more than messy input. Uniform formatting makes it harder for a model to tell what's load-bearing.</div>
   </section>
 
-  <section class="slide" id="s-agent-files">
+  <section class="slide" id="s-agent-files" data-concept="Agent Files">
     <div class="kicker">Before The Patterns &middot; Specialists Are Files</div>
     <h2>What Is An<br>Agent File?</h2>
     <p class="lede">Every &ldquo;specialist&rdquo; is a predefined <strong>agent</strong> &mdash; a markdown file, just like a CLAUDE.md, that says who it is, what it may touch, and how to act.</p><a href="assets/project-manager.md" download="project-manager.md" class="btn" style="margin-bottom:1rem;display:inline-block;">Download Example Agent</a>
@@ -1108,11 +1117,12 @@ Nashville, TN. On every request:
     </div>
   </section>
 
-  <section class="slide" id="s-harness-intro">
+  <section class="slide" id="s-harness-intro" data-concept="Context Patterns">
     <div class="kicker">Fighting Context Rot · The Patterns</div>
     <h2>Use The Window<br>Wisely</h2>
     <p class="lede" style="margin:.2rem 0 .3rem;">Six reusable <strong>patterns</strong>, same trick every time: do the messy work in a throwaway sub-context, hand back one clean line, keep the main window small.</p>
-    <p style="font-size:.95rem;opacity:.85;margin-bottom:.2rem;">One example runs through all six &mdash; <span class="mono">&ldquo;Where should I eat today?&rdquo;</span></p>
+    <p style="font-size:.95rem;opacity:.85;margin-bottom:.2rem;">One example runs through all six: <span class="mono">&ldquo;Where should I eat today?&rdquo;</span></p>
+    <p style="font-size:.9rem;opacity:.8;margin:.1rem 0 .2rem;">Each pattern has a <strong>Step</strong> button and two bars. The top bar is how full your main context window stays using the pattern. The bottom bar is the same work done inline, in one conversation.</p>
     <div class="hp-plist">
       <div class="hp-pchip"><span class="hp-pn">01</span><span class="hp-pt">Triage &amp; Route</span><span class="hp-pd">Send it to the right specialist.</span></div>
       <div class="hp-pchip"><span class="hp-pn">02</span><span class="hp-pt">Fan-Out &amp; Merge</span><span class="hp-pd">Parallel scouts, one merge.</span></div>
@@ -1126,7 +1136,8 @@ Nashville, TN. On every request:
 
   <section class="slide" id="s-harness-01">
     <div class="kicker">01 &middot; Triage &amp; Route</div>
-    <h2 style="font-size:clamp(1.3rem,3vw,2.2rem);line-height:1.05;">Route To An Agent To Keep<br>Your Parking Lot Clean</h2>
+    <h2 style="font-size:clamp(1.3rem,3vw,2.2rem);line-height:1.05;">Route To An Agent,<br>Keep Your Window Clean</h2>
+    <p class="hf-what">One cheap call reads the request and hands it to a single specialist. The other specialists never load, so their instructions never reach your window.</p>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">route it to the right specialist</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-01" style="--hf:0s;">
@@ -1172,6 +1183,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-harness-02">
     <div class="kicker">02 &middot; Parallel Isolation</div>
     <h2>Fan-Out &amp; Merge</h2>
+    <p class="hf-what">Several subagents research different angles at the same time, each in its own separate context. Only their short answers come back to you.</p>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">check cuisine, budget &amp; distance in parallel, then merge</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-02" style="--hf:0s;">
@@ -1223,6 +1235,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-harness-03">
     <div class="kicker">03 &middot; Fresh Eyes</div>
     <h2>Adversarial Check</h2>
+    <p class="hf-what">A second agent receives the answer and tries to break it, knowing nothing about how the first one got there. Fresh eyes catch what the author talked themselves into.</p>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">then have a skeptic double-check it</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-03" style="--hf:0s;">
@@ -1262,6 +1275,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-harness-04">
     <div class="kicker">04 &middot; Many In, One Out</div>
     <h2>Generate &amp; Filter</h2>
+    <p class="hf-what">Subagents produce several candidates in parallel. A filter keeps whichever survives, and the rejects never enter your window.</p>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> <span class="hf-kw">Have subagents find me 4 places to eat, then keep the best</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-04" style="--hf:0s;">
@@ -1307,6 +1321,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-harness-05">
     <div class="kicker">05 &middot; Eliminate To One</div>
     <h2>Tournament</h2>
+    <p class="hf-what">Candidates are compared two at a time and the winner advances. Every comparison happens in a throwaway context, so only the champion comes back.</p>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> Find me somewhere to eat &mdash; <span class="hf-kw">compare them head-to-head, pick a winner</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-05" style="--hf:0s;">
@@ -1355,6 +1370,7 @@ Nashville, TN. On every request:
   <section class="slide" id="s-harness-06">
     <div class="kicker">06 &middot; Spawn Fresh</div>
     <h2>Loop Until Done</h2>
+    <p class="hf-what">Each attempt runs in a fresh context and gets checked against your rules. Failed attempts are thrown away instead of piling up in the conversation.</p>
     <div class="hf-ask"><span class="hf-caret">&gt;</span> <span class="hf-kw">/loop</span> Find me somewhere to eat &mdash; <span class="hf-kw">keep trying until one passes my rules</span></div>
     <div class="hf-trig">&#9757; the highlighted words are the keywords that make this pattern fire</div>
     <div class="hframe" data-hf="s-harness-06" style="--hf:0s;">
@@ -1393,14 +1409,14 @@ Nashville, TN. On every request:
 
 
 
-  <section class="slide" id="s-token-mgmt">
+  <section class="slide" id="s-token-mgmt" data-concept="Token Management">
     <div class="kicker">The Pivot</div>
     <h2>Token<br>Management</h2>
     <p class="lede" style="font-size:1.5rem;margin-top:1rem;">If every token counts and the window is finite, the real skill is simple: <strong>put the right things in front of the model, in a form it can use.</strong></p>
     <p style="margin-top:1.6rem;font-size:1.15rem;">Some levers matter far more than others. Here's the ranking.</p>
   </section>
 
-  <section class="slide" id="s-tok-rank">
+  <section class="slide" id="s-tok-rank" data-concept="Token Management · The 4 Levers">
     <div class="kicker">Token Management · Use It Where It Counts</div>
     <h2>Use Your<br>Context Wisely</h2>
     <ol class="rank-list">
@@ -1435,7 +1451,7 @@ Nashville, TN. On every request:
     </ol>
   </section>
 
-  <section class="slide" id="s-fmt-md">
+  <section class="slide" id="s-fmt-md" data-concept="Documentation Formats">
     <div class="kicker" style="margin-bottom:.5rem;">Documentation Formats · Markdown</div>
     <h2 style="margin-bottom:.5rem;">Markdown</h2>
     <p class="lede" style="font-size:1.05rem;margin-bottom:.6rem;">The spine of agent docs. It's <strong>plain text</strong>, so it reads fine raw, but those same characters render into real structure. Left is what you type, right is what the model gets.</p><a href="assets/sample-context.md" download="sample-context.md" class="btn" style="margin-bottom:1rem;display:inline-block;">Download Markdown Sample</a>
@@ -1764,7 +1780,7 @@ reviewed within 5 business days...</pre>
     <div class="note-callout"><strong>The throughline:</strong> match the format to the job. If it has to be exact and machine-readable, reach for JSON or XML. If a person needs to read it, Markdown or YAML. CSV is for flat lookups, PDF for a final record, and Office files have to be extracted before they're any use. Pick wrong and you pay in tokens and accuracy.</div>
   </section>
 
-  <section class="slide" id="s-tok-effort">
+  <section class="slide" id="s-tok-effort" data-concept="Lever 2 · Effort Setting">
     <div class="kicker">Lever 2 · The Effort Setting</div>
     <h2>How Hard It Thinks</h2>
     <p class="lede" style="text-align:center;max-width:1000px;margin:0 auto;">Effort is a dial — low, medium, high, max — for how much reasoning the model spends before it answers. And it governs every token in the response, not just the thinking: the text and the tool calls too.</p>
@@ -1779,7 +1795,7 @@ reviewed within 5 business days...</pre>
     <div class="note-callout" style="max-width:1000px;margin:1rem auto 0;font-size:.92rem;text-align:left;"><strong>The trap:</strong> the default leans high. On the same prompt, max can run roughly 10× the tokens of low, so match effort to what's at stake instead of leaving it cranked up. <span style="opacity:.6;">(Source: Claude effort &amp; adaptive-thinking docs, 2026.)</span></div>
   </section>
 
-  <section class="slide" id="s-tok-model">
+  <section class="slide" id="s-tok-model" data-concept="Lever 3 · The Model">
     <div class="kicker">Lever 3 · The Model Itself</div>
     <h2>The Window Doesn't<br>Travel With You</h2>
     <div class="cols" style="grid-template-columns:1fr 1fr;gap:2rem;margin-top:.5rem;align-items:start;">
@@ -1809,7 +1825,7 @@ reviewed within 5 business days...</pre>
     </div>
   </section>
 
-  <section class="slide" id="s-tok-mcp">
+  <section class="slide" id="s-tok-mcp" data-concept="Lever 4 · MCP Token Leak">
     <div class="kicker">Lever 4 · MCPs &amp; Tool Calls</div>
     <h2>The Silent<br>Token Leak</h2>
     <p class="lede">An MCP wires the model up to a real system — your database, a BI tool, whatever you connect. That's hugely useful. The catch is that every tool call dumps its results back into the context window, so a vague request can send the model on a <strong>scavenger hunt</strong> of calls before it ever does the thing you asked for.</p>
@@ -1907,7 +1923,7 @@ reviewed within 5 business days...</pre>
     <div class="note-callout" style="font-size:.95rem;margin-top:1rem;">The model can only skip the scavenger hunt if it's given the landmarks up front. Specific prompts stay lean.</div>
   </section>
 
-  <section class="slide" id="s-organizing">
+  <section class="slide" id="s-organizing" data-concept="Organizing Context">
     <div class="kicker">Part Two</div>
     <h2>Organizing<br>Context</h2>
     <p class="lede" style="font-size:1.5rem;margin-top:1rem;">Managing tokens keeps the window lean. The other half of the job is <strong>arranging what's in it</strong> — so the model can find the right thing fast.</p>
@@ -1970,7 +1986,7 @@ reviewed within 5 business days...</pre>
     </div>
 </section>
 
-  <section class="slide" id="s-claude-global">
+  <section class="slide" id="s-claude-global" data-concept="CLAUDE.md & Memory">
     <div class="kicker">Making It Real · The Global File</div>
     <h2>CLAUDE.md —<br>Your Global Rules</h2>
     <p class="lede">A <strong>global</strong> CLAUDE.md is one markdown file at <span class="mono">~/.claude/CLAUDE.md</span> that Claude reads before <em>every</em> session, on every project. This is Dylan's real one — a Map of Context that points into a vault.</p>
@@ -2142,7 +2158,7 @@ demo runs live in a terminal during a talk. It is a local dev tool bound to
         <div class="note-callout" style="font-size:.95rem;"><strong>Auto-memory:</strong> Claude also writes its <em>own</em> notes as it works — build commands, conventions it figures out — so the file gets smarter without you typing.</div>
       </div>
     </div>
-    <div class="note-callout" style="font-size:1rem;margin-top:1rem;"><strong>The move that matters:</strong> deliberately <em>promote</em> what's worth keeping from your sticky notes (fast) into these files (slow). <span class="mono">fast ➜ slow</span> is how context survives past the moment it was useful.</div>
+    <div class="note-callout" style="font-size:1rem;margin-top:1rem;"><strong>The move that matters:</strong> the live conversation is <em>fast</em> memory — gone when the session ends. These files are <em>slow</em> memory — reloaded every time. Deliberately <em>promoting</em> what's worth keeping from one to the other (<span class="mono">fast ➜ slow</span>) is how context survives past the moment it was useful.</div>
   </section>
 
   <section class="slide" id="s-tools-cmp">
@@ -2181,7 +2197,7 @@ demo runs live in a terminal during a talk. It is a local dev tool bound to
     <p style="font-size:.78rem;opacity:.65;margin-top:.6rem;font-style:italic;">* Copilot has narrow exceptions — the CLI reads <span class="mono">~/.copilot/copilot-instructions.md</span> and VS Code keeps user-profile instruction files — but neither is a true portable, machine-wide global, and they don't travel with the repo.</p>
   </section>
 
-  <section class="slide" id="s-md-library">
+  <section class="slide" id="s-md-library" data-concept="Knowledge Library">
     <div class="kicker">Scaling Up · Many Files</div>
     <h2>Organizing A<br>Knowledge Library</h2>
     <p class="lede">One file doesn't scale. The fix is the same trick a model uses: a small <strong>index</strong> that points to the right document, so nothing loads until it's needed.</p>
@@ -2212,10 +2228,10 @@ demo runs live in a terminal during a talk. It is a local dev tool bound to
     </div>
   </section>
 
-  <section class="slide" id="s-okf-what">
-    <div class="kicker">Organizing Context · Open Knowledge Format</div>
+  <section class="slide" id="s-okf-what" data-concept="OKF · Open Knowledge Format">
+    <div class="kicker">Open Knowledge Format · The Idea</div>
     <h2>A Standard For<br>The Index Pattern</h2>
-    <p class="lede">Everything we just did — small files, an index of pointers, links between docs — Google Cloud turned into an open spec in June 2026: the <strong>Open Knowledge Format (OKF)</strong>. It's a way to hand an agent curated knowledge that both people and models can read.</p>
+    <p class="lede">Small files, an index of pointers, links between docs: Google Cloud turned that pattern into an open spec in June 2026, the <strong>Open Knowledge Format (OKF)</strong>. It's a way to hand an agent curated knowledge that both people and models can read.</p>
     <div class="cols" style="grid-template-columns:1.05fr .95fr;gap:1.4rem;align-items:start;margin-top:1rem;">
       <div>
         <h3>What it actually is</h3>
@@ -2263,7 +2279,7 @@ demo runs live in a terminal during a talk. It is a local dev tool bound to
           <li>That <span class="mono">[customers](/tables/customers.md)</span> link is the graph — one concept referencing another.</li>
           <li>An <span class="mono">index.md</span> at each level gives <strong>progressive disclosure</strong>: the agent reads the map, then follows one pointer. A <span class="mono">log.md</span> can track change history.</li>
         </ul>
-        <div class="note-callout" style="font-size:.92rem;">This is the headings-as-index idea from a few slides ago — now with a tag on every file and a name everyone agrees on.</div>
+        <div class="note-callout" style="font-size:.92rem;">It's the same trick as headings inside a markdown file, where the heading tree lets a model jump to the right section. OKF scales it from one file to a whole directory, with a tag on every file and a name everyone agrees on.</div>
       </div>
     </div>
 
@@ -2309,10 +2325,10 @@ demo runs live in a terminal during a talk. It is a local dev tool bound to
     </div>
   </section>
 
-  <section class="slide" id="s-pcm-what">
-  <div class="kicker">Organizing Context · A Working Variation</div>
+  <section class="slide" id="s-pcm-what" data-concept="PCM · Project Context Map">
+  <div class="kicker">Project Context Map · The Idea</div>
   <h2>The Project<br>Context Map</h2>
-  <p class="lede">Every project keeps a thin <span class="mono">CLAUDE.md</span> at its root — a small map of that project's context, loaded the moment you open the folder.</p>
+  <p class="lede">A <strong>Project Context Map (PCM)</strong> takes the same index pattern and points it at a machine with many projects on it. Every project keeps a thin <span class="mono">CLAUDE.md</span> at its root: a small map of that project's context, loaded the moment you open the folder.</p>
   <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.9rem;align-items:start;margin-top:1.2rem;">
     <div style="border:2px solid var(--ink);border-radius:4px;box-shadow:4px 4px 0 var(--ink);background:rgba(255,255,255,.4);padding:.7rem .8rem;font-family:'Space Mono',monospace;font-size:.72rem;line-height:1.65;">
       <div style="color:var(--rust);font-weight:700;">web-app/</div>
@@ -2350,8 +2366,8 @@ demo runs live in a terminal during a talk. It is a local dev tool bound to
 
   <section class="slide" id="s-pcm-format">
     <div class="kicker">Project Context Map · Same Bundle, Reorganized</div>
-    <h2>PCM</h2>
-    <p class="lede">Like OKF, but built to switch between projects.</p>
+    <h2>Same Bundle,<br>Reorganized</h2>
+    <p class="lede">A PCM uses the same parts OKF does: markdown files, frontmatter on each, an index that points the way in. What changes is the arrangement. It's organized around the project you're working in rather than a bundle you hand to someone else.</p>
     <div class="cols" style="grid-template-columns:1fr 1fr;gap:1.3rem;align-items:start;margin-top:.8rem;">
       <div>
         <div class="pane-label">▸ project file: a thin pointer</div>
@@ -2387,10 +2403,10 @@ Open only the entries you need.</pre>
     </div>
   </section>
 
-  <section class="slide" id="s-pcm-why">
-  <div class="kicker">Project Context Map · When To Reach For It</div>
+  <section class="slide" id="s-pcm-why" data-concept="OKF vs PCM">
+  <div class="kicker">Which One To Reach For</div>
   <h2>Bundles Travel.<br>Projects Live.</h2>
-  <p class="lede">Same index pattern, different center of gravity. Are you <strong>shipping curated knowledge</strong>, or <strong>working a live project</strong>?</p>
+  <p class="lede">Same index pattern, different center of gravity. An <strong>OKF</strong> bundle travels between people and tools. A <strong>PCM</strong> stays on your machine and follows whatever project you open. So: are you shipping knowledge, or working inside it?</p>
   <div class="cols" style="align-items:stretch;margin-top:1.2rem;">
     <div class="card rust">
       <h3 style="margin-top:0;">OKF</h3>
@@ -2411,7 +2427,7 @@ Open only the entries you need.</pre>
   </div>
 </section>
 
-  <section class="slide" id="s-junk-what">
+  <section class="slide" id="s-junk-what" data-concept="The Junkyard & RAG">
     <div class="kicker">Organizing Context · A Third Pattern</div>
     <h2>The Junkyard</h2>
     <p class="lede">The Junkyard skips curation: everything goes into one place, and a search step pulls what's relevant when the agent needs it.</p>
@@ -2438,6 +2454,7 @@ Open only the entries you need.</pre>
     </div>
     <div class="kicker">The Junkyard &middot; How It Finds Anything</div>
     <h2 style="margin-bottom:.2rem;">Chunk, Embed, Search</h2>
+    <p class="lede" style="font-size:.98rem;margin:.35rem 0 .5rem;">Retrieval works in three moves, and the demo below steps through them. Long notes get cut into <strong>chunks</strong>. Each chunk becomes a <strong>vector</strong>: a list of numbers standing in for its meaning. Your question becomes a vector too, and search returns whichever chunks sit nearest it. On the left, a plain scan reads every word hunting for a match. On the right, the same text is plotted as points, where the burrito sentence lands close to <em>&ldquo;Where should I get food?&rdquo;</em> and the ledger notes stay far away.</p>
     <div class="rag-phase">
       <span id="rag-p1">1 &middot; Chunk</span>
       <span id="rag-p2">2 &middot; Embed</span>
@@ -2514,7 +2531,7 @@ Open only the entries you need.</pre>
     <div class="note-callout" style="font-size:.92rem;margin-top:.7rem;">And it buckles at scale: too much to search in time, and vector search returns too many near-identical hits. Vectors are sharpest on small, well-scoped chunks &mdash; so RAG only scales if you keep the pile small and organized.</div>
   </section>
 
-  <section class="slide" id="s-cabinet">
+  <section class="slide" id="s-cabinet" data-concept="Filing Cabinet">
     <div class="kicker">Obsidian &amp; Notion · Used On Purpose</div>
     <h2>Filing Cabinet,<br>Not a Dump Site</h2>
     <p class="lede">Used well, Obsidian and Notion are <strong>retrieval tools</strong> — drawers you open to pull one specific thing, not a chute everything falls into.</p>
@@ -2536,10 +2553,10 @@ Open only the entries you need.</pre>
 </section>
 
 
-  <section class="slide" id="s-bonus">
-    <div class="kicker">Bonus · It Was Never Academic</div>
+  <section class="slide" id="s-bonus" data-concept="Bonus · Frontmatter">
+    <div class="kicker">Bonus · Frontmatter In The Wild</div>
     <h2>Claude's Own<br>Skills Use It</h2>
-    <p class="lede">That frontmatter question wasn't trivia. <strong>Claude Skills</strong> — the reusable instructions that taught Claude to build Word docs, fill PDFs, even the skills behind <em>this</em> session — each declare themselves with exactly that YAML frontmatter block.</p>
+    <p class="lede">Frontmatter isn't a documentation nicety. <strong>Claude Skills</strong> — the reusable instructions that taught Claude to build Word docs, fill PDFs, even the skills behind <em>this</em> session — each declare themselves with a YAML frontmatter block: a few lines of metadata above the markdown body.</p>
     <div class="cols">
       <div>
         <pre class="code"><span class="s">---</span>
@@ -2562,18 +2579,18 @@ Open only the entries you need.</pre>
           <li>That's the <span class="mono">---</span> metadata block doing exactly its job: <strong>tell the model what this is before it reads the whole thing.</strong></li>
           <li>Same principle as a clean heading tree or a tagged document — structure up front saves tokens and sharpens retrieval.</li>
         </ul>
-        <div class="note-callout" style="font-size:.95rem;">The thing you almost didn't write down is the thing Claude's entire skill system is built on.</div>
+        <div class="note-callout" style="font-size:.95rem;">The metadata block that's easiest to skip writing is the thing Claude's entire skill system is built on.</div>
       </div>
     </div>
   </section>
 
-  <section class="slide" id="s-thanks">
+  <section class="slide" id="s-thanks" data-concept="">
     <div class="kicker">Fin</div>
     <h1>Thanks for<br>reading along!</h1>
     <div class="title-rule"></div>
   </section>
 
-  <section class="slide" id="s-pelican-intro">
+  <section class="slide" id="s-pelican-intro" data-concept="Guess The Pelican">
     <div class="kicker">Just For Fun · The Finale</div>
     <h2>Guess The<br>Pelican</h2>
     <p class="lede">Since December 2024, Simon Willison has run the same prompt against every new model that ships and tracked the results. Somehow it's become a real benchmark.</p>
@@ -2785,6 +2802,17 @@ Open only the entries you need.</pre>
   const slides=Array.from(document.querySelectorAll('.slide'));
   let idx=0;
   document.getElementById('total').textContent=slides.length;
+  const conceptEl=document.getElementById('deckConcept');
+  // a slide inherits the concept of the most recent slide that declares one,
+  // so only the first slide of each run needs data-concept
+  function updateConcept(){
+    let label=null;
+    for(let j=idx;j>=0;j--){
+      if(slides[j].hasAttribute('data-concept')){ label=slides[j].getAttribute('data-concept'); break; }
+    }
+    conceptEl.textContent=label||'';
+    conceptEl.style.display=label?'block':'none';
+  }
   function showById(id){ const i=slides.findIndex(x=>x.id===id); if(i>=0) show(i); }
   function show(n){
     slides[idx].classList.remove('active');
@@ -2792,6 +2820,7 @@ Open only the entries you need.</pre>
     slides[idx].classList.add('active');
     document.getElementById('cur').textContent=idx+1;
     document.getElementById('progress').style.width=((idx+1)/slides.length*100)+'%';
+    updateConcept();
     if(slides[idx].id==='s-fmt-html') initSlider();
     if(slides[idx].id==='s-overlap' && freqShown) showFreq();
     _tStart = Date.now(); tickTimer();
@@ -2806,6 +2835,7 @@ Open only the entries you need.</pre>
   }
   setInterval(tickTimer, 500);
   tickTimer();
+  updateConcept();
 
   function go(d){show(idx+d);}
 
