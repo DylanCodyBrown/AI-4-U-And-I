@@ -439,3 +439,16 @@ fieldset.box > legend {
   .status kbd { padding: 0 .25rem; }
   .status .seg { margin: 0; }
 }
+
+/* agent-pattern download strip (top of Skills page) */
+.pat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .6rem; margin: .2rem 0 .9rem; }
+.pat {
+  display: flex; flex-direction: column; gap: .15rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: .6rem .75rem; background: var(--bg-2); text-decoration: none;
+  transition: border-color .15s ease, background .15s ease;
+}
+.pat:hover { border-color: var(--accent); background: var(--bg); }
+.pat-n { color: var(--accent); font-weight: 600; }
+.pat-n::before { content: "\2193  "; opacity: .75; }
+.pat-d { color: var(--fg-dim); font-size: .8rem; }
