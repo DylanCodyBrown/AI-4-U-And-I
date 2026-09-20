@@ -2,7 +2,7 @@
   "section": "skills",
   "type": "md",
   "generated": true,
-  "count": 3,
+  "count": 4,
   "items": [
     {
       "file": "skills/app-clean-architecture.md",
@@ -24,6 +24,13 @@
       "category1": "Microsoft",
       "category2": "Microsoft Word",
       "description": "Generate personalized documents from a spreadsheet data source."
+    },
+    {
+      "file": "skills/desktop-essentials.md",
+      "title": "Claude Desktop Essentials",
+      "category1": "Productivity",
+      "category2": "Claude Desktop",
+      "description": "Get the most out of the Claude desktop app — local files, Skills, Projects, and connectors."
     }
   ]
 }

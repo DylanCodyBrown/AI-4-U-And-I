@@ -2,8 +2,15 @@
   "section": "agents",
   "type": "md",
   "generated": true,
-  "count": 2,
+  "count": 3,
   "items": [
+    {
+      "file": "agents/excel-office-specialist.md",
+      "title": "Excel & Office Specialist",
+      "category1": "Productivity",
+      "category2": "Excel & Office",
+      "description": "Builds and audits Excel workbooks, Word docs, and PowerPoint decks without breaking formulas or formatting."
+    },
     {
       "file": "agents/research-assistant.md",
       "title": "Research Assistant",

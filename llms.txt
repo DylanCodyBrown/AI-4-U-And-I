@@ -9,6 +9,7 @@ For a complete machine-readable index with absolute download URLs, fetch [site.j
 - [Clean Architecture in Practice](https://dylancodybrown.github.io/AI-4-U-And-I/skills/app-clean-architecture.md) — Keep business rules independent of frameworks, UI, and databases.
 - [Finite State Machines for Game AI](https://dylancodybrown.github.io/AI-4-U-And-I/skills/game-dev-state-machines.md) — Model enemy and NPC behavior with clean, debuggable state machines.
 - [Mail Merge in Word](https://dylancodybrown.github.io/AI-4-U-And-I/skills/word-mail-merge.md) — Generate personalized documents from a spreadsheet data source.
+- [Claude Desktop Essentials](https://dylancodybrown.github.io/AI-4-U-And-I/skills/desktop-essentials.md) — Get the most out of the Claude desktop app — local files, Skills, Projects, and connectors.
 
 ### Popular (stored locally)
 
@@ -29,6 +30,7 @@ For a complete machine-readable index with absolute download URLs, fetch [site.j
 - [Slack Gif Creator](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/slack-gif-creator.md) — Knowledge and utilities for creating animated GIFs optimized for Slack. Provides constraints, validation tools, and animation concepts. Use when users request animated GIFs for Slack like \"make me a GIF of X doing Y for Slack.\"
 - [Yfinance Data](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/yfinance-data.md) — Fetch financial and market data using the yfinance Python library. Use this skill whenever the user asks for stock prices, historical data, financial statements, options chains, dividends, earnings, analyst recommendations, or any market data. Triggers include: any mention of stock price, ticker symbol (AAPL, MSFT, TSLA, etc.), \"get me the financials\", \"show earnings\", \"what's the price of\", \"download stock data\", \"options chain\", \"dividend history\", \"balance sheet\", \"income statement\", \"cash flow\", \"analyst targets\", \"institutional holders\", \"compare stocks\", \"screen for stocks\", or any request involving Yahoo Finance data. Always use this skill even if the user only provides a ticker — infer intent from context.
 - [Company Valuation](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/company-valuation.md) — Estimate the intrinsic value of a public company using DCF, relative (peer multiple) and sum-of-parts (SOTP) methods, then triangulate to an implied share price with upside/downside versus the current market price. Use this skill whenever the user asks: \"what is AAPL worth\", \"valuation of NVDA\", \"fair value of TSLA\", \"intrinsic value\", \"DCF for MSFT\", \"build a DCF\", \"discounted cash flow\", \"WACC\", \"terminal value\", \"implied share price\", \"upside to fair value\", \"is X overvalued/undervalued\", \"relative valuation\", \"peer comparison valuation\", \"EV/EBITDA target\", \"SOTP\", \"sum of the parts\", \"how much is [company] worth\", \"price target from fundamentals\", \"value this company\", or any ticker in the context of computing intrinsic or relative valuation. Default to running ALL three methods (DCF + relative + SOTP-if-applicable) and presenting a blended implied price with a sensitivity table. Do not answer valuation questions from memory — always run the workflow.
+- [Voice Memo Sync](https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/voice-memo-sync.md) — Sync, transcribe, and intelligently organize voice memos, audio/video files, and URLs. 同步、转录、智能整理语音备忘录、音视频文件和视频链接。
 
 ## MCP — servers by Local/Community/Homebrewed
 
@@ -43,8 +45,13 @@ For a complete machine-readable index with absolute download URLs, fetch [site.j
 
 ## Agents — browsable library
 
+- [Excel & Office Specialist](https://dylancodybrown.github.io/AI-4-U-And-I/agents/excel-office-specialist.md) — Builds and audits Excel workbooks, Word docs, and PowerPoint decks without breaking formulas or formatting.
 - [Research Assistant](https://dylancodybrown.github.io/AI-4-U-And-I/agents/research-assistant.md) — Fans out searches, reads sources, and synthesizes a cited summary.
 - [Code Reviewer](https://dylancodybrown.github.io/AI-4-U-And-I/agents/code-reviewer.md) — Reviews a diff for correctness bugs and suggests concrete fixes.
+
+### Popular (stored locally)
+
+- [Data Analyst](https://dylancodybrown.github.io/AI-4-U-And-I/agents/popular/data-analyst.md) — \"Use when you need to extract insights from business data, create dashboards and reports, or perform statistical analysis to support decision-making.\"
 
 ## Learning — interactive HTML docs (downloadable)
 

@@ -1,15 +1,16 @@
 #!/usr/bin/env node
-/* One-time (re-runnable) ingestion of popular skills.
-   Fetches each skill's SKILL.md from the web and stores the CONTENT in this
-   repo under skills/popular/, with attribution frontmatter. Run again to
-   refresh:  node scripts/ingest-popular.mjs
+/* One-time (re-runnable) ingestion of popular skills AND agents.
+   Fetches each item's markdown from the web and stores the CONTENT in this
+   repo under <section>/popular/ (section is "skills" or "agents"), with
+   attribution frontmatter. Run again to refresh:
+     node scripts/ingest-popular.mjs
    Then rebuild manifests:  node scripts/build-index.mjs */
 import { writeFile, mkdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const outDir = join(root, "skills", "popular");
+const outDirFor = (section) => join(root, section, "popular");
 
 // Curated set of popular, openly-licensed skills pulled from various sources.
 // Each entry names its own repo/branch/path since sources differ in layout.
@@ -22,7 +23,7 @@ const human = (repo, branch, path) =>
   `https://github.com/${repo}/blob/${branch}/${path}`;
 
 const ANTHROPIC_SKILLS = (name, category1, category2) => ({
-  name, category1, category2,
+  section: "skills", name, category1, category2,
   repo: "anthropics/skills", branch: "main", path: `skills/${name}/SKILL.md`,
   author: "Anthropic", license: "Apache-2.0",
 });
@@ -42,28 +43,40 @@ const SKILLS = [
   ANTHROPIC_SKILLS("internal-comms",        "Enterprise & Communication", "Comms"),
   ANTHROPIC_SKILLS("slack-gif-creator",     "Enterprise & Communication", "Slack"),
   {
-    name: "company-valuation", category1: "Finance", category2: "Valuation",
+    section: "skills", name: "company-valuation", category1: "Finance", category2: "Valuation",
     repo: "himself65/finance-skills", branch: "main",
     path: "plugins/market-analysis/skills/company-valuation/SKILL.md",
     author: "Alex Yang (himself65)", license: "MIT",
   },
   {
-    name: "yfinance-data", category1: "Finance", category2: "Market Data",
+    section: "skills", name: "yfinance-data", category1: "Finance", category2: "Market Data",
     repo: "himself65/finance-skills", branch: "main",
     path: "plugins/market-analysis/skills/yfinance-data/SKILL.md",
     author: "Alex Yang (himself65)", license: "MIT",
   },
   {
-    name: "excel-ops", category1: "Development & Technical", category2: "Excel / Python",
+    section: "skills", name: "excel-ops", category1: "Development & Technical", category2: "Excel / Python",
     repo: "agentui-ai/excel-ops", branch: "main",
     path: "skills/excel-ops/SKILL.md",
     author: "AgentUI", license: "MIT",
   },
   {
-    name: "jupyter-notebook", category1: "Development & Technical", category2: "Jupyter",
+    section: "skills", name: "jupyter-notebook", category1: "Development & Technical", category2: "Jupyter",
     repo: "antquinonez/jupyter-notebook-skill", branch: "master",
     path: "skills/jupyter-notebook/SKILL.md",
     author: "Antonio Quinonez", license: "MIT",
+  },
+  {
+    section: "skills", name: "voice-memo-sync", category1: "Productivity", category2: "Claude Desktop",
+    repo: "ying-wen/voice-memo-sync", branch: "main",
+    path: "SKILL.md",
+    author: "Ying Wen", license: "MIT",
+  },
+  {
+    section: "agents", name: "data-analyst", category1: "Data & Analytics", category2: "Business Intelligence",
+    repo: "VoltAgent/awesome-claude-code-subagents", branch: "main",
+    path: "categories/05-data-ai/data-analyst.md",
+    author: "VoltAgent", license: "MIT",
   },
 ];
 
@@ -101,11 +114,13 @@ const prettify = (s) =>
 // escape a value for safe single-line YAML (we quote with double quotes)
 const yaml = (s) => '"' + String(s).replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"';
 
-await mkdir(outDir, { recursive: true });
+const outDirsUsed = new Set(SKILLS.map((s) => s.section || "skills"));
+for (const section of outDirsUsed) await mkdir(outDirFor(section), { recursive: true });
 
 let ok = 0;
 for (const s of SKILLS) {
   try {
+    const section = s.section || "skills";
     const res = await fetch(raw(s.repo, s.branch, s.path));
     if (!res.ok) throw new Error("HTTP " + res.status);
     const text = await res.text();
@@ -126,17 +141,18 @@ for (const s of SKILLS) {
       `license: ${yaml(s.license)}\n` +
       "---\n\n";
 
+    const label = section === "agents" ? "Popular agent" : "Popular skill";
     const attribution =
-      `> **Popular skill** — content stored locally for reference.\n` +
+      `> **${label}** — content stored locally for reference.\n` +
       `> Source: [${s.repo}](${src}) · License: ${s.license}\n\n`;
 
-    await writeFile(join(outDir, s.name + ".md"), front + attribution + body.trimStart() + "\n");
-    console.log(`✓ ${s.name}`);
+    await writeFile(join(outDirFor(section), s.name + ".md"), front + attribution + body.trimStart() + "\n");
+    console.log(`✓ [${section}] ${s.name}`);
     ok++;
   } catch (e) {
     console.error(`✗ ${s.name}: ${e.message}`);
   }
 }
 
-console.log(`\nStored ${ok}/${SKILLS.length} skills in skills/popular/.`);
+console.log(`\nStored ${ok}/${SKILLS.length} item(s) across: ${[...outDirsUsed].map((s) => s + "/popular/").join(", ")}`);
 console.log("Now run: node scripts/build-index.mjs");

@@ -32,6 +32,14 @@
           "description": "Generate personalized documents from a spreadsheet data source.",
           "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=skills%2Fword-mail-merge.md",
           "download": "https://dylancodybrown.github.io/AI-4-U-And-I/skills/word-mail-merge.md"
+        },
+        {
+          "title": "Claude Desktop Essentials",
+          "category1": "Productivity",
+          "category2": "Claude Desktop",
+          "description": "Get the most out of the Claude desktop app — local files, Skills, Projects, and connectors.",
+          "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=skills%2Fdesktop-essentials.md",
+          "download": "https://dylancodybrown.github.io/AI-4-U-And-I/skills/desktop-essentials.md"
         }
       ],
       "popular": [
@@ -187,6 +195,15 @@
           "source": "https://github.com/himself65/finance-skills/blob/main/plugins/market-analysis/skills/company-valuation/SKILL.md",
           "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=skills%2Fpopular%2Fcompany-valuation.md",
           "download": "https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/company-valuation.md"
+        },
+        {
+          "title": "Voice Memo Sync",
+          "category1": "Productivity",
+          "category2": "Claude Desktop",
+          "description": "Sync, transcribe, and intelligently organize voice memos, audio/video files, and URLs. 同步、转录、智能整理语音备忘录、音视频文件和视频链接。",
+          "source": "https://github.com/ying-wen/voice-memo-sync/blob/main/SKILL.md",
+          "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=skills%2Fpopular%2Fvoice-memo-sync.md",
+          "download": "https://dylancodybrown.github.io/AI-4-U-And-I/skills/popular/voice-memo-sync.md"
         }
       ]
     },
@@ -268,6 +285,14 @@
       "label": "Agents — browsable library",
       "items": [
         {
+          "title": "Excel & Office Specialist",
+          "category1": "Productivity",
+          "category2": "Excel & Office",
+          "description": "Builds and audits Excel workbooks, Word docs, and PowerPoint decks without breaking formulas or formatting.",
+          "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=agents%2Fexcel-office-specialist.md",
+          "download": "https://dylancodybrown.github.io/AI-4-U-And-I/agents/excel-office-specialist.md"
+        },
+        {
           "title": "Research Assistant",
           "category1": "Productivity",
           "category2": "Research",
@@ -284,7 +309,17 @@
           "download": "https://dylancodybrown.github.io/AI-4-U-And-I/agents/code-reviewer.md"
         }
       ],
-      "popular": []
+      "popular": [
+        {
+          "title": "Data Analyst",
+          "category1": "Data & Analytics",
+          "category2": "Business Intelligence",
+          "description": "\\\"Use when you need to extract insights from business data, create dashboards and reports, or perform statistical analysis to support decision-making.\\\"",
+          "source": "https://github.com/VoltAgent/awesome-claude-code-subagents/blob/main/categories/05-data-ai/data-analyst.md",
+          "open": "https://dylancodybrown.github.io/AI-4-U-And-I/view.html?file=agents%2Fpopular%2Fdata-analyst.md",
+          "download": "https://dylancodybrown.github.io/AI-4-U-And-I/agents/popular/data-analyst.md"
+        }
+      ]
     },
     {
       "section": "learning",

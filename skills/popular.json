@@ -1,7 +1,7 @@
 {
   "section": "skills",
   "stored": true,
-  "count": 17,
+  "count": 18,
   "items": [
     {
       "file": "skills/popular/brand-guidelines.md",
@@ -138,6 +138,14 @@
       "category2": "Valuation",
       "description": "Estimate the intrinsic value of a public company using DCF, relative (peer multiple) and sum-of-parts (SOTP) methods, then triangulate to an implied share price with upside/downside versus the current market price. Use this skill whenever the user asks: \\\"what is AAPL worth\\\", \\\"valuation of NVDA\\\", \\\"fair value of TSLA\\\", \\\"intrinsic value\\\", \\\"DCF for MSFT\\\", \\\"build a DCF\\\", \\\"discounted cash flow\\\", \\\"WACC\\\", \\\"terminal value\\\", \\\"implied share price\\\", \\\"upside to fair value\\\", \\\"is X overvalued/undervalued\\\", \\\"relative valuation\\\", \\\"peer comparison valuation\\\", \\\"EV/EBITDA target\\\", \\\"SOTP\\\", \\\"sum of the parts\\\", \\\"how much is [company] worth\\\", \\\"price target from fundamentals\\\", \\\"value this company\\\", or any ticker in the context of computing intrinsic or relative valuation. Default to running ALL three methods (DCF + relative + SOTP-if-applicable) and presenting a blended implied price with a sensitivity table. Do not answer valuation questions from memory — always run the workflow.",
       "source": "https://github.com/himself65/finance-skills/blob/main/plugins/market-analysis/skills/company-valuation/SKILL.md"
+    },
+    {
+      "file": "skills/popular/voice-memo-sync.md",
+      "title": "Voice Memo Sync",
+      "category1": "Productivity",
+      "category2": "Claude Desktop",
+      "description": "Sync, transcribe, and intelligently organize voice memos, audio/video files, and URLs. 同步、转录、智能整理语音备忘录、音视频文件和视频链接。",
+      "source": "https://github.com/ying-wen/voice-memo-sync/blob/main/SKILL.md"
     }
   ]
 }
